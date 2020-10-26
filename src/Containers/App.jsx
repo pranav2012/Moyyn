@@ -5,6 +5,7 @@ import Nomatch from '../Components/404';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from '../Components/MainApp/Dashboard';
 import 'tachyons';
+import Preloader from '../Components/Preloader';
 
 const backend_url = 'https://cryptosathi.herokuapp.com';
 
@@ -65,6 +66,7 @@ class App extends Component {
             </Route>
             <Route exact path='/users'>
               {this.state.signclick === 'home' ? <Redirect to = {'/users'} /> : <Redirect to='/' />}
+              <Preloader/>
               <Dashboard logout={this.logout} />
             </Route>
             <Route>

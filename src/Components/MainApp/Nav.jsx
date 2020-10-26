@@ -6,7 +6,7 @@ function Nav({logout}) {
         <>
             <nav>
                 <ul className='nav'>
-                    <img src="https://moyyn.com/wp-content/uploads/2020/03/cropped-Untitled-design-6-1.png" alt="logo"></img>
+                    <img style={{objectFit:"contain"}} src="https://moyyn.com/wp-content/uploads/2020/03/cropped-Untitled-design-6-1.png" alt="logo"></img>
                     <li className='navp navpl' onClick={logout}>Log-Out</li>
                 </ul>
             </nav>

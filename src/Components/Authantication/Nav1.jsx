@@ -6,7 +6,7 @@ function Nav1() {
         <>
             <nav>
                 <ul className='nav'>
-                    <img className='navlogo' src="https://moyyn.com/wp-content/uploads/2020/03/cropped-Untitled-design-6-1.png" alt="logo"></img>
+                    <img  style={{objectFit:"contain"}} className='navlogo' src="https://moyyn.com/wp-content/uploads/2020/03/cropped-Untitled-design-6-1.png" alt="logo"></img>
                 </ul>
             </nav>
         </>
