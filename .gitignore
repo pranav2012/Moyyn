@@ -1,7 +1,8 @@
 node_modules
 build
 package-lock.json
-firebase-debug.log
+Moyyn-FrontEnd
+build
 .firebaserc
 firebase.json
 .firebase
