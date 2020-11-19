@@ -2,13 +2,16 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import 'tachyons';
+import { useHistory } from "react-router-dom";
 
 function SignUpForm() {
+    let history = useHistory();
     return (
     <div>
         <Formik
             initialValues={{ company: "", name: "",website: "",location:"",email: "", phone: "",password:""}}
             onSubmit={({resetForm}) => {
+                history.push('/Dashboard');
                 resetForm({values: ''});
             }}
 
@@ -35,8 +38,8 @@ function SignUpForm() {
                 password: Yup.string()
                     .trim()
                     .required("No password provided.")
-                    .min(8, "Password too short - minimum 8 characters reuired.")
-                    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/, "Password must contain a number,Uppercase & a special character."),//eslint-disable-line
+                    .min(8, "Too short - minimum 8 characters reuired")
+                    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/, "Must contain a number & a Uppercase letter"),//eslint-disable-line
                 phone: Yup.string()
                     .required("required")
                     .matches(/^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/,"invalid number"),//eslint-disable-line

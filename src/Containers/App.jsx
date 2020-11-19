@@ -10,23 +10,20 @@ import Header from '../Components/Header/header';
 
 function App(){
     return (
-      <div className='App'>
+      <div className='App flex flex-column items-center'>
+        <Header/>
         <Router>
           <Switch>
             <Route exact path='/'>
-              <div className='flex flex-column items-center'>
-                <Header/>
                 <Signup/> 
-                <Footer/>
-              </div>
             </Route>
-            <Route exact path='/users'>
+            <Route exact path='/Dashboard'>
               <Preloader />
               <Dashboard />
-              <Footer/>
             </Route>
           </Switch>
         </Router>
+        <Footer/>
       </div>
     );
 }

@@ -2,8 +2,7 @@
     flex:1;
 }
 .error{
-    border: 2px solid red;
-    border-radius: 5px;
+    border: 1px solid red !important;
 }
 .companysigninleft{
     flex:1;
@@ -16,7 +15,12 @@
         height: 2.2rem;
         border:1px solid rgb(236, 236, 236);
         border-radius: 3px;
+        font-size: 1rem;
     }
+    input:focus{
+        border-color: #265cff;
+    }
+
     input::placeholder{
         font-size: 0.8rem;
     }
@@ -33,8 +37,9 @@
 .input-feedback{
     font-size: 0.66rem;
     color: red;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    max-width: 70%;
     margin-top: 2px;
 }
 
@@ -49,6 +54,7 @@
         flex: auto;
         input{
             height: 2rem;
+            font-size: 0.7rem;
         }
         input::placeholder{
             font-size: 0.64rem;

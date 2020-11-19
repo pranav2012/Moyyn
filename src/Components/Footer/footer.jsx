@@ -5,7 +5,7 @@ import 'tachyons';
 function footer() {
     return (
         <div className='footer flex flex-column mt2 w-100'>
-            <div className='ma5-l ma5-m ma4 mt0 flex flex-column flex-row-l justify-center'>
+            <div className='center ma4 flex flex-column w-90 flex-row-l justify-center'>
                 <div className='flex flex-column items-start foot1'>
                     <h4 className='leftheader f6 f5-l f5-m'>Sourcing talents to germany</h4>
                     <div>
@@ -20,7 +20,7 @@ function footer() {
                         <a href="https://www.linkedin.com/company/moyyn/" target="_blank" rel="noopener noreferrer"> <i className="iconfooter socialfoot fa fa-linkedin-square"></i> </a>
                     </div>
                 </div>
-                <div className='foot2 flex   items-start items-center-l items-center-m flex-column'>
+                <div className='foot2 flex items-start items-center-l flex-column'>
                     <h4 className='leftheader f6 f5-l f5-m'>Links</h4>
                     <div>
                         <ul className='pa0'>
@@ -33,7 +33,7 @@ function footer() {
                         </ul>
                     </div>
                 </div>
-                <div className='foot3 flex  items-center flex-column items-center'>
+                <div className='foot3 flex items-center flex-column items-center'>
                     <h4 className='leftheader f6 f5-l f5-m'>Supported by</h4>
                     <a href="http://startup-incubator.berlin/"><img alt='supportimg' className='footsupportimg mt4' src="https://moyyn.com/wp-content/uploads/2020/04/1_SIB_Logo.png" /></a>
                     <a href="https://www.berlin.de/sen/wirtschaft/en/"><img alt='supportimg' className='footsupportimg mt4' src="https://moyyn.com/wp-content/uploads/2020/04/3_be_Berlin_Logo-300x73.png" /></a>
