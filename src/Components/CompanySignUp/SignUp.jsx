@@ -12,7 +12,7 @@ function SignUp(){
                 <SvgComapnySignUp className='h-75-l h-50-m h-50 w-60 mt3-l mb3-l mt1 mb1'/>
                 <p className='f5-l f5-m f6 signleftp2'>Get highly skilled candidates for free and pay only after recruitment</p>
             </div>
-            <hr className='h-100' style={{color:"rgb(249, 247, 247)",borderRadius:"5px",border:"2px solid"}}/>
+            <hr className='vh-75' style={{color:"rgb(249, 246, 246)",borderRadius:"5px",border:"1px solid"}}/>
             <div className='tc signupform w-75-m '>
                 <SignUpForm/>
             </div>

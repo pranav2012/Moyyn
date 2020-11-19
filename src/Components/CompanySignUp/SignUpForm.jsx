@@ -62,7 +62,7 @@ function SignUpForm() {
                             value={values.company}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={`w-60-l w-90 w-80-m ${errors.company && touched.company ? 'error mt0 mb0' : 'mt3-l mb3-l mt2 mb2'}`}
+                            className={`w-60-l w-90 w-80-m ${errors.company && touched.company ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
                         />
                         {errors.company && touched.company && (
                             <p className="input-feedback">{errors.company}</p>
@@ -76,7 +76,7 @@ function SignUpForm() {
                             value={values.name}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={`w-60-l w-90 w-80-m ${errors.name && touched.name ? 'error mt0 mb0' : 'mt3-l mb3-l mt2 mb2'}`}
+                            className={`w-60-l w-90 w-80-m ${errors.name && touched.name ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
                         />
                         {errors.name && touched.name && (
                             <p className="input-feedback">{errors.name}</p>
@@ -91,7 +91,7 @@ function SignUpForm() {
                             value={values.website}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={`w-60-l w-90 w-80-m ${errors.website && touched.website ? 'error mt0 mb0' : 'mt3-l mb3-l mt2 mb2'}`}
+                            className={`w-60-l w-90 w-80-m ${errors.website && touched.website ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
                         />
                         {errors.website && touched.website && (
                             <p className="input-feedback">{errors.website}</p>
@@ -106,7 +106,7 @@ function SignUpForm() {
                             value={values.location}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={`w-60-l w-90 w-80-m ${errors.location && touched.location ? 'error mt0 mb0' : 'mt3-l mb3-l mt2 mb2'}`}
+                            className={`w-60-l w-90 w-80-m ${errors.location && touched.location ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
                         />
                         {errors.location && touched.location && (
                             <p className="input-feedback">{errors.location}</p>
@@ -121,7 +121,7 @@ function SignUpForm() {
                             value={values.email}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={`w-60-l w-90 w-80-m ${errors.email && touched.email ? 'error mt0 mb0' : 'mt3-l mb3-l mt2 mb2'}`}
+                            className={`w-60-l w-90 w-80-m ${errors.email && touched.email ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
                         />
                         {errors.email && touched.email && (
                             <p className="input-feedback">{errors.email}</p>
@@ -135,7 +135,7 @@ function SignUpForm() {
                             value={values.phone}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={`w-60-l w-90 w-80-m ${errors.phone && touched.phone ? 'error mt0 mb0' : 'mt3-l mb3-l mt2 mb2'}`}
+                            className={`w-60-l w-90 w-80-m ${errors.phone && touched.phone ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
                         />
                         {errors.phone && touched.phone && (
                             <p className="input-feedback">{errors.phone}</p>
@@ -150,14 +150,14 @@ function SignUpForm() {
                             value={values.password}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            className={`w-60-l w-90 w-80-m ${errors.password && touched.password ? 'error mt0 mb0' : 'mt3-l mb3-l mt2 mb2'}`}
+                            className={`w-60-l w-90 w-80-m ${errors.password && touched.password ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
                         />
                         {errors.password && touched.password && (
                             <p className="input-feedback">{errors.password}</p>
                         )}   
                         
                         <br/>
-                        <button type='submit' disabled={isSubmitting} style={{background:"#357edd"}} className="mt3 fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">Register</button>
+                        <button type='submit' disabled={isSubmitting} style={{background:"#265cff"}} className="mt3 fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">Register</button>
                     </form>
                 );
             }}
