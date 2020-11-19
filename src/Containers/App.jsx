@@ -6,6 +6,7 @@ import 'tachyons';
 import Preloader from '../Components/Preloader';
 import Signup from '../Components/CompanySignUp/SignUp';
 import Footer from '../Components/Footer/footer';
+import Header from '../Components/Header/header';
 
 function App(){
     return (
@@ -14,6 +15,7 @@ function App(){
           <Switch>
             <Route exact path='/'>
               <div className='flex flex-column items-center'>
+                <Header/>
                 <Signup/> 
                 <Footer/>
               </div>

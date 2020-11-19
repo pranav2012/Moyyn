@@ -1,0 +1,38 @@
+.header{
+    position: sticky;
+    top:0;
+}
+
+@media screen and (max-width: "640px"){
+    .notformob{
+        display: none;
+    }
+    .navlist{
+        p{
+            font-size:1em;
+        }
+        width: 80%;
+        margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: "486px") {
+    .navlist{
+        p{
+            font-size: 0.7em;
+            font-weight: 700;
+        }
+        width: 100%;
+        margin-left: 0;
+    }
+    .headflex{
+        width: 95%;
+    }
+    .logo{
+        width: 4rem;
+    }
+    .btn{
+        font-size: 0.68em;
+    }
+}
+
