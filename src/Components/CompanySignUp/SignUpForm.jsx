@@ -4,15 +4,38 @@ import * as Yup from "yup";
 import 'tachyons';
 import { useHistory } from "react-router-dom";
 
-function SignUpForm() {
+function SignUpForm({backend_url,registered ,setregistered}) {
     let history = useHistory();
     return (
     <div>
         <Formik
             initialValues={{ company: "", name: "",website: "",location:"",email: "", phone: "",password:""}}
-            onSubmit={({resetForm}) => {
-                history.push('/Dashboard');
-                resetForm({values: ''});
+            onSubmit={(values, {setSubmitting, resetForm}) => {
+                setSubmitting(true);
+                /*fetch(backend_url + '/register', {
+                        method:'post',
+                        headers:{'Content-Type':'application/json'},
+                        body: */console.log(JSON.stringify({
+                            company: values.company,
+                            name: values.name,
+                            website: values.website,
+                            location:values.location,
+                            email: values.email,
+                            phone: values.phone,
+                            password: values.password
+                        }))/*
+                    }).then(response=>response.json())
+                    .then(data => {*/
+                     //   if(data.status === 'sucess' || true){
+                            setregistered(true);
+                            localStorage.setItem('registered', registered);
+                            history.push('/Dashboard');
+                     /*   }
+                        else{
+                            setisregistered(false);
+                        }
+                    }).catch(console.log('cant register!'));*/
+                    resetForm({values: ''});
             }}
 
             validationSchema={Yup.object().shape({
@@ -56,8 +79,8 @@ function SignUpForm() {
                     handleSubmit,// eslint-disable-line
                 } = props;
                 return (
+                <>
                     <form method='post' onSubmit={handleSubmit}>
-                        
                         <input
                             type="text"
                             name="company"
@@ -162,6 +185,7 @@ function SignUpForm() {
                         <br/>
                         <button type='submit' disabled={isSubmitting} style={{background:"#265cff"}} className="mt3 fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">Register</button>
                     </form>
+                </>
                 );
             }}
         </Formik>

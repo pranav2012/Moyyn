@@ -6,5 +6,14 @@
     color: #265cff;
 }
 .dashboard{
+    flex:1;
     height: 80vh;
+}
+.dashabt{
+    height: 35vh;
+}
+@media only screen and (max-width: 480px) {
+    .dashabt{
+        height: 55vh;
+    }
 }
