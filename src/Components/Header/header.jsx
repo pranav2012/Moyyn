@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import 'tachyons';
-import Logosvg from '../../svg/logosvg';
 import '../../styles/header.scss';
 
 function Header() {
@@ -8,7 +7,7 @@ function Header() {
     return (
         <div className='header w-100 h3'>
             <div className='flex headflex justify-between items-center w-90 center'>
-                <div className='logoheader w4'><a href="https://moyyn.com/"><Logosvg className='logo'/></a></div>
+                <div className='logoheader w4'><a className='link' href="https://moyyn.com/"><h3 className='white logo f4'>Moyyn</h3></a></div>
                 <div className={`navbar w-50-l w-80 w-75-m ${burgerclicked ? 'nav-active' : ''}`}>
                     <ul className='flex nav navlist pa0 ma0 justify-between items-center'>
                         <li className='list fw5 f7 f6-l'><a className='link white dim dib' href="https://moyyn.com/companies/"><p>For Companies</p></a></li>
