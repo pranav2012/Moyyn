@@ -1,8 +1,8 @@
 import React from 'react';
 import 'tachyons';
-import '../styles/dashboard.scss';
+import '../../styles/RegistrationConformation.scss';
 
-function Dashboard({company='Moyyn'}){
+function RegistrationConformation({company='Moyyn'}){
     return( 
         <div className='dashboard items-center flex flex-column w-60-l w-80-m w-90 tc justify-center'>
             <h4 className='dasheading mb5-l mb5-m mb4 f2-l f2-m f5'>Welcome to {company} Dashboard!</h4>
@@ -12,4 +12,4 @@ function Dashboard({company='Moyyn'}){
     ); 
 }
 
-export default Dashboard;
+export default RegistrationConformation;

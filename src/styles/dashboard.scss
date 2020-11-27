@@ -1,20 +1,13 @@
-.dashbtn{
-    background: #265cff;
-    padding: 0.7rem 1rem;
+.card{
+    height: 5rem;
+   border-left:2px solid #265cff;
 }
-.dasheading{
-    color: #265cff;
+
+.cardlist{
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
-.dashboard{
-    flex:1;
-    height: 80vh;
-}
-.dashabt{
-    height: 35vh;
-    color: rgb(115,115,115);
-}
-@media only screen and (max-width: 480px) {
-    .dashabt{
-        height: 55vh;
-    }
+.cardlist::-webkit-scrollbar{
+    display: none;
 }

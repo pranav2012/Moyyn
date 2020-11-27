@@ -1,0 +1,20 @@
+.dashbtn{
+    background: #265cff;
+    padding: 0.7rem 1rem;
+}
+.dasheading{
+    color: #265cff;
+}
+.dashboard{
+    flex:1;
+    height: 80vh;
+}
+.dashabt{
+    height: 35vh;
+    color: rgb(115,115,115);
+}
+@media only screen and (max-width: 480px) {
+    .dashabt{
+        height: 55vh;
+    }
+}

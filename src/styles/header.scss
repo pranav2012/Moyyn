@@ -4,9 +4,17 @@
     background: #265cff;
 }
 
+.dicon{
+    font-size: 1.28rem;
+}
+
 .logoheader{
     height: fit-content;
     width: fit-content;
+}
+
+.nav-dash{
+    width: 18%;
 }
 
 .burger{
@@ -20,7 +28,19 @@
     transition: all 0.3s ease;
 }
 
+
+@media screen and (max-width: "840px"){
+    .nav-dash{
+        width: 25%;
+    }
+}
+
 @media screen and (max-width: "640px"){
+
+    .dicon{
+        margin-left: auto;
+    }
+
     .navbar{
         position: fixed;
         right: 0;
@@ -76,8 +96,14 @@
             font-size: 1em;
             font-weight: 700;
         }
+    
     }
-    .headflex{
+    .nav-dash{
+        ul{
+            height: 40%;
+        }
+    } 
+   .headflex{
         width: 95%;
     }
     .btn{

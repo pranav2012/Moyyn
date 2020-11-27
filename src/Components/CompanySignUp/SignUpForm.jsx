@@ -28,7 +28,6 @@ function SignUpForm({backend_url,registered ,setregistered}) {
                     .then(data => {*/
                      //   if(data.status === 'sucess' || true){
                             setregistered(true);
-                            localStorage.setItem('registered', registered);
                             history.push('/Dashboard');
                      /*   }
                         else{
@@ -183,7 +182,7 @@ function SignUpForm({backend_url,registered ,setregistered}) {
                         )}   
                         
                         <br/>
-                        <button type='submit' disabled={isSubmitting} style={{background:"#265cff"}} className="mt3 fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">Register</button>
+                        <button type='submit' disabled={isSubmitting} style={{background:"#265cff"}} className="mt3 pointer fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">Register</button>
                     </form>
                 </>
                 );
