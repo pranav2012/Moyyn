@@ -1,0 +1,75 @@
+.h7{
+    height: 38%;
+}
+.fc{
+    font-size: 0.5rem;
+}
+.w7{
+    width: 23%;
+}
+.f10{
+    font-size: 0.38rem;
+}
+.f9{
+    font-size: 0.4rem;
+}
+.f8{
+    font-size: 0.6rem;
+}
+
+.flex-1{
+    flex:1;
+}
+.w-screen{
+    width: 100wh;
+}
+.flex-2{
+    flex:2;
+}
+.flex-3{
+    flex:3;
+}
+
+
+@media only screen and (max-width: 860px) {
+    .f8-m{
+        font-size: 0.6rem;
+    }
+    .f9-m{
+        font-size: 0.5rem;
+    }
+    .h7-m{
+        height: 38%;
+    }
+    .fc-m{
+        font-size: 0.5rem;
+    }
+    .w7-m{
+        width: 23%;
+    }
+    .f10-m{
+        font-size: 0.38rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+.f10-mo{
+    font-size: 0.38rem;
+}
+.h7-mo{
+    height: 38%;
+}
+.fc-mo{
+    font-size: 0.5rem;
+}
+.w7-mo{
+    width: 23%;
+}
+.f9-mo{
+    font-size: 0.4rem;
+}
+.f8-mo{
+    font-size: 0.6rem;
+}
+
+}
