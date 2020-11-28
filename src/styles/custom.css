@@ -32,7 +32,12 @@
 .f7_2{
     font-size: 0.82rem;
 }
-
+.mb2_2{
+    margin-bottom: 1.2rem;
+}
+.mt2_2{
+    margin-top:1.1rem;
+}
 
 @media only screen and (max-width: 860px) {
     .f8-m{
@@ -55,6 +60,12 @@
     }
     .f7_2-m{
         font-size: 0.82rem;
+    }
+    .mb2_2{
+        margin-bottom: 0.8rem;
+    }
+    .mt2_2{
+        margin-top:1.52rem;
     }
 }
 
@@ -79,5 +90,8 @@
 }
 .f7_2-mo{
     font-size: 0.82rem;
+}
+.mt2_2{
+    margin-top:1.2rem;
 }
 }
