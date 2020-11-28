@@ -29,6 +29,9 @@
 .flex-3{
     flex:3;
 }
+.f7_2{
+    font-size: 0.82rem;
+}
 
 
 @media only screen and (max-width: 860px) {
@@ -49,6 +52,9 @@
     }
     .f10-m{
         font-size: 0.38rem;
+    }
+    .f7_2-m{
+        font-size: 0.82rem;
     }
 }
 
@@ -71,5 +77,7 @@
 .f8-mo{
     font-size: 0.6rem;
 }
-
+.f7_2-mo{
+    font-size: 0.82rem;
+}
 }
