@@ -1,6 +1,7 @@
 .signup{
     flex:1;
 }
+
 .error{
     border: 1px solid red !important;
 }
@@ -44,6 +45,8 @@
     margin-top: 2px;
 }
 
+
+
 @media only screen and (max-width: 960px) {
     .input-feedback{
         margin-top: 0;
@@ -65,3 +68,7 @@
         }
     }
 }
+
+// @media only screen and (max-width: 480px) {
+
+// }

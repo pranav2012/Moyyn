@@ -1,0 +1,29 @@
+.texta{
+    resize: vertical;
+    min-height: 40vh;
+}
+
+.tf{
+    input{
+        padding:25px !important;
+    }
+}
+
+.btex{
+    textarea{
+        padding: 7px !important;
+    }
+}
+
+.jobform{
+    input{
+        height: 2.2rem;
+        padding: 18px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .texta{
+        min-height: 20vh;
+    }
+}

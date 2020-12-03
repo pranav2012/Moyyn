@@ -9,6 +9,7 @@ import Header from '../Components/Header/header';
 import Preloader from '../Components/Preloader/Preloader';
 import Dashboard from '../Components/Dashboard/Dashboard';
 import DashboardHeader from '../Components/Dashboard/Header/DashboardHeader';
+import JobPostForm from '../Components/PostJob/JobForm';
 
 function App(){
 
@@ -34,6 +35,11 @@ function App(){
               {loggedin?<Redirect to='/dashboard'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
               <Dashboard/>
+            </Route>
+            <Route exact path='/postjob'>
+              {loggedin?<Redirect to='/postjob'/>:<Redirect to='/'/>} 
+              <DashboardHeader/>
+              <JobPostForm/>
             </Route>
             <Route>
               <Redirect to='/'/>
