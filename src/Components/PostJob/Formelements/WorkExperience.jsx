@@ -50,7 +50,7 @@ const convertNumsToYears = (nums) => {
 
 const FormikWorkExperience = () => {
 
-   const [category, setCategory] = useState([Object.keys(data)[0]]);
+   const [category, setCategory] = useState("");
    const [role, setRole] = useState("");
 
    const handleCategoryChange = (event) => {
@@ -120,7 +120,7 @@ const FormikWorkExperience = () => {
                                     label="Role"
                                     onChange={handleRoleChange}
                                  >
-                                    {data[category].map((roleName) => (
+                                    {category===""?'':data[category].map((roleName) => (
                                        <MenuItem key={roleName} value={roleName}>
                                           {roleName}
                                        </MenuItem>

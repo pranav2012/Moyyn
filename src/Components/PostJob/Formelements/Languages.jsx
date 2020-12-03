@@ -73,7 +73,7 @@ const Languages = () => {
 							<TextField
 								name="Languages"
 								onBlur={form.handleBlur}
-								select
+								className='tf'
 								fullWidth
 								variant="outlined"
 								label="Level"

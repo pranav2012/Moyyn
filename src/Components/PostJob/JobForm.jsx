@@ -135,14 +135,14 @@ function JobForm() {
 
                                     <Skills />
 
-                                    <div className='flex flex-column flex-row-m flex-row-l w-100 mt4 center items-center justify-between'>
+                                    <div className='sald flex flex-column flex-row-m flex-row-l w-100 mt4 center items-center justify-between'>
                                         <div className='flex-1 w-100'>
                                             <DateForm
                                                 name="Date"
                                                 label="Start Date"
                                             />
                                         </div>
-                                        <div className='flex flex-1 mt2  mt0-l mt0-m ml5-l ml5-m ml0 flex-column' >
+                                        <div className='sal flex flex-1 mt2  mt0-l mt0-m ml5-l ml5-m ml0 flex-column' >
                                             <p className='gray ma0 mb3-l mb2 f6'>Salary</p>
                                             <div className='flex mt1'>
                                                <div>
@@ -190,7 +190,7 @@ function JobForm() {
                                       <FormError name="othercountries"/>
                                 </div>
 
-                                <button type='submit' disabled={isSubmitting} style={{ background: "#265cff" }} className="mt3 pointer fw6 f7 f6-l w-20-l w-30-m w-40 bn link dim br1 ph3 pv2 mb2 dib white">Post your job</button>
+                                <button type='submit' disabled={isSubmitting} style={{ background: "#265cff" }} className="mt3 pointer fw6 f7 f6-l w-20-l w-30-m w-40 bn link dim br1  ph3 pv2 ph4-m pv3-m ph4-l pv3-l mb2 dib white">Post your job</button>
                             </form>
                         </>
                     );

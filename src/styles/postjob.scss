@@ -5,7 +5,7 @@
 
 .tf{
     input{
-        padding:25px !important;
+        padding:1.66rem !important;
     }
 }
 
@@ -26,4 +26,23 @@
     .texta{
         min-height: 20vh;
     }
+}
+@media only screen and (max-width: 640px) {
+ .jobform{
+    input{
+       height: 1.8rem;
+   }
+   .sald{
+       flex-direction: column;
+   }
+   .sal{
+       margin-left: 0;
+       margin-top: 0.6rem;
+   }
+   .tf{
+       input{
+           padding: 1.48rem !important;
+       }
+   }
+}
 }
