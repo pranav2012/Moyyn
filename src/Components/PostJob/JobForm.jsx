@@ -58,7 +58,7 @@ function JobForm() {
                                         onBlur={handleBlur}
                                         className='w-100'
                                     />
-                                    <FormError name="job_url" />
+                                    <FormError name="job_title" />
                                 </div>
                                 <div className='tf mt3 w-60-l w-90 w-80-m'>
                                     <TextField
