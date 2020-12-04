@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Jobcard() {
+function Jobcard({job}) {
     return (
         <div className="card ma1 bg-white ph3 mt3 br3 flex justify-between items-center">
             <div className='flex flex-column '>
-                <p className='ma0 gray f8 f9-m f9-mo'>Senior level</p>
-                <p className='ma0 f4-l f5-m mt1 f7_2-mo'>Full stack developer</p>
-                <p className='ma0 gray f6-l mt1 f8-m f8-mo'>New Delhi, India</p>
+                <p className='ma0 gray f8 f9-m f9-mo'>{job["Career Level"]}</p>
+                <p className='ma0 f4-l f5-m mt1 f7_2-mo'>{job.job_title}</p>
+                <p className='ma0 gray f6-l mt1 f8-m f8-mo'>{job.city}, {job.country}</p>
             </div>
             <div className='flex flex-column items-center'>
                 <p className='ma0 dn db-m db-l mb2_2 gray f8 f10-m f10-mo'>No. of Candidates </p>

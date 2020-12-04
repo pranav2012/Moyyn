@@ -119,6 +119,7 @@ const FormikWorkExperience = () => {
                                     value={role}
                                     label="Role"
                                     onChange={handleRoleChange}
+                                    disabled={category[0] ? false : true}
                                  >
                                     {category===""?'':data[category].map((roleName) => (
                                        <MenuItem key={roleName} value={roleName}>

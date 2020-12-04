@@ -5,15 +5,13 @@ import '../../styles/dashboard.scss';
 import '../../styles/custom.css';
 import { useHistory } from 'react-router-dom';
 
-function Dashboard({company="Moyyn"}) {
+function Dashboard({company="Moyyn",data}) {
     const [jobdata,setjobdata] = useState([]);
 
     let history = useHistory();
-
     useEffect(() => {
-        setjobdata([]);
-    }, []);
-
+        setjobdata([data]);
+    }, [data]);
     return (
         <div style={{background:"#eef2f5"}} className='flex-1 w-100 vh-100'>
         <div className='w-90 center mb5'>

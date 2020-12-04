@@ -16,18 +16,18 @@ import WorkExperience from './Formelements/WorkExperience';
 import Languages from './Formelements/Languages';
 import Skills from './Formelements/Skills';
 import DateForm from './Formelements/DateForm';
+import {useHistory} from 'react-router-dom';
 
-
-function JobForm() {
+function JobForm({setdata}) {
+    let history = useHistory();
     return (
         <div className='jobform flex-1 w-100 vh-100'>
             <Formik
                 initialValues={postjobinitialvalues}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     setSubmitting(true);
-                    console.log(JSON.stringify({
-                        values
-                    }));
+                    setdata(values);
+                    history.push('/dashboard')
                     resetForm({ values: '' });
                 }}
 

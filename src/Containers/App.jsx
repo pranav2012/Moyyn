@@ -16,6 +16,7 @@ function App(){
     const backend_url = "https://www.moyyn.com";
     const [registered, setregistered] = useState(false);
     const [loggedin] = useState(true); 
+    const [data,setdata] = useState(undefined);
     
     return (
       <div className='App flex flex-column items-center'>
@@ -34,12 +35,12 @@ function App(){
             <Route exact path='/dashboard'>
               {loggedin?<Redirect to='/dashboard'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
-              <Dashboard/>
+              <Dashboard data={data}/>
             </Route>
             <Route exact path='/postjob'>
               {loggedin?<Redirect to='/postjob'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
-              <JobPostForm/>
+              <JobPostForm setdata={setdata}/>
             </Route>
             <Route>
               <Redirect to='/'/>
