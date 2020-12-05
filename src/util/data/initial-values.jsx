@@ -11,6 +11,7 @@ export const postjobinitialvalues = {
 	"Work Experience": [], 
 	Languages: [], 
 	Date: '',
+	currency:'',
 	from:"",
 	to:"",
 	othercountries:false

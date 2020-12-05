@@ -30,6 +30,12 @@ export const Signupformvalidation = Yup.object().shape({
 		.matches(/^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/,"Invalid number"),//eslint-disable-line
 });
 
+function hasNativeLanguage(myArray) {
+	return myArray.some((lang) => {
+		return lang.level === "Native";
+	});
+}
+
 export const Postjobformvalidation = Yup.object().shape({
 	job_title: Yup.string()
 		.trim()
@@ -60,7 +66,10 @@ export const Postjobformvalidation = Yup.object().shape({
 	"Work Experience": Yup.array()
 		.required("Required"),
 	Languages: Yup.array()
-		.required("Required"),
+	.test("nativeTest", "*Please pick at least one native language.", (value) =>
+		hasNativeLanguage(value)
+	)
+	.required("*Required field."),
 	Date: Yup.string()
 		.required("Required"),
 	from: Yup.number()

@@ -9,7 +9,7 @@ import FormError from '../PostJob/Formelements/FormError';
 import Country from './Formelements/Country';
 import City from './Formelements/City';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import { careerLevelOptions, industries } from '../../util/data/static-data';
+import { careerLevelOptions, industries, currency} from '../../util/data/static-data';
 import SelectMenu from './Formelements/SelectMenuForm';
 import AutocompleteChips from './Formelements/AutocompleteChipsForm';
 import WorkExperience from './Formelements/WorkExperience';
@@ -44,10 +44,11 @@ function JobForm({setdata}) {
                         handleSubmit,// eslint-disable-line
                     } = props;
                     return (
-                        <>
-                            <form className='center flex justify-center items-center flex-column w-90' method='post' onSubmit={handleSubmit}>
-                                <h4 className='gray f3'>Enter Job Details</h4>
-                                <div className={`tf w-60-l w-90 w-80-m `}>
+                        <div style={{background:"#eef2f5"}} className='w-100 flex flex-row-l flex-row-m flex-column-reverse'>
+                            <div className='flex-1 flex-none'></div>
+                            <form className='flex-4 pv2 flex-1-mo w-90 w-100-l w-100-m mv4 center br2 ba2 bg-white flex justify-center items-center flex-column' method='post' onSubmit={handleSubmit}>
+                                <p className='gray f3'>Enter Job Details</p>
+                                <div className={`tf w-80-l w-90 w-80-m `}>
                                     <TextField
                                         name="job_title"
                                         id="outlined-basic"
@@ -60,7 +61,7 @@ function JobForm({setdata}) {
                                     />
                                     <FormError name="job_title" />
                                 </div>
-                                <div className='tf mt3 w-60-l w-90 w-80-m'>
+                                <div className='tf mt3 w-80-l w-90 w-80-m'>
                                     <TextField
                                         name="job_url"
                                         id="outlined-basic"
@@ -73,7 +74,7 @@ function JobForm({setdata}) {
                                     />
                                     <FormError name="job_url" />
                                 </div>
-                                <div className='w-60-l w-90 w-80-m mt2-l mb2-l mt1 mb1'>
+                                <div className='w-80-l w-90 w-80-m mt2-l mb2-l mt1 mb1'>
                                     <div className='btex mt3'>
                                         <TextareaAutosize
                                             name="description"
@@ -97,7 +98,7 @@ function JobForm({setdata}) {
                                         <FormError name="requirements" />
                                     </div>
                                 </div>
-                                <div className='w-60-l w-90 w-80-m mt2-l mb2-l mt1 mb1 flex flex-row-l flex-row-m flex-column justify-between' >
+                                <div className='w-80-l w-90 w-80-m mt2-l mb2-l mt1 mb1 flex flex-row-l flex-row-m flex-column justify-between' >
                                     <div className='mt3 mr0 mr2-m mr3-l w-100'>
                                         <Country 
                                             name="country" 
@@ -109,7 +110,7 @@ function JobForm({setdata}) {
                                         />
                                     </div>
                                 </div>
-                                <div className='w-60-l w-90 w-80-m mt2-l mb2-l mt1 mb1' >
+                                <div className='w-80-l w-90 w-80-m mt2-l mb2-l mt1 mb1' >
                                     <div className='mt3'>
                                         <AutocompleteChips
                                             className='flex-1'
@@ -142,9 +143,18 @@ function JobForm({setdata}) {
                                                 label="Start Date"
                                             />
                                         </div>
-                                        <div className='sal flex flex-1 mt2  mt0-l mt0-m ml5-l ml5-m ml0 flex-column' >
-                                            <p className='gray ma0 mb3-l mb2 f6'>Salary</p>
-                                            <div className='flex mt1'>
+                                        <div className='sal flex flex-1 pt2 pt0-l pt0-m ml5-l ml5-m ml0 flex-column' >
+                                            <div className='flex'>
+                                                <p className='gray ma0 mb3-l mb2 f6'>Salary</p>
+                                                <div className='w-70 curr'>
+                                                    <SelectMenu
+                                                    name='currency'
+                                                    label='Currency'
+                                                    options={currency}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className='flex mt3 mt1-l mt1-m'>
                                                <div>
                                                     <TextField
                                                         name="from"
@@ -192,7 +202,11 @@ function JobForm({setdata}) {
 
                                 <button type='submit' disabled={isSubmitting} style={{ background: "#265cff" }} className="mt3 pointer fw6 f7 f6-l w-20-l w-30-m w-40 bn link dim br1  ph3 pv2 ph4-m pv3-m ph4-l pv3-l mb2 dib white">Post your job</button>
                             </form>
-                        </>
+                            <div className='flex-1 f5-l h-50-m f7 gray bw2 bg-white ma4-l ma4-m ma3 br2 pa3 vh-50-l vh-25'>
+                                <p className='tc'>Note</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dolores, consequuntur earum, nulla quisquam dicta fugiat aliquam similique quod eos perspiciatis recusandae nihil molestiae aspernatur illum dolore ab odit eum.</p>
+                            </div>
+                        </div>
                     );
                 }}
             </Formik>

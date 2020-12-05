@@ -14,6 +14,15 @@
         padding: 7px !important;
     }
 }
+.curr{
+    margin-left: auto;
+    select,label{
+        font-size: 0.8rem;
+    }
+    .MuiSelect-root{
+        padding: 5px!important;
+    }
+}
 
 .MuiOutlinedInput-input{
     padding: 18.5px 14px !important;
