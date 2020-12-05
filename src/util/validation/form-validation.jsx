@@ -72,6 +72,8 @@ export const Postjobformvalidation = Yup.object().shape({
 	.required("*Required field."),
 	Date: Yup.string()
 		.required("Required"),
+	currency: Yup.string()
+	.required("Required"),
 	from: Yup.number()
 		.positive("Can't be a Negative value") 
 		.required("Required"),
