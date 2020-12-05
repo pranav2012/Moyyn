@@ -42,6 +42,18 @@ function App(){
               <DashboardHeader/>
               <JobPostForm setdata={setdata}/>
             </Route>
+            <Route exact path='/Settings'>
+              {loggedin?<Redirect to='/Settings'/>:<Redirect to='/'/>} 
+              <DashboardHeader/>
+            </Route>
+            <Route exact path='/Candidates'>
+              {loggedin?<Redirect to='/Candidates'/>:<Redirect to='/'/>} 
+              <DashboardHeader/>
+            </Route>
+            <Route exact path='/EditJob'>
+              {loggedin?<Redirect to='/EditJob'/>:<Redirect to='/'/>} 
+              <DashboardHeader/>
+            </Route>
             <Route>
               <Redirect to='/'/>
             </Route>
