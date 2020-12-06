@@ -25,12 +25,14 @@ function App(){
             <Route exact path='/'>
               <Header/>
               <Signup backend_url={backend_url} registered={registered} setregistered={setregistered}/> 
+              <Footer/>
             </Route>
             <Route exact path='/conformation'>
               {registered?<Redirect to='/conformation'/>:<Redirect to='/'/>} 
               <Header/>
               <Preloader/>
               <RegistrationConformation/>
+              <Footer/>
             </Route>
             <Route exact path='/dashboard'>
               {loggedin?<Redirect to='/dashboard'/>:<Redirect to='/'/>} 
@@ -59,7 +61,6 @@ function App(){
             </Route>
           </Switch>
         </Router>
-        <Footer/>
       </div>
     );
 }
