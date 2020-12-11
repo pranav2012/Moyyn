@@ -16,7 +16,15 @@
 .f8{
     font-size: 0.6rem;
 }
-
+.vh-20{
+    max-height:20vh;
+}
+.w-35{
+    width: 35%;
+}
+.c-shadow{
+    box-shadow: 2px 0px 10px 0px #d6d6dd; 
+}
 .flex-1{
     flex:1;
 }

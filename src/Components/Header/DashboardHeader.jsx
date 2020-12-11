@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import 'tachyons';
-import '../../../styles/header.scss';
+import '../../styles/header.scss';
 
 function DashboardHeader() {
     let [burgerclicked, setburger] = useState(false);

@@ -1,11 +1,10 @@
 import React from "react";
 import { Formik } from "formik";
 import {Signupformvalidation}  from "../../util/validation/form-validation";
-import {signupforminitialvalues} from "../../util/data/initial-values";
 import 'tachyons';
 import { useHistory } from "react-router-dom";
 
-function SignUpForm({backend_url,registered ,setregistered}) {
+function SignUpForm({backend_url,registered ,setregistered,signupforminitialvalues}) {
     let history = useHistory();
     return (
     <div>

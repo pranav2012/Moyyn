@@ -8,8 +8,12 @@ import Footer from '../Components/Footer/footer';
 import Header from '../Components/Header/header';
 import Preloader from '../Components/Preloader/Preloader';
 import Dashboard from '../Components/Dashboard/Dashboard';
-import DashboardHeader from '../Components/Dashboard/Header/DashboardHeader';
+import DashboardHeader from '../Components/Header/DashboardHeader';
 import JobPostForm from '../Components/PostJob/JobForm';
+import Settings from '../Components/Settings/Settings';
+import Candidates from '../Components/Candidates/Candidateslist';
+import {postjobinitialvalues,signupforminitialvalues} from "../util/data/initial-values";
+import EditJob from '../Components/PostJob/EditJob';
 
 function App(){
 
@@ -17,14 +21,15 @@ function App(){
     const [registered, setregistered] = useState(false);
     const [loggedin] = useState(true); 
     const [data,setdata] = useState(undefined);
-    
+    const [candidatedata] = useState([1,2,undefined]);
+
     return (
-      <div className='App flex flex-column items-center'>
+      <div className='App w-100 vh-100 flex flex-column items-center'>
         <Router>
           <Switch>
             <Route exact path='/'>
               <Header/>
-              <Signup backend_url={backend_url} registered={registered} setregistered={setregistered}/> 
+              <Signup backend_url={backend_url} registered={registered} setregistered={setregistered} signupforminitialvalues={signupforminitialvalues}/> 
               <Footer/>
             </Route>
             <Route exact path='/conformation'>
@@ -42,19 +47,22 @@ function App(){
             <Route exact path='/postjob'>
               {loggedin?<Redirect to='/postjob'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
-              <JobPostForm setdata={setdata}/>
+              <JobPostForm setdata={setdata} postjobinitialvalues={postjobinitialvalues}/>
             </Route>
             <Route exact path='/Settings'>
               {loggedin?<Redirect to='/Settings'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
+              <Settings/>
             </Route>
             <Route exact path='/Candidates'>
               {loggedin?<Redirect to='/Candidates'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
+              <Candidates candidates={candidatedata}/>
             </Route>
             <Route exact path='/EditJob'>
               {loggedin?<Redirect to='/EditJob'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
+              <EditJob setdata={setdata}/>
             </Route>
             <Route>
               <Redirect to='/'/>

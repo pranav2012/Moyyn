@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik } from "formik";
 import { Postjobformvalidation } from "../../util/validation/form-validation";
 import 'tachyons';
-import {postjobinitialvalues} from "../../util/data/initial-values";
 import '../../styles/postjob.scss';
 import TextField from '@material-ui/core/TextField';
 import FormError from '../PostJob/Formelements/FormError';
@@ -18,7 +17,7 @@ import Skills from './Formelements/Skills';
 import DateForm from './Formelements/DateForm';
 import {useHistory} from 'react-router-dom';
 
-function JobForm({setdata}) {
+function JobForm({setdata,postjobinitialvalues}) {
     let history = useHistory();
     return (
         <div className='jobform flex-1 w-100 vh-100'>
