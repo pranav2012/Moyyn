@@ -38,7 +38,7 @@ function Candidateslist({candidates}) {
                     </div>
                 </div>
                 {/* <div className='candidate_search bg-white w-80 mt3 center shadow-1 br2 flex h2'></div> */}
-                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-40-l w-50-m w-25 justify-between pt4 ml2 pb1'>
+                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-50-l w-60-m w-25 justify-between pt4 ml2 pb1'>
                     <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
                     <Button onClick={shortlist} variant="contained" className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
                     <Button onClick={rejected}  variant="contained" className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
