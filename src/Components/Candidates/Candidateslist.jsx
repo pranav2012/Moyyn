@@ -27,19 +27,19 @@ function Candidateslist({candidates}) {
     }
     //console.log(def,candidate_type)
     return (
-        <div style={{background:"#eef2f5"}}  className=' flex-1 w-100 vh-100 pa4'>
-            <div className='w-80 center flex flex-column'>
+        <div style={{background:"#eef2f5"}}  className=' flex-1 w-100 vh-100 pa4-l pa3'>
+            <div className='w-80-l w-100 center flex flex-column'>
                 {/* job info */}
                 <div className='flex'>
                     <ChevronLeftTwoToneIcon onClick={() => history.push("/Dashboard")} className='self-center pointer'/>
                     <div className='flex flex-column items-start'>
-                        <p className='ma0 f4-l f4-m f6 pb2 tc'>(Senior) Software Engineer - Python</p>
-                        <p className='ma0 pl2 f6-l f6-m f7 gray tc'> New Delhi, India</p>
+                        <p className='ma0 f4-l f5-m f7 pb2 tc'>(Senior) Software Engineer - Python</p>
+                        <p className='ma0 pl2 f6-l f7-m f8 gray tc'> New Delhi, India</p>
                     </div>
                 </div>
                 {/* <div className='candidate_search bg-white w-80 mt3 center shadow-1 br2 flex h2'></div> */}
-                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-35 justify-between pt4 ml2 pb1'>
-                    <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>New Candidates</Button>
+                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-40-l w-50-m w-25 justify-between pt4 ml2 pb1'>
+                    <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
                     <Button onClick={shortlist} variant="contained" className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
                     <Button onClick={rejected}  variant="contained" className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
                 </div>

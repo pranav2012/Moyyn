@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import AddCommentOutlinedIcon from '@material-ui/icons/AddCommentOutlined';
 import Button from '@material-ui/core/Button';
+import Alert from '@material-ui/lab/Alert';
 import Comment from './Comment';
 
 function Commentbox() {
     const [read, setread] = useState(false);
     const [addcomment, setaddcomment] = useState(false);
+    const [commentalert, setcommentalert] = useState(null)
     const [comments, setcomments] = useState([{
         name:"Pranav",
         msg:"Nice projects"
@@ -24,21 +26,26 @@ function Commentbox() {
     }, [comments])
 
     const insertcomment = () => {
-        let name = document.getElementById("name").value;
-        let cmt = document.getElementById("cmt").value;
-        setcomments([{
-            name:name,
-            msg:cmt
-        }])
-        cmt = "";
-        name= "";
-        setaddcomment(false);
+        let name = document.getElementById("name");
+        let cmt = document.getElementById("cmt");
+        if(!(cmt.value === "" || name.value === "")){
+            setcomments([{
+                name:name.value,
+                msg:cmt.value
+            }])
+            name.value="";
+            cmt.value="";
+            setcommentalert(false);
+            setaddcomment(false);
+        }
+       else setcommentalert(true);
     }
 
     return (
         <div>
             <div onClick={()=> {setread(false); setaddcomment(false);}} className={`fixed overlay top-0 bottom-0 left-0 right-0 ${read || addcomment?'active':''}`}></div>
             <div className={`add-comment read ba br2 b--gray pa2 ${addcomment?'':'hide'}`}>
+            {!commentalert?'':<Alert severity="error">This is an error alert — check it out!</Alert>}
                 <div className='flex flex-column w-80 center h-100 justify-between'>
                     <p className='tc f4 mb0'>Add Comment!</p>
                     <input id="name" type="text" placeholder="Your Name" className='pl2 f6'/>

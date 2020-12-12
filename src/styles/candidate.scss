@@ -120,3 +120,25 @@
     margin: 0;
   }
  
+
+@media only screen and (max-width: 480px) {
+    .ch{
+        height: 90px;
+    }
+    
+    .cbtn{
+        color: #265cff !important;
+        background-color:  white!important;
+        font-size: 0.5rem !important;
+        font-family: inherit !important;
+        margin-left: 0.6rem !important;
+        height: 5vh !important;
+    }
+    .cbtn:first-child{
+        margin-left: 0px !important;
+    }
+    .cbtn-active{
+        color: white!important;
+        background-color: #265cff !important;
+    }
+}
