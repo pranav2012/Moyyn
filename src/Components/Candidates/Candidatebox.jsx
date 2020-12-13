@@ -10,7 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 
 function Candidatebox({candidate}) {
     const [isPreviewOpen, setisPreviewOpen] = useState(false)
-    const ismobile = useMediaQuery({ query: `(max-width: 540px)` })
+    const ismobile = useMediaQuery({ query: `(max-width: 580px)` })
     const istab = useMediaQuery({ query: `(max-width: 1024px)` })
 
     return (

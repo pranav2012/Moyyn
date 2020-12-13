@@ -13,22 +13,29 @@
     background-color:  white!important;
     font-size: 0.74rem !important;
     font-family: inherit !important;
+    margin-left: 2% !important;
 }
-
+.cbtn:first-child{
+    margin-left: 0px !important;
+}
 .cbtn-active{
     color: white!important;
     background-color: #265cff !important;
 }
 .comment{
     border:1px solid rgb(231, 225, 225);
-    overflow: scroll;
-    scrollbar-width: none;
     height: 70px;
     width: 180px;
 }
 
 .comment > div:first-child{
     margin-top: 0px;
+}
+
+
+.ov{
+    scrollbar-width: none;
+    overflow: scroll;
 }
 
 .read{
@@ -39,9 +46,10 @@
  background-color: white;
  height: 60vh;
  width: 60%;
+ z-index: 10;
 }
 
-.comment::-webkit-scrollbar{
+.ov::-webkit-scrollbar{
     width: 0px;
 }
   
@@ -108,13 +116,13 @@
     border-width: 20px;
     border-right-width: 0;
     border-top-color: transparent;
-    border-left-color: rgb(255, 255, 255);
+    border-left-color: rgb(228, 225, 225);
     margin: -20px 0 0;
     left: auto;
     right: -20px;
     top: 50%;
     bottom: auto;
-    border-top-color: rgb(255, 255, 255);
+    border-top-color: rgb(228, 225, 225);
     top: 0;
     border-width: 10px;
     margin: 0;
@@ -132,7 +140,7 @@
         font-size: 0.5rem !important;
         font-family: inherit !important;
         margin-left: 0.6rem !important;
-        height: 5vh !important;
+        height: 20% !important;
     }
     .cbtn:first-child{
         margin-left: 0px !important;

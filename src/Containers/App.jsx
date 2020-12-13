@@ -21,7 +21,7 @@ function App(){
     const [registered, setregistered] = useState(false);
     const [loggedin] = useState(true); 
     const [data,setdata] = useState(undefined);
-    const [candidatedata] = useState([1,2,undefined]);
+    const [candidatedata] = useState([1,2,3,4,5,6,7,8,9,1,1,1,11,undefined]);
 
     return (
       <div className='App w-100 vh-100 flex flex-column items-center'>

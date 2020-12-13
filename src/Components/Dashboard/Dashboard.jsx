@@ -10,7 +10,18 @@ function Dashboard({company="Moyyn",data}) {
 
     let history = useHistory();
     useEffect(() => {
-        setjobdata([{job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"}/*data*/]);
+        setjobdata([{job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
+        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"}/*data*/]);
     }, [data]);
     console.log(jobdata);
     return (
