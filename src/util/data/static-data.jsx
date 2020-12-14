@@ -5064,7 +5064,7 @@ export const languages = [
 		"name": "Burmese",
 	},
 	{
-		"name": "Catalan; Valencian",
+		"name": "Catalan",
 	},
 	{
 		"name": "Chamorro",
@@ -5073,7 +5073,7 @@ export const languages = [
 		"name": "Chechen",
 	},
 	{
-		"name": "Chichewa; Chewa; Nyanja",
+		"name": "Chichewa",
 	},
 	{
 		"name": "Chinese",
@@ -5100,7 +5100,7 @@ export const languages = [
 		"name": "Danish",
 	},
 	{
-		"name": "Divehi; Dhivehi; Maldivian;",
+		"name": "Maldivian;",
 	},
 	{
 		"name": "Dutch",
@@ -5130,7 +5130,7 @@ export const languages = [
 		"name": "French",
 	},
 	{
-		"name": "Fula; Fulah; Pulaar; Pular",
+		"name": "Fula",
 	},
 	{
 		"name": "Galician",
@@ -5151,7 +5151,7 @@ export const languages = [
 		"name": "Gujarati",
 	},
 	{
-		"name": "Haitian; Haitian Creole",
+		"name": "Haitian",
 	},
 	{
 		"name": "Hausa",
@@ -5211,7 +5211,7 @@ export const languages = [
 		"name": "Javanese",
 	},
 	{
-		"name": "Kalaallisut; Greenlandic",
+		"name": "Kalaallisut",
 	},
 	{
 		"name": "Kannada",
@@ -5229,13 +5229,13 @@ export const languages = [
 		"name": "Khmer",
 	},
 	{
-		"name": "Kikuyu; Gikuyu",
+		"name": "Kikuyu",
 	},
 	{
 		"name": "Kinyarwanda",
 	},
 	{
-		"name": "Kirghiz; Kyrgyz",
+		"name": "Kirghiz",
 	},
 	{
 		"name": "Komi",
@@ -5250,19 +5250,19 @@ export const languages = [
 		"name": "Kurdish",
 	},
 	{
-		"name": "Kwanyama; Kuanyama",
+		"name": "Kuanyama",
 	},
 	{
 		"name": "Latin",
 	},
 	{
-		"name": "Luxembourgish; Letzeburgesch",
+		"name": "Luxembourgish",
 	},
 	{
 		"name": "Luganda",
 	},
 	{
-		"name": "Limburgish; Limburgan; Limburger",
+		"name": "Limburgish",
 	},
 	{
 		"name": "Lingala",
@@ -5346,7 +5346,7 @@ export const languages = [
 		"name": "Ojibwe, Ojibwa",
 	},
 	{
-		"name": "Old Church Slavonic; Church Slavic; Church Slavonic, Old Bulgarian, Old Slavonic",
+		"name": "Old Church Slavonic",
 	},
 	{
 		"name": "Oromo",
@@ -5355,10 +5355,10 @@ export const languages = [
 		"name": "Oriya",
 	},
 	{
-		"name": "Ossetian; Ossetic",
+		"name": "Ossetian",
 	},
 	{
-		"name": "Panjabi; Punjabi",
+		"name": "Punjabi",
 	},
 	{
 		"name": "Pāli",
@@ -5385,7 +5385,7 @@ export const languages = [
 		"name": "Kirundi",
 	},
 	{
-		"name": "Romanian; Moldavian; Moldovan",
+		"name": "Romanian",
 	},
 	{
 		"name": "Russian",
@@ -5412,13 +5412,13 @@ export const languages = [
 		"name": "Serbian",
 	},
 	{
-		"name": "Scottish Gaelic; Gaelic",
+		"name": "Gaelic",
 	},
 	{
 		"name": "Shona",
 	},
 	{
-		"name": "Sinhala; Sinhalese",
+		"name": "Sinhalese",
 	},
 	{
 		"name": "Slovak",
@@ -5463,7 +5463,7 @@ export const languages = [
 		"name": "Tigrinya",
 	},
 	{
-		"name": "Tibetan Standard; Tibetan; Central",
+		"name": "Tibetan",
 	},
 	{
 		"name": "Turkmen",

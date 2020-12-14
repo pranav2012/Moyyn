@@ -47,7 +47,7 @@ function Candidateslist({candidates}) {
                     <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
                     <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
                     <Button onClick={rejected}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
-                    <p className='ma0 gray f6-l f7-m f8-mo ml-auto-l ml-auto-m ml2 mr3-l mr3-m self-center'>Candidates({count})</p>
+                    <p className='ma0 gray f6-l f7-m f8-mo ml-auto mr3-l mr3-m self-center'>Candidates({count})</p>
                 </div>
                 <div className='w-100 flex center flex-column ma-2'>
                     {
