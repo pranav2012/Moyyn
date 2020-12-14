@@ -27,7 +27,7 @@ const DateForm = ({ name, label, variant = 'outlined', placeholder = 'dd/mm/yyyy
 								value={reverseDate(field.value)}						
 								label={label} 
 								variant={variant}
-					         placeholder={placeholder}
+					         	placeholder={placeholder}
 								fullWidth
 								type="date"
 								InputLabelProps={{

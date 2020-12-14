@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import AddCommentOutlinedIcon from '@material-ui/icons/AddCommentOutlined';
 import Button from '@material-ui/core/Button';
 // import Alert from '@material-ui/lab/Alert';
@@ -45,9 +45,9 @@ function Commentbox() {
         msg:"Nice guy"
     }]);
 
-    useEffect(() => {
-      console.log(comments)
-    }, [comments])
+    // useEffect(() => {
+    //   console.log(comments)
+    // }, [comments])
 
     const insertcomment = () => {
         let name = document.getElementById("name");

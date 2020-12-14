@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Candidate from './Candidatebox';
 import '../../styles/candidate.scss';
 import ChevronLeftTwoToneIcon from '@material-ui/icons/ChevronLeftTwoTone';
@@ -10,8 +10,12 @@ function Candidateslist({candidates}) {
     let history = useHistory();
     const [candidate_type,setcandidate_type] = useState(false);
     const [def,setdef] = useState(true);
+    const [count, setcount] = useState(0);
 
-    
+    useEffect(() => {
+        setcount(candidates.length)
+    }, [candidates]);
+
     const defaultfunc = () =>{
         setcandidate_type(false);
         setdef(true);
@@ -32,7 +36,7 @@ function Candidateslist({candidates}) {
             <div className='w-80-l w-100 center flex flex-column'>
                 {/* job info */}
                 <div className='flex'>
-                    <ChevronLeftTwoToneIcon onClick={() => history.push("/Dashboard")} className='self-center pointer'/>
+                    <ChevronLeftTwoToneIcon onClick={() => history.push("/Dashboard")} className='self-center dim pointer'/>
                     <div className='flex flex-column items-start'>
                         <p className='ma0 f4-l f5-m f7 pb2 tc'>(Senior) Software Engineer - Python</p>
                         <p className='ma0 pl2 f6-l f7-m f8 gray tc'>New Delhi, India</p>
@@ -43,11 +47,13 @@ function Candidateslist({candidates}) {
                     <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
                     <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
                     <Button onClick={rejected}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
-                    <p className='ma0 gray f6-l f7-m f8-mo ml-auto-l ml-auto-m ml4 mr3-l mr3-m self-center'>Candidates(347)</p>
+                    <p className='ma0 gray f6-l f7-m f8-mo ml-auto-l ml-auto-m ml2 mr3-l mr3-m self-center'>Candidates({count})</p>
                 </div>
                 <div className='w-100 flex center flex-column ma-2'>
                     {
-                        candidates.length<=0 || candidates[0] === undefined ?<div className='flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>:candidates.map((data,id) =><Candidate candidate={data} key={id}/>)
+                        candidates.length<=0 || candidates[0] === undefined ?<div className='flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>:candidates.map((data,id) =>{
+                            return <Candidate candidate={data} key={id}/>
+                        })
                     }
                 </div>
             </div>

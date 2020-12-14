@@ -56,4 +56,7 @@ body{
 .f10-mo{
     font-size: 0.38rem;
 }
+.hide-mo{
+    display: none !important;
+}
 }

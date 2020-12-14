@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
 		color: "#fff",
 	},
 }));
-
 const ResumePreview = ({ open, src, close }) => {
 	const custom = useStyles();
 

@@ -3,7 +3,11 @@
         font-size: 1rem !important;
     }
 }
-
+.chips{
+    .MuiChip-outlined{
+        margin:3px;
+    }
+}
 .ch{
     height: 110px;
 }
@@ -31,7 +35,6 @@
 .comment > div:first-child{
     margin-top: 0px;
 }
-
 
 .ov{
     scrollbar-width: none;
