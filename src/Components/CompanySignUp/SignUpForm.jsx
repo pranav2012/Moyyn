@@ -4,7 +4,7 @@ import {Signupformvalidation}  from "../../util/validation/form-validation";
 import 'tachyons';
 import { useHistory } from "react-router-dom";
 
-function SignUpForm({backend_url,registered ,setregistered,signupforminitialvalues}) {
+function SignUpForm({backend_url,registered,setregistered,signupforminitialvalues}) {
     let history = useHistory();
     return (
     <div>
@@ -154,7 +154,7 @@ function SignUpForm({backend_url,registered ,setregistered,signupforminitialvalu
                         )}   
                         
                         <br/>
-                        <button type='submit' disabled={isSubmitting} style={{background:"#265cff"}} className="mt3 pointer fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">Register</button>
+                        <button type='submit' disabled={isSubmitting} style={{background:"#265cff"}} className="mt3 pointer fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">Submit</button>
                     </form>
                 </>
                 );

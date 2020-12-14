@@ -168,7 +168,7 @@ function Filter() {
                     </Menu>
                 </div>
                 <div>
-                    <div className='flex hide-mo'> 
+                    <div className='flex items-center hide-mo'> 
                         <p className='gray mr1 f7-l f7-m f9-mo'>Eu Driving License</p>
                         <input name="othercountries" type="checkbox"/>
                     </div>

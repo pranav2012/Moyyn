@@ -32,7 +32,7 @@ function Candidateslist({candidates}) {
     }
     //console.log(def,candidate_type)
     return (
-        <div style={{background:"#eef2f5"}}  className='flex-1 w-100 vh-100 pa4-l pa3'>
+        <div style={{background:"#eef2f5"}}  className='flex-1 w-100 pa4-l pa3'>
             <div className='w-80-l w-100 center flex flex-column'>
                 {/* job info */}
                 <div className='flex'>
