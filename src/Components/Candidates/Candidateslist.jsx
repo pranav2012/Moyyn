@@ -43,7 +43,7 @@ function Candidateslist({candidates}) {
                     </div>
                 </div>
                 <Filter/>
-                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100-l w-100-m w-25 justify-start pt4 ml2 pb1'>
+                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start pt4 ml2 pb1'>
                     <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
                     <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
                     <Button onClick={rejected}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>

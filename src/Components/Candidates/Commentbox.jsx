@@ -6,6 +6,8 @@ import Comment from './Comment';
 
 function Commentbox() {
     const [read, setread] = useState(false);
+    const [cmt, setcmt] = useState("");
+    const [cmtname, setcmtname] = useState("");
     const [addcomment, setaddcomment] = useState(false);
     // const [commentalert, setcommentalert] = useState(null)
     const [comments, setcomments] = useState([{
@@ -50,15 +52,13 @@ function Commentbox() {
     // }, [comments])
 
     const insertcomment = () => {
-        let name = document.getElementById("name");
-        let cmt = document.getElementById("cmt");
-        if(!(cmt.value === "" || name.value === "")){
+        if(!(cmt === "" || cmtname === "")){
             setcomments([{
-                name:name.value,
-                msg:cmt.value
+                name:cmtname,
+                msg:cmt
             }])
-            name.value="";
-            cmt.value="";
+            setcmtname("");
+            setcmt("");
             setaddcomment(false);
         }
     }
@@ -66,18 +66,17 @@ function Commentbox() {
     return (
         <div>
             <div onClick={()=> {setread(false); setaddcomment(false);}} className={`fixed overlay top-0 bottom-0 left-0 right-0 ${read || addcomment?'active':''}`}></div>
-            <div className={`add-comment dib read ba br2 vh-75 b--gray ph2 pv3 ${addcomment?'':'hide'}`}>
+            <div className={`add-comment dib read ba br2 b--gray ph2 pv3 ${addcomment?'':'hide'}`}>
                 <div className='flex flex-column w-80 center h-100 justify-between'>
                     <p className='tc f4 mb0'>Add Comment!</p>
-                    <input type="text" placeholder="Your Name" className='pl2 f6'/>
-                    <textarea placeholder='Add your comment!' className='br2 f6 pa3 ba'/>
+                    <input value={cmtname} onChange={(e) => setcmtname(e.target.value)} type="text" placeholder="Your Name" className='pl2 f6'/>
+                    <textarea value={cmt} onChange={(e) => setcmt(e.target.value)} placeholder='Add your comment!' className='br2 f6 pa3 ba'/>
                     {/* {!commentalert?'':<div className='mv2'><Alert severity="error">Empty Comment or Name</Alert></div>} */}
                     <Button onClick={insertcomment} style={{background:"#265cff"}} variant="contained">Comment</Button>
                 </div>
             </div>
-            <div className='flex items-center'>
-                <div className={`box arrow dib br2 gray dib ma0 mr4 flex flex-column comment pa3 ${read?'read f6':'f8'}`}>
-                    <div id="cmtbox" onClick={() => setread(true)} className='ov'>
+                <div className={`box arrow dib relative br2 gray ma0 mr4 flex flex-column comment pa1 ${read?'read f6':'f8'}`}>
+                    <div id="cmtbox" onClick={() => setread(true)} className='ov pa2'>
                         <p className={`ml2 ma0 gray f8 ${read?'hide':''}`}>Comments</p>
                         {
                             comments.length > 0 && comments[0] !== undefined?comments.map((comment,id)=>
@@ -85,10 +84,9 @@ function Commentbox() {
                             ):"No Comment added!"
                         }
                     </div>
+                    <div onClick={() => setaddcomment(true) } className={`pointer floati grow ${read?'hide':''}`}><div className='addcmti' style={{color:"gray"}}><AddCommentOutlinedIcon/></div></div>
                 </div>
-                <div  onClick={() => setaddcomment(true) } className={`items-center pointer flex flex-column dim ${''}`}><AddCommentOutlinedIcon/><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Add Comment</p></div>
             </div>
-        </div>
     )
 }
 

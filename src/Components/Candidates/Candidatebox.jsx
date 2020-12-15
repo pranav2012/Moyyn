@@ -39,7 +39,7 @@ function Candidatebox({candidate}) {
                         <button style={{color:"red"}} className="bg-white pointer ml2-l ml2-m ml3 c-shadow w-60-l w-50-m w3 h2-l mt2  mt0-l mt0-m bn link dim br2 ph3 pv2-l pv1 dib"><div className='btnic flex f9-mo f8-m f7-l f8-m  items-center justify-center'><ThumbDownOutlinedIcon/><span className='ml2'>Reject</span></div></button>
                     </div>
                 </div>
-                <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='mb2 pointer flex flex-column items-center self-center'><DescriptionOutlinedIcon/><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View CV</p></div>
+                <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View CV</p></div>
                 {ismobile || istab ?'':<Commentbox/>}
             </div>
         </div>     

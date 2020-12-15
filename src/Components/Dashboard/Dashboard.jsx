@@ -25,7 +25,7 @@ function Dashboard({company="Moyyn",data}) {
     }, [data]);
     console.log(jobdata);
     return (
-        <div style={{background:"#eef2f5"}} className='flex-1 w-100 vh-100'>
+        <div style={{background:"#eef2f5"}} className='flex-1 w-100'>
             <div className='w-90 center mb5'>
                 <div className='flex mt4 mb3 center justify-between w-90 items-center'>
                     <div className='flex flex-column justify-between '>
