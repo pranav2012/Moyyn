@@ -63,8 +63,9 @@ function Filter() {
 
     return (
         <>
-            <div className='w-90 center mt3'><p className='ma0 pl2 f5-l f5-m f7 gray'>Filter Candidates</p></div>
-            <div style={{color:"#265cff"}} className='candidate_search h3 bg-white w-90 mt3 pv2 ph4 items-center center c-shadow br2 flex justify-between'>
+            <div className={''/*"bg-white br2 c-shadow pa2 mt3"*/}>
+            <div className='w-100 center mt3'><p className='ma0 gray pl2 f5-l f5-m f7'>Filter Candidates</p></div>
+            <div style={{color:"#265cff"}} className='candidate_search h3 c-shadow bg-white w-100 mt3 pv2 ph4 items-center center br2 flex justify-between'>
                 <div>
                     <div aria-controls="country" aria-haspopup="true" onClick={countryclick} className='pointer dim flex flex-column items-center'>
                         <PublicOutlinedIcon/> 
@@ -188,6 +189,7 @@ function Filter() {
                 :
                 <p className='ma0 pl2 f6-l f6-m f8 gray'>No filter's added</p>
               }
+            </div>
             </div>
         </>
     )

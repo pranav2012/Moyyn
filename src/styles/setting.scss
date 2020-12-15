@@ -1,5 +1,15 @@
 .creds{
     .MuiInputBase-input{
-        padding: 4% !important;
+        margin-bottom: 2% !important;
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .creds{
+        label{
+            font-size: 0.8rem !important;
+            margin-bottom: 5% !important;
+        }
     }
 }
