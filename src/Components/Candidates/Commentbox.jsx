@@ -66,8 +66,8 @@ function Commentbox() {
     return (
         <div>
             <div onClick={()=> {setread(false); setaddcomment(false);}} className={`fixed overlay top-0 bottom-0 left-0 right-0 ${read || addcomment?'active':''}`}></div>
-            <div className={`add-comment dib read ba br2 b--gray ph2 pv3 ${addcomment?'':'hide'}`}>
-                <div className='flex flex-column w-80 center h4 justify-between'>
+            <div className={`add-comment dib read ba br2 vh-75 b--gray ph2 pv3 ${addcomment?'':'hide'}`}>
+                <div className='flex flex-column w-80 center h-100 justify-between'>
                     <p className='tc f4 mb0'>Add Comment!</p>
                     <input type="text" placeholder="Your Name" className='pl2 f6'/>
                     <textarea placeholder='Add your comment!' className='br2 f6 pa3 ba'/>
