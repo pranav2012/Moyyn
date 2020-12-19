@@ -43,8 +43,8 @@ function Settings() {
                     <div className='mv4 pa4 w-95 center flex-1 tc bg-white'>
                         <p className='gray tc f3'>General Settings</p>
                         <div className='flex items-center mt4 justify-center'> 
-                        <p className='f5-l f6-m f7 ma0 mr3'>Turn {toggle?'off':'on'} notification's ?</p>
-                            <ToggleButton value={toggle} onToggle={() => settoggle(!toggle) } />
+                            <p className='gray f5-l f6-m f7 ma0 mr3'>Turn {toggle?'off':'on'} notification's ?</p>
+                            <div className='toggle-btn' ><ToggleButton value={toggle} onToggle={() => settoggle(!toggle) } /></div>
                         </div>
                         <div className='mt4'>
                             <Button className='dim' variant="outlined" style={{borderColor:"red", color:"red"}}>Delete Account</Button>
@@ -61,7 +61,7 @@ function Settings() {
                                     id="outlined-basic"
                                     label="Old Password"
                                     variant="outlined"
-                                    className={`w-50`}
+                                    className={`w-50-l w-70-m w-80`}
                                 />
                         </div>
                         <div className='creds mt3'>
@@ -70,7 +70,7 @@ function Settings() {
                                 id="outlined-basic"
                                 label="New Password"
                                 variant="outlined"
-                                className={`w-50`}
+                                className={`w-50-l w-70-m w-80`}
                             />
                         </div>
                             <div className='mt4'>

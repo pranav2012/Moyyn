@@ -4979,12 +4979,12 @@ export const languagesObject = {
 };
 
 export const notices= [
-	{time:"1"},
-	{time:"2"},
-	{time:"3"},
-	{time:"4"},
-	{time:"5"},
-	{time:"6"}
+	{time:"1 Month"},
+	{time:"2 Month"},
+	{time:"3 Month"},
+	{time:"4 Month"},
+	{time:"5 Month"},
+	{time:"6 Month"}
 ]
 
 export const languages = [

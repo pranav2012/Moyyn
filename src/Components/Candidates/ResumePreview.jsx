@@ -4,8 +4,8 @@ import { Backdrop } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	img: {
-		width: "80vh",
-		height: "80vh",
+		width: "90vh",
+		height: "90vh",
 	},
 	backdrop: {
 		zIndex: theme.zIndex.drawer + 1,

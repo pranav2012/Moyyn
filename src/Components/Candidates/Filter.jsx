@@ -1,27 +1,22 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
-import LocationCityOutlinedIcon from '@material-ui/icons/LocationCityOutlined';
-import CalendarTodayOutlinedIcon from '@material-ui/icons/CalendarTodayOutlined';
 import ScheduleOutlinedIcon from '@material-ui/icons/ScheduleOutlined';
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
 import TranslateOutlinedIcon from '@material-ui/icons/TranslateOutlined';
 import Chip from '@material-ui/core/Chip';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import {cities, countries, industries, languages, notices} from '../../util/data/static-data';
+import {countries, industries, languages, notices} from '../../util/data/static-data';
 
 function Filter() {
     
-    const dateclick = useRef(null) 
     const [filteradded] = useState(true);
-
+    const [dl] = useState(false);
     const [countriess] = useState(countries);
-    const [citiess] = useState(cities);
     const [industriess] = useState(industries);
     const [languagess] = useState(languages);
     const [noticess] = useState(notices);
     const [country, setcountry] = useState(null);
-    const [city, setcity] = useState(null);
     const [industry, setindustry] = useState(null);
     const [language, setlanguage] = useState(null);
     const [notice, setnotice] = useState(null);
@@ -31,12 +26,6 @@ function Filter() {
     };
     const countryclose = () => {
         setcountry(null);
-    };
-    const cityclick = (event) => {
-        setcity(event.currentTarget);
-    };
-    const cityclose = () => {
-        setcity(null);
     };
     const industryclick = (event) => {
         setindustry(event.currentTarget);
@@ -61,12 +50,19 @@ function Filter() {
         console.log("deleted");
     }
 
+    // useEffect(() => {
+    //    setfilters({
+    //        if
+    //    })
+    // console.log(country,language,industry,notice,dl,language)
+    // }, [country,language,industry,notice,dl])
+
     return (
         <>
             <div className={''/*"bg-white br2 c-shadow pa2 mt3"*/}>
             <div className='w-100 center mt3'><p className='ma0 gray pl2 f5-l f5-m f7'>Filter Candidates</p></div>
-            <div style={{color:"#265cff"}} className='candidate_search h3 c-shadow bg-white w-100 mt3 pv2 ph4 items-center center br2 flex justify-between'>
-                <div>
+            <div style={{color:"#265cff"}} className='candidate_search h3 c-shadow bg-white w-100-l w-90 mt3 pv2 ph4-l ph3-m ph2 flex-wrap items-center center br2 flex justify-between'>
+                <div className='ml0-l ml4-m ml4'>
                     <div aria-controls="country" aria-haspopup="true" onClick={countryclick} className='pointer dim flex flex-column items-center'>
                         <PublicOutlinedIcon/> 
                         <p className='ma0 mt1 gray f8 f9-mo'>Country</p>
@@ -85,32 +81,13 @@ function Filter() {
                         ))}
                     </Menu>
                 </div>
-                <div>
-                    <div aria-controls="city" aria-haspopup="true" onClick={cityclick} className='pointer dim flex flex-column items-center'>
-                        <LocationCityOutlinedIcon/>
-                        <p className='ma0 mt1 gray f8 f9-mo'>City</p>
-                    </div>
-                    <Menu
-                        id="city"
-                        anchorEl={city}
-                        keepMounted
-                        open={Boolean(city)}
-                        onClose={cityclose}
-                                    >
-                        {citiess.map((option,id) => (
-                        <MenuItem key={id} onClick={cityclose}>
-                            {option.city}
-                        </MenuItem>
-                        ))}
-                    </Menu>
-                </div>
-                <div>
+                {/* <div>
                     <div onClick={()=> dateclick.current.click()} className='pointer dim flex flex-column items-center'>
                         <CalendarTodayOutlinedIcon/>
                         <p className='ma0 mt1 gray f8 f9-mo'>Start Date</p>
                     </div>
-                    <input  ref={dateclick} type="date" className='hide'/>
-                </div>
+                    <input  ref={dateclick} type="date" className=''/>
+                </div> */}
                 <div>
                     <div aria-controls="notice" aria-haspopup="true" onClick={noticeclick} className='pointer dim flex flex-column items-center'>
                         <ScheduleOutlinedIcon/>
@@ -171,7 +148,7 @@ function Filter() {
                 <div>
                     <div className='flex items-center hide-mo'> 
                         <p className='gray mr1 f7-l f7-m f9-mo'>Eu Driving License</p>
-                        <input name="othercountries" type="checkbox"/>
+                        <input value={dl} name="othercountries" type="checkbox"/>
                     </div>
                 </div>
             </div>
@@ -179,12 +156,13 @@ function Filter() {
               { 
                 filteradded?
                 <div className='chips'>
-                    <Chip variant="outlined" size="small" label="Deletable" onDelete={handledelete}/>
-                    <Chip variant="outlined" size="small" label="Deletable" onDelete={handledelete}/>
-                    <Chip variant="outlined" size="small" label="Deletable" onDelete={handledelete}/>
-                    <Chip variant="outlined" size="small" label="Deletable" onDelete={handledelete}/>
-                    <Chip variant="outlined" size="small" label="Deletable" onDelete={handledelete}/>
-                    <Chip variant="outlined" size="small" label="Deletable" onDelete={handledelete}/>
+                   {/* {
+                       filters.map((name,id)=>
+                        )
+                   } */}
+                    <Chip variant="outlined" size="small" label={"label"} onDelete={handledelete}/>
+                    <Chip variant="outlined" size="small" label={"label"} onDelete={handledelete}/>
+                    <Chip variant="outlined" size="small" label={"label"} onDelete={handledelete}/>
                 </div>
                 :
                 <p className='ma0 pl2 f6-l f6-m f8 gray'>No filter's added</p>

@@ -1,16 +1,18 @@
 import React,{useState, useEffect} from 'react'
-import Candidate from './Candidatebox';
+import {Candidatebox as Candidate, Shortlist, Rejected} from './Candidatebox';
 import '../../styles/candidate.scss';
 import ChevronLeftTwoToneIcon from '@material-ui/icons/ChevronLeftTwoTone';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import Filter from './Filter';
+import { useMediaQuery } from 'react-responsive';
 
 function Candidateslist({candidates}) {
     let history = useHistory();
     const [candidate_type,setcandidate_type] = useState(false);
     const [def,setdef] = useState(true);
     const [count, setcount] = useState(0);
+    const ismobile = useMediaQuery({ query: `(max-width: 580px)` })
 
     useEffect(() => {
         setcount(candidates.length)
@@ -32,7 +34,7 @@ function Candidateslist({candidates}) {
     }
     //console.log(def,candidate_type)
     return (
-        <div style={{background:"#eef2f5"}}  className='flex-1 w-100 pa4-l pa3'>
+        <div style={{background:"#eef2f5"}} className='flex-1 w-100 pa4-l pa3'>
             <div className='w-80-l w-100 center flex flex-column'>
                 {/* job info */}
                 <div className='flex'>
@@ -47,12 +49,12 @@ function Candidateslist({candidates}) {
                     <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
                     <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
                     <Button onClick={rejected}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
-                    <p className='ma0 gray f6-l f7-m f8-mo ml-auto mr3-l mr3-m self-center'>Candidates({count})</p>
+                    <p className='ma0 gray f6-l f7-m f8-mo ml-auto mr3 self-center'>{ismobile?'All ':'Candidates '}({count})</p>
                 </div>
-                <div className='w-100 flex center flex-column ma-2'>
+                <div className='w-100 flex center flex-column'>
                     {
                         candidates.length<=0 || candidates[0] === undefined ?<div className='flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>:candidates.map((data,id) =>{
-                            return <Candidate candidate={data} key={id}/>
+                            return def?<Candidate candidate={data} key={id}/>:candidate_type?<Shortlist candidate={data} key={id}/>:<Rejected candidate={data} key={id}/>
                         })
                     }
                 </div>
