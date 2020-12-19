@@ -58,7 +58,6 @@ function Settings() {
                         <div className='creds mt3'>
                         <TextField
                                     name="Old"
-                                    id="outlined-basic"
                                     label="Old Password"
                                     variant="outlined"
                                     className={`w-50-l w-70-m w-80`}
@@ -67,7 +66,6 @@ function Settings() {
                         <div className='creds mt3'>
                             <TextField
                                 name="new"
-                                id="outlined-basic"
                                 label="New Password"
                                 variant="outlined"
                                 className={`w-50-l w-70-m w-80`}
@@ -81,7 +79,7 @@ function Settings() {
                     :
                     //edit company details
                     <div className='mv4 pa3 w-95 center flex-1 tc bg-white'>
-                        <p className='gray tc f3'>Edit Details</p>
+                        <p className='gray tc f3'>Details</p>
                         <div className='center signupform w-80 '>
                             <SignUpForm signupforminitialvalues={signupforminitialvalues}/>
                         </div>
