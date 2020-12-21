@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 import ScheduleOutlinedIcon from '@material-ui/icons/ScheduleOutlined';
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
@@ -10,9 +10,8 @@ import { countries, industries, languages, notices } from '../../util/data/stati
 
 function Filter() {
 
-    const [filteradded] = useState(true);
-    // const [filters, setfilters] = useState(null)
-    const [dl, setdl] = useState(false);
+    const [filters, setfilters] = useState([]);
+
     const [countriess] = useState(countries);
     const [industriess] = useState(industries);
     const [languagess] = useState(languages);
@@ -26,147 +25,98 @@ function Filter() {
     const [industryvalue, setindustryvalue] = useState("");
     const [languagevalue, setlanguagevalue] = useState("");
     const [noticevalue, setnoticevalue] = useState("");
-
-    const countryclick = (event) => {
-        setcountry(event.currentTarget);
-    };
-
-    const countryclose = () => {
-        setcountry(null);
-    };
-    const handlecountry = (e) => {
-        setcountryvalue(e.target.value);
-    };
-    const industryclick = (event) => {
-        setindustry(event.currentTarget);
-    };
-    const industryclose = () => {
-        setindustry(null);
-    };
-    const handleindustry = (e) => {
-        setindustryvalue(e.target.value);
-    };
-    const languageclick = (event) => {
-        setlanguage(event.currentTarget);
-    };
-    const languageclose = () => {
-        setlanguage(null);
-    };
-    const handlelanguage = (e) => {
-        setlanguagevalue(e.target.value);
-    };
-    const noticeclick = (event) => {
-        setnotice(event.currentTarget);
-    };
-    const noticeclose = () => {
-        setnotice(null);
-    };
-    const handlenotice = (e) => {
-        setnoticevalue(e.target.value);
-        console.log("e.target")
-    };
+    const [dl, setdl] = useState(false);
 
     const handledelete = () => {
         console.log("deleted");
     }
 
-    // useEffect(() => {
-    //     if(false){
-    //         setfilters({
-    //             industry:industryvalue,
-    //             country:countryvalue,
-    //             language:languagevalue,
-    //             notice:noticevalue,
-    //             dl:dl
-    //         });
-    //     }
-    // }, [])
+    useEffect(() => { 
+        if(industryvalue !=="") setfilters(arr => [...filters ,industryvalue]);
+        if(countryvalue !=="")  setfilters(arr => [...filters ,countryvalue]);
+        if(languagevalue !=="")  setfilters(arr => [...filters ,languagevalue]);
+        if(noticevalue !=="")  setfilters(arr => [...filters ,noticevalue]);
+        if(dl) setfilters(arr => [...filters ,"EU License"]);
+        // eslint-disable-next-line 
+    }, [industryvalue,countryvalue,languagevalue,noticevalue,dl])
 
     return (
         <>
             <div className={''/*"bg-white br2 c-shadow pa2 mt3"*/}>
                 <div className='w-100 center mt3'><p className='ma0 gray pl2 f5-l f5-m f7'>Filter Candidates</p></div>
-                <div style={{ color: "#265cff" }} className='candidate_search h3 c-shadow bg-white w-100-l w-90 mt3 pv2 ph4-l ph3-m ph2 center br2'>
-                    <div className='flex justify-between flex-wrap items-center center w-80-l w-80-m w-100'>
+                <div style={{ color: "#265cff" }} className='flex items-center candidate_search h3 c-shadow bg-white w-100-l w-90 mt3 pv2 ph4-l ph3-m ph2 center br2'>
+                    <div className='flex justify-between flex-wrap items-center mr-auto w-60-l w-70-m w-100'>
                         <div className='ml0-l ml4-m ml4'>
-                            <div aria-controls="country" aria-haspopup="true" onClick={countryclick} className='pointer dim flex flex-column items-center'>
+                            <div aria-controls="country" aria-haspopup="true" onClick={(e)=>setcountry(e.currentTarget)} className='pointer dim flex flex-column items-center'>
                                 <PublicOutlinedIcon />
                                 <p className='ma0 mt1 gray f8 f9-mo'>Country</p>
                             </div>
                             <Menu
                                 id="country"
-                                value={countryvalue}
                                 anchorEl={country}
                                 keepMounted
                                 open={Boolean(country)}
-                                onClose={countryclose}
-                                onChange={handlecountry}
+                                onClose={()=>setcountry(null)}
                             >
                                 {countriess.map((option, id) => (
-                                    <MenuItem key={id} onClick={countryclose}>
+                                    <MenuItem key={id} onClick={()=>{setcountryvalue(option.label);setcountry(null)}}>
                                         {option.label}
                                     </MenuItem>
                                 ))}
                             </Menu>
                         </div>
                         <div>
-                            <div aria-controls="notice" aria-haspopup="true" onClick={noticeclick} className='pointer dim flex flex-column items-center'>
+                            <div aria-controls="notice" aria-haspopup="true" onClick={(e)=>setnotice(e.currentTarget)} className='pointer dim flex flex-column items-center'>
                                 <ScheduleOutlinedIcon />
                                 <p className='ma0 mt1 gray f8 f9-mo'>Notice Period</p>
                             </div>
                             <Menu
                                 id="notice"
-                                value={noticevalue}
                                 anchorEl={notice}
                                 keepMounted
                                 open={Boolean(notice)}
-                                onClose={noticeclose}
-                                onChange={handlenotice}
+                                onClose={()=>setnotice(null)}
                             >
                                 {noticess.map((option, id) => (
-                                    <MenuItem key={id} onClick={noticeclose}>
+                                    <MenuItem key={id} onClick={()=>{setnoticevalue(option.time);setnotice(null)}}>
                                         {option.time}
                                     </MenuItem>
                                 ))}
                             </Menu>
                         </div>
                         <div>
-                            <div aria-controls="industry" aria-haspopup="true" onClick={industryclick} className='pointer dim flex flex-column items-center'>
+                            <div aria-controls="industry" aria-haspopup="true" onClick={(e)=>setindustry(e.currentTarget)} className='pointer dim flex flex-column items-center'>
                                 <WorkOutlineOutlinedIcon />
                                 <p className='ma0 mt1 gray f8 f9-mo'>Industry</p>
                             </div>
                             <Menu
                                 id="industry"
-                                value={industryvalue}
                                 anchorEl={industry}
                                 keepMounted
                                 open={Boolean(industry)}
-                                onClose={industryclose}
-                                onChange={handleindustry}
+                                onClose={()=>setindustry(null)}
                             >
                                 {industriess.map((option, id) => (
-                                    <MenuItem key={id} onClick={industryclose}>
+                                    <MenuItem key={id} onClick={()=>{setindustryvalue(option);setindustry(null)}}>
                                         {option}
                                     </MenuItem>
                                 ))}
                             </Menu>
                         </div>
                         <div>
-                            <div aria-controls="language" aria-haspopup="true" onClick={languageclick} className='pointer dim flex flex-column items-center'>
+                            <div aria-controls="language" aria-haspopup="true" onClick={(e)=>setlanguage(e.currentTarget)} className='pointer dim flex flex-column items-center'>
                                 <TranslateOutlinedIcon />
                                 <p className='ma0 mt1 gray f8 f9-mo'>Languages</p>
                             </div>
                             <Menu
                                 id="language"
-                                value={languagevalue}
                                 anchorEl={language}
                                 keepMounted
                                 open={Boolean(language)}
-                                onClose={languageclose}
-                                onChange={handlelanguage}
+                                onClose={()=>setlanguage(null)}
                             >
                                 {languagess.map((option, id) => (
-                                    <MenuItem key={id} onClick={languageclose}>
+                                    <MenuItem key={id} onClick={()=>{setlanguagevalue(option.name);setlanguage(null)}}>
                                         {option.name}
                                     </MenuItem>
                                 ))}
@@ -182,18 +132,17 @@ function Filter() {
                 </div>
                 <div className='w-90 center tc mt3'>
                     {
-                        filteradded ?
+                        filters.length!==0 ?
                             <div className='chips'>
-                                {/* {
-                       filters.map((name,id)=>
-                        )
-                   } */}
-                                <Chip variant="outlined" size="small" label={"label"} onDelete={handledelete} />
-                                <Chip variant="outlined" size="small" label={"label"} onDelete={handledelete} />
-                                <Chip variant="outlined" size="small" label={"label"} onDelete={handledelete} />
+                                {
+                                    filters.map((name,id)=>{
+                                        // console.log(name)
+                                        return <Chip key={id} variant="outlined" size="small" label={name} onDelete={handledelete} />
+                                    })
+                                }
                             </div>
                             :
-                            <p className='ma0 pl2 f6-l f6-m f8 gray'>No filter's added</p>
+                            <p className='ma0 pl2 f5-l f5-m f7 gray'>No filter's added</p>
                     }
                 </div>
             </div>

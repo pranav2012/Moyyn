@@ -1,59 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import Comment from './Comment';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import 'tachyons';
 
-function Commentbox() {
+function Commentbox({comments_data}) {
     const [read, setread] = useState(false);
     const [cmt, setcmt] = useState("");
     const [cmtname, setcmtname] = useState("");
     const [addcomment, setaddcomment] = useState(false);
 
-    const [comments, setcomments] = useState([{
-        name:"Pranav",
-        msg:"Nice projects"
-    },
-    {
-        name:"Yash",
-        msg:"Nice cv"
-    },
-    {
-        name:"Raj",
-        msg:"Nice guy"
-    },
-    {
-        name:"Raj",
-        msg:"Nice guy"
-    },
-    {
-        name:"Raj",
-        msg:"Nice guy"
-    },
-    {
-        name:"Raj",
-        msg:"Nice guy"
-    },
-    {
-        name:"Raj",
-        msg:"Nice guy"
-    },
-    {
-        name:"Raj",
-        msg:"Nice guy"
-    },
-    {
-        name:"Raj",
-        msg:"Nice guy"
-    }]);
+    const [comments, setcomments] = useState([undefined]);
 
-    // useEffect(() => {
-    //   console.log(comments)
-    // }, [comments])
+    useEffect(() => {
+      setcomments(comments_data);
+    }, [comments_data]);
 
     const insertcomment = () => {
         if(!(cmt === "" || cmtname === "")){
-            setcomments([{
+            setcomments(arr=>[...comments,{
                 name:cmtname,
                 msg:cmt
             }])
@@ -69,11 +34,13 @@ function Commentbox() {
 
             <div onClick={()=>setread(true)} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><ChatOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Comments</p></div>
             <div>
+                <div onClick={()=> {setaddcomment(false)}} className={`fixed overlay top-0 bottom-0 left-0 right-0 ${addcomment?'active z-11':''}`}></div>
                 <div className={`add-comment dib read ba br2 b--gray ph2 pv3 ${addcomment?'':'hide'}`}>
+                    <div onClick={()=>setaddcomment(false)} className='absolute dim right-1 pointer'>&times;</div>
                     <div className='flex flex-column w-80 center h-100 justify-between'>
-                        <p className='tc f4-l f4-m f5 mb0'>Add Comment!</p>
-                        <input value={cmtname} onChange={(e) => setcmtname(e.target.value)} type="text" placeholder="Your Name" className='pl2 f6-l f6-m f7'/>
-                        <textarea value={cmt} onChange={(e) => setcmt(e.target.value)} placeholder='Add your comment!' className='br2 f6-l f6-m f7 pa3 ba'/>
+                        <p className='tc f4-l f4-m gray f5 mb0'>Add Comment!</p>
+                        <input value={cmtname} onChange={(e) => setcmtname(e.target.value)} type="text" placeholder="Your Name" className='pl2 gray b--gray ba br2 h2 mt1 f6-l f6-m f7'/>
+                        <textarea value={cmt} onChange={(e) => setcmt(e.target.value)} placeholder='Add your comment!' className='br2 f6-l gray f6-m b--gray f7 pa3 ba'/>
                         <Button onClick={insertcomment} style={{background:"#265cff"}} variant="contained">Comment</Button>
                     </div>
                 </div>

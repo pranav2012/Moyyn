@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Candidatebox as Candidate, Shortlist, Rejected} from './Candidatebox';
 import '../../styles/candidate.scss';
 import ChevronLeftTwoToneIcon from '@material-ui/icons/ChevronLeftTwoTone';
@@ -14,9 +14,14 @@ function Candidateslist({candidates}) {
     const [count, setcount] = useState(0);
     const ismobile = useMediaQuery({query:`(max-width: 580px)`})
 
+    let nrml =  candidates.filter((val)=>(val.short === false && val.reject === false)||(val.short === true && val.reject === true));
+    let shortlisted = candidates.filter((val)=>(val.short === true && val.reject === false));
+    let rejected =  candidates.filter((val)=>(val.short === false && val.reject === true));
+
+
     useEffect(() => {
-        setcount(candidates.length)
-    }, [candidates]);
+        def?setcount(nrml.length):candidate_type?setcount(shortlisted.length):setcount(rejected.length);
+    }, [def,candidate_type,nrml,rejected,shortlisted]);
 
     const defaultfunc = () =>{
         setcandidate_type(false);
@@ -28,7 +33,7 @@ function Candidateslist({candidates}) {
         setdef(false);
     }
 
-    const rejected = () =>{
+    const reject = () =>{
         setcandidate_type(false);
         setdef(false);
     }
@@ -48,14 +53,18 @@ function Candidateslist({candidates}) {
                 <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start pt4 ml2 pb1'>
                     <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
                     <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
-                    <Button onClick={rejected}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
+                    <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
                     <p className='ma0 gray f6-l f7-m f8-mo ml-auto mr3 self-center'>{ismobile?'All ':'Candidates '}({count})</p>
                 </div>
                 <div className='w-100 flex center flex-column'>
                     {
-                        candidates.length<=0 || candidates[0] === undefined ?<div className='flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>:candidates.map((data,id) =>{
-                            return def?<Candidate candidate={data} key={id}/>:candidate_type?<Shortlist candidate={data} key={id}/>:<Rejected candidate={data} key={id}/>
-                        })
+                        candidates.length<=0 || candidates[0] === undefined ?<div className='mt4 flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>
+                        :def?
+                           nrml.length<=0?<div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>Sorry, no candidate's were found!</p></div>:nrml.map((data,id) =><Candidate candidate={data} key={id}/>)
+                        :candidate_type?
+                           shortlisted.length<=0?<div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, candidate's were shortlisted yet!</p></div>:shortlisted.map((data,id) =><Shortlist candidate={data} key={id}/>)
+                        :
+                           rejected.length<=0?<div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, candidate's were rejected yet!</p></div>:rejected.map((data,id) =><Rejected candidate={data} key={id}/>)
                     }
                 </div>
             </div>

@@ -14,14 +14,15 @@ import Settings from '../Components/Settings/Settings';
 import Candidates from '../Components/Candidates/Candidateslist';
 import {postjobinitialvalues,signupforminitialvalues} from "../util/data/initial-values";
 import EditJob from '../Components/PostJob/EditJob';
+import { dummycandidates, dummyjobposts } from '../util/data/dummy';
 
 function App(){
 
     const backend_url = "https://www.moyyn.com";
     const [registered, setregistered] = useState(false);
     const [loggedin] = useState(true); 
-    const [data,setdata] = useState(undefined);
-    const [candidatedata] = useState([1,2,3,4,5,6,7,8,9,1,1,1,11,undefined]);
+    const [data,setdata] = useState(dummyjobposts);
+    const [candidatedata] = useState(dummycandidates);
 
     return (
       <div className='App w-100 vh-100 flex flex-column items-center'>
@@ -47,7 +48,7 @@ function App(){
             <Route exact path='/postjob'>
               {loggedin?<Redirect to='/postjob'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
-              <JobPostForm setdata={setdata} postjobinitialvalues={postjobinitialvalues}/>
+              <JobPostForm setdata={setdata} postjobinitialvalues={postjobinitialvalues} data={data}/>
             </Route>
             <Route exact path='/Settings'>
               {loggedin?<Redirect to='/Settings'/>:<Redirect to='/'/>} 

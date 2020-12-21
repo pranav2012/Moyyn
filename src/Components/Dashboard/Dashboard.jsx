@@ -10,18 +10,7 @@ function Dashboard({company="Moyyn",data}) {
 
     let history = useHistory();
     useEffect(() => {
-        setjobdata([{job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-        {job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"}/*data*/]);
+        setjobdata(data);
     }, [data]);
     console.log(jobdata);
     return (
@@ -32,7 +21,7 @@ function Dashboard({company="Moyyn",data}) {
                         <p className='ma0 f3-l f4-m f6'>Welcome to {company} Dashboard!</p>
                         <p className='f5-l f6-m f9-m gray ma0'>Get candidates by our A.I system</p>
                     </div>
-                    <button onClick={()=>history.push('/postjob')} style={{background:"#265cff"}} className="h2 pointer h7-mo fw6 f8-mo f7-m f6-l mr2 w-20-l w-20-m w4 bn link dim br2 ph3 pv2 dib white">Post a Job</button>
+                    <button onClick={()=>history.push('/postjob')} style={{background:"#265cff"}} className="c-shadow h2 pointer h7-mo fw6 f8-mo f7-m f6-l mr2 w-20-l w-20-m w4 bn link dim br2 ph3 pv2 dib white">Post a Job</button>
                 </div>
                 <div className="flex ma-4 w-90-l w-90-m w-100 center ">
                     <JobCardList jobs={jobdata}/>

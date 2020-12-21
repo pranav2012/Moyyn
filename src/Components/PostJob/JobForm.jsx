@@ -17,7 +17,7 @@ import Skills from './Formelements/Skills';
 import DateForm from './Formelements/DateForm';
 import {useHistory} from 'react-router-dom';
 
-function JobForm({setdata,postjobinitialvalues}) {
+function JobForm({setdata,postjobinitialvalues,data}) {
     let history = useHistory();
     return (
         <div className='jobform flex-1 w-100 vh-100'>
@@ -25,7 +25,7 @@ function JobForm({setdata,postjobinitialvalues}) {
                 initialValues={postjobinitialvalues}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     setSubmitting(true);
-                    setdata(values);
+                    setdata(arr=>[...data,values]);
                     history.push('/dashboard')
                     resetForm({ values: '' });
                 }}
