@@ -35,7 +35,7 @@ function Settings() {
                 <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start justify-start pt4 ml2 pb1'>
                     <Button onClick={general} variant="contained" className={`cbtn ${general_settings?'cbtn-active':''}`}>General</Button>
                     <Button onClick={editcompany} variant="contained" className={`cbtn ${edit_company && !general_settings?'cbtn-active':''}`}>Credentials</Button>
-                    <Button onClick={credentials}  variant="contained" className={`cbtn ${edit_company || general_settings?'':'cbtn-active'}`}>Edit-Details</Button>
+                    <Button onClick={credentials}  variant="contained" className={`cbtn ${edit_company || general_settings?'':'cbtn-active'}`}>Details</Button>
                 </div>
                 {
                     general_settings?
