@@ -12,7 +12,7 @@ function Candidateslist({candidates}) {
     const [candidate_type,setcandidate_type] = useState(false);
     const [def,setdef] = useState(true);
     const [count, setcount] = useState(0);
-    const ismobile = useMediaQuery({ query: `(max-width: 580px)` })
+    const ismobile = useMediaQuery({query:`(max-width: 580px)`})
 
     useEffect(() => {
         setcount(candidates.length)

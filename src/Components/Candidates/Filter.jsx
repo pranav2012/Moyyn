@@ -11,7 +11,8 @@ import {countries, industries, languages, notices} from '../../util/data/static-
 function Filter() {
     
     const [filteradded] = useState(true);
-    const [dl] = useState(false);
+    // const [filters, setfilters] = useState(null)
+    const [dl,setdl] = useState(false);
     const [countriess] = useState(countries);
     const [industriess] = useState(industries);
     const [languagess] = useState(languages);
@@ -20,12 +21,21 @@ function Filter() {
     const [industry, setindustry] = useState(null);
     const [language, setlanguage] = useState(null);
     const [notice, setnotice] = useState(null);
+    
+    const [countryvalue, setcountryvalue] = useState("");
+    const [industryvalue, setindustryvalue] = useState("");
+    const [languagevalue, setlanguagevalue] = useState("");
+    const [noticevalue, setnoticevalue] = useState("");
 
     const countryclick = (event) => {
         setcountry(event.currentTarget);
     };
+
     const countryclose = () => {
         setcountry(null);
+    };
+    const handlecountry = (e) => {
+        setcountryvalue(e.target.value);
     };
     const industryclick = (event) => {
         setindustry(event.currentTarget);
@@ -33,11 +43,17 @@ function Filter() {
     const industryclose = () => {
         setindustry(null);
     };
+    const handleindustry = (e) => {
+        setindustryvalue(e.target.value);
+    };
     const languageclick = (event) => {
         setlanguage(event.currentTarget);
     };
     const languageclose = () => {
         setlanguage(null);
+    };
+    const handlelanguage = (e) => {
+        setlanguagevalue(e.target.value);
     };
     const noticeclick = (event) => {
         setnotice(event.currentTarget);
@@ -45,18 +61,27 @@ function Filter() {
     const noticeclose = () => {
         setnotice(null);
     };
+    const handlenotice = (e) => {
+        setnoticevalue(e.target.value);
+        console.log("e.target")
+    };
 
     const handledelete = () =>{
         console.log("deleted");
     }
 
     // useEffect(() => {
-    //    setfilters({
-    //        if
-    //    })
-    // console.log(country,language,industry,notice,dl,language)
-    // }, [country,language,industry,notice,dl])
-
+    //     if(false){
+    //         setfilters({
+    //             industry:industryvalue,
+    //             country:countryvalue,
+    //             language:languagevalue,
+    //             notice:noticevalue,
+    //             dl:dl
+    //         });
+    //     }
+    // }, [])
+    
     return (
         <>
             <div className={''/*"bg-white br2 c-shadow pa2 mt3"*/}>
@@ -69,10 +94,12 @@ function Filter() {
                     </div>
                     <Menu
                         id="country"
+                        value={countryvalue}
                         anchorEl={country}
                         keepMounted
                         open={Boolean(country)}
                         onClose={countryclose}
+                        onChange={handlecountry}
                     >
                         {countriess.map((option,id) => (
                         <MenuItem key={id} onClick={countryclose}>
@@ -81,13 +108,6 @@ function Filter() {
                         ))}
                     </Menu>
                 </div>
-                {/* <div>
-                    <div onClick={()=> dateclick.current.click()} className='pointer dim flex flex-column items-center'>
-                        <CalendarTodayOutlinedIcon/>
-                        <p className='ma0 mt1 gray f8 f9-mo'>Start Date</p>
-                    </div>
-                    <input  ref={dateclick} type="date" className=''/>
-                </div> */}
                 <div>
                     <div aria-controls="notice" aria-haspopup="true" onClick={noticeclick} className='pointer dim flex flex-column items-center'>
                         <ScheduleOutlinedIcon/>
@@ -95,11 +115,13 @@ function Filter() {
                     </div>
                     <Menu
                         id="notice"
+                        value={noticevalue}
                         anchorEl={notice}
                         keepMounted
                         open={Boolean(notice)}
                         onClose={noticeclose}
-                                    >
+                        onChange={handlenotice}
+                    >
                         {noticess.map((option,id) => (
                         <MenuItem key={id} onClick={noticeclose}>
                             {option.time}
@@ -114,10 +136,12 @@ function Filter() {
                     </div>
                     <Menu
                         id="industry"
+                        value={industryvalue}
                         anchorEl={industry}
                         keepMounted
                         open={Boolean(industry)}
                         onClose={industryclose}
+                        onChange={handleindustry}
                                     >
                         {industriess.map((option,id) => (
                         <MenuItem key={id} onClick={industryclose}>
@@ -133,11 +157,13 @@ function Filter() {
                     </div>
                     <Menu
                         id="language"
+                        value={languagevalue}
                         anchorEl={language}
                         keepMounted
                         open={Boolean(language)}
                         onClose={languageclose}
-                                    >
+                        onChange={handlelanguage}
+                    >
                         {languagess.map((option,id) => (
                         <MenuItem key={id} onClick={languageclose}>
                             {option.name}
@@ -148,7 +174,7 @@ function Filter() {
                 <div>
                     <div className='flex items-center hide-mo'> 
                         <p className='gray mr1 f7-l f7-m f9-mo'>Eu Driving License</p>
-                        <input value={dl} name="othercountries" type="checkbox"/>
+                        <input onChange={()=>setdl(!dl)} value={dl} name="othercountries" type="checkbox"/>
                     </div>
                 </div>
             </div>

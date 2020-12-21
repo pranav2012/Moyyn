@@ -73,12 +73,12 @@ export const Shortlist = ({candidate}) => {
                     <p className='ma0 flex-1 mb3 gray f7 f8-m f8-mo'>Notice Period: 2 Months</p>
                     <p className='ma0 flex-1 mb3 gray f7 f8-m f8-mo'>English, Hindi</p>
                 </div>
-                <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>CV</p></div>
-                <div  onClick={(e) => {window.location.href = "mailto:p2012agarwal@gmail.com?subject=Job at Moyyn&body=Hello, thsnks for applying"; e.preventDefault();}} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><MailOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Mail</p></div>
+                <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Cv</p></div>
                 <Commentbox/>
+                <div  onClick={(e) => {window.location.href = "mailto:p2012agarwal@gmail.com?subject=Job at Moyyn&body=Hello, thsnks for applying"; e.preventDefault();}} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><MailOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Mail</p></div>
                 <div className='h-100 w-25-l w-40-m w-30 pr4 mb2 self-center'>
                     <div className='flex justify-center flex-row-l flex-row-m flex-column justify-center items-center'>
-                        <button style={{color:"red"}} className="bg-white pointer ml2-l ml2-m ml3 c-shadow w-60-l w-50-m w3 h2-l mt2  mt0-l mt0-m bn link dim br2 ph3 pv2-l pv1 dib"><div className='btnic flex f9-mo f8-m f7-l f8-m  items-center justify-center'><HighlightOffIcon/><span className='ml2'>Unselect</span></div></button>
+                        <button style={{color:"red"}} className="bg-white pointer ml2-l ml2-m ml3 c-shadow w-80-l w-50-m w3 h2-l mt2  mt0-l mt0-m bn link dim br2 ph3 pv2-l pv1 dib"><div className='btnic flex f9-mo f8-m f7-l f8-m  items-center justify-center'><HighlightOffIcon/><span className='ml2'>Unselect</span></div></button>
                     </div>
                 </div>
             </div>
@@ -110,10 +110,11 @@ export const Rejected = ({candidate}) => {
                     <p className='ma0 flex-1 mb3 gray f7 f8-m f8-mo'>Notice Period: 2 Months</p>
                     <p className='ma0 flex-1 mb3 gray f7 f8-m f8-mo'>English, Hindi</p>
                 </div>
+                <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View Cv</p></div>
                 <Commentbox/>
                 <div className='h-100 w-25-l w-40-m w-30 pr4 mb2 self-center'>
                     <div className='flex justify-center flex-row-l flex-row-m flex-column justify-center items-center'>
-                        <button style={{color:"#265cff"}} className="bg-white pointer ml2-l ml2-m ml3 c-shadow w-60-l w-50-m w3 h2-l mt2  mt0-l mt0-m bn link dim br2 ph3 pv2-l pv1 dib"><div className='btnic flex f9-mo f8-m f7-l f8-m  items-center justify-center'><KeyboardBackspaceOutlinedIcon/><span className='ml2'>Move to All</span></div></button>
+                        <button style={{color:"#265cff"}} className="bg-white pointer ml2-l ml2-m ml3 c-shadow w-80-l w-50-m w3 h2-l mt2  mt0-l mt0-m bn link dim br2 ph3 pv2-l pv1 dib"><div className='btnic flex f9-mo f8-m f7-l f8-m  items-center justify-center'><KeyboardBackspaceOutlinedIcon/><span className='ml2'>Shortlist{ismobile?"":" Again"}</span></div></button>
                     </div>
                 </div>
             </div>
