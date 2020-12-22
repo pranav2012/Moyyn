@@ -102,7 +102,7 @@ export const dummycandidates = [
         }]
       },
       {
-        name:"Pranav Agarwal",
+        name:"Sidharth Vardhan kumar",
         level:"Senior",
         languages:{
           other:"English",
@@ -151,7 +151,7 @@ export const dummycandidates = [
           msg:"Nice guy"
         }]
       },      {
-        name:"Pranav Agarwal",
+        name:"Bhavya Kalra",
         level:"Senior",
         languages:{
           other:"English",

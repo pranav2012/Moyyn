@@ -3,6 +3,10 @@
    border-left:2px solid #265cff;
 }
 
+.name_candidatebox{
+    width: 18vw;
+}
+
 .cardlist{
     overflow-y: hidden;
     overflow-x: scroll;
@@ -16,5 +20,5 @@
 @media only screen and (max-width: 480px) {
     .card{
         height: 5.3rem;
-    }
+    }  
 }

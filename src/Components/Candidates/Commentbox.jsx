@@ -35,7 +35,7 @@ function Commentbox({comments_data}) {
             <div onClick={()=>setread(true)} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><ChatOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Comments</p></div>
             <div>
                 <div onClick={()=> {setaddcomment(false)}} className={`fixed overlay top-0 bottom-0 left-0 right-0 ${addcomment?'active z-11':''}`}></div>
-                <div className={`add-comment dib read ba br2 b--gray ph2 pv3 ${addcomment?'':'hide'}`}>
+                <div className={`add-comment dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${addcomment?'':'hide'}`}>
                     <div onClick={()=>setaddcomment(false)} className='absolute dim right-1 pointer'>&times;</div>
                     <div className='flex flex-column w-80 center h-100 justify-between'>
                         <p className='tc f4-l f4-m gray f5 mb0'>Add Comment!</p>

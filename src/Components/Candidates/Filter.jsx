@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 import ScheduleOutlinedIcon from '@material-ui/icons/ScheduleOutlined';
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined';
@@ -21,22 +21,33 @@ function Filter() {
     const [language, setlanguage] = useState(null);
     const [notice, setnotice] = useState(null);
 
-    const [countryvalue, setcountryvalue] = useState("");
-    const [industryvalue, setindustryvalue] = useState("");
-    const [languagevalue, setlanguagevalue] = useState("");
-    const [noticevalue, setnoticevalue] = useState("");
+    const [countryvalue, setcountryvalue] = useState(undefined);
+    const [industryvalue, setindustryvalue] = useState(undefined);
+    const [languagevalue, setlanguagevalue] = useState(undefined);
+    const [noticevalue, setnoticevalue] = useState(undefined);
     const [dl, setdl] = useState(false);
 
-    const handledelete = () => {
-        console.log("deleted");
-    }
+    function usePrevious(value) {
+        const ref = useRef();
+        useEffect(() => {
+          ref.current = value;
+        });
+        return ref.current;
+      }
 
+    const previ=usePrevious(industryvalue),
+          prevc=usePrevious(countryvalue),
+          prevl=usePrevious(languagevalue),
+          prevn=usePrevious(noticevalue);
+    
     useEffect(() => { 
-        if(industryvalue !=="") setfilters(arr => [...filters ,industryvalue]);
-        if(countryvalue !=="")  setfilters(arr => [...filters ,countryvalue]);
-        if(languagevalue !=="")  setfilters(arr => [...filters ,languagevalue]);
-        if(noticevalue !=="")  setfilters(arr => [...filters ,noticevalue]);
+        if(industryvalue !==previ) setfilters(arr => [...filters ,industryvalue]);
+        if(countryvalue !==prevc)  setfilters(arr => [...filters ,countryvalue]);
+        if(languagevalue !==prevl)  setfilters(arr => [...filters ,languagevalue]);
+        if(noticevalue !==prevn)  setfilters(arr => [...filters ,noticevalue]);
         if(dl) setfilters(arr => [...filters ,"EU License"]);
+        if(!dl) setfilters((chips)=>chips.filter((chip)=> chip !== "EU License"))
+        // console.log(filters)
         // eslint-disable-next-line 
     }, [industryvalue,countryvalue,languagevalue,noticevalue,dl])
 
@@ -45,7 +56,7 @@ function Filter() {
             <div className={''/*"bg-white br2 c-shadow pa2 mt3"*/}>
                 <div className='w-100 center mt3'><p className='ma0 gray pl2 f5-l f5-m f7'>Filter Candidates</p></div>
                 <div style={{ color: "#265cff" }} className='flex items-center candidate_search h3 c-shadow bg-white w-100-l w-90 mt3 pv2 ph4-l ph3-m ph2 center br2'>
-                    <div className='flex justify-between flex-wrap items-center mr-auto w-60-l w-70-m w-100'>
+                    <div className='flex justify-between flex-wrap items-center mr-auto w-60-l w-100-m w-100'>
                         <div className='ml0-l ml4-m ml4'>
                             <div aria-controls="country" aria-haspopup="true" onClick={(e)=>setcountry(e.currentTarget)} className='pointer dim flex flex-column items-center'>
                                 <PublicOutlinedIcon />
@@ -132,12 +143,13 @@ function Filter() {
                 </div>
                 <div className='w-90 center tc mt3'>
                     {
-                        filters.length!==0 ?
+                        console.log(filters)}{
+                        filters.length !== 0 ?
                             <div className='chips'>
                                 {
                                     filters.map((name,id)=>{
-                                        // console.log(name)
-                                        return <Chip key={id} variant="outlined" size="small" label={name} onDelete={handledelete} />
+                                        //console.log(name)
+                                        return <Chip key={id} variant="outlined" size="small" label={name} onDelete={()=>setfilters((chips)=>chips.filter((chip)=>chip !== name))} />
                                     })
                                 }
                             </div>

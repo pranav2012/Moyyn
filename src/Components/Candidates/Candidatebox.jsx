@@ -25,7 +25,7 @@ export const Candidatebox = ({candidate}) => {
 			/>
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>
-                    <div className='flex flex-column'>
+                    <div className='flex name_candidatebox flex-column'>
                         <p className='ma0 f4-l f5-m f7'>{name}</p>
                         <p style={{color:"#265cff"}} className='ma0 gray f7-l mt1 f7-m f8-mo'>{level}</p>
                         <p className='ma0 mt2_2 gray f8 f9-m f10-mo mt1'>Registered 3 hours ago</p>

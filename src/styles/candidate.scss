@@ -11,7 +11,9 @@
 .ch{
     height: 110px;
 }
-
+.name_candidatebox{
+    width: 18vw;
+}
 .floati{
     width: 32px;
     height: 32px;
@@ -152,8 +154,26 @@
     margin: 0;
   }
  
-
+  @media only screen and (max-width: 1024px) {
+    .name_candidatebox{
+        width: 16vw;
+    }
+    .ch{
+        height: 120px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .name_candidatebox{
+        width: 25vw;
+    }
+    .ch{
+        height: 120px;
+    }
+}
 @media only screen and (max-width: 480px) {
+    .name_candidatebox{
+        width: 30vw;
+    }
     .ch{
         height: 90px;
     }
