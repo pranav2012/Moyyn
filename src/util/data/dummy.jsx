@@ -151,7 +151,7 @@ export const dummycandidates = [
           msg:"Nice guy"
         }]
       },      {
-        name:"Bhavya Kalra",
+        name:"Pranav",
         level:"Senior",
         languages:{
           other:"English",
