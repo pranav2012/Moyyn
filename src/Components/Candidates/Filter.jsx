@@ -38,15 +38,18 @@ function Filter() {
     const previ=usePrevious(industryvalue),
           prevc=usePrevious(countryvalue),
           prevl=usePrevious(languagevalue),
-          prevn=usePrevious(noticevalue);
+          prevn=usePrevious(noticevalue),
+          prevdl=usePrevious(dl);
     
     useEffect(() => { 
         if(industryvalue !==previ) setfilters(arr => [...filters ,industryvalue]);
         if(countryvalue !==prevc)  setfilters(arr => [...filters ,countryvalue]);
         if(languagevalue !==prevl)  setfilters(arr => [...filters ,languagevalue]);
         if(noticevalue !==prevn)  setfilters(arr => [...filters ,noticevalue]);
-        if(dl) setfilters(arr => [...filters ,"EU License"]);
-        if(!dl) setfilters((chips)=>chips.filter((chip)=> chip !== "EU License"))
+        if(dl !== prevdl) {
+            dl?setfilters(arr => [...filters ,"EU License"])
+            :setfilters((chips)=>chips.filter((chip)=> chip !== "EU License"))
+        }
         // console.log(filters)
         // eslint-disable-next-line 
     }, [industryvalue,countryvalue,languagevalue,noticevalue,dl])
