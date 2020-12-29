@@ -1,0 +1,211 @@
+.btnic{
+    .MuiSvgIcon-root{
+        font-size: 1rem !important;
+    }
+}
+
+.chips{
+    .MuiChip-outlined{
+        margin:3px;
+    }
+}
+
+.ch{
+    height: 110px;
+}
+
+.name_candidatebox{
+    width: 16vw;
+}
+
+.floati{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 2%;
+    bottom:10%;
+    border: 1px solid rgba(128, 128, 128, 0.473);
+    border-radius: 100%;
+}
+
+.floati:hover{
+    border-color:  white;
+    background-color: #265cff;
+    .MuiSvgIcon-root{
+        color: white;
+    }
+}
+
+.addcmti{
+    padding: 4px;
+    .MuiSvgIcon-root{
+        font-size: 1.4rem;
+    }
+}
+
+.cbtn{
+    color: #265cff !important;
+    background-color:  white!important;
+    font-size: 0.74rem !important;
+    font-family: inherit !important;
+    margin-left: 1% !important;
+}
+.cbtn:first-child{
+    margin-left: 0px !important;
+}
+.cbtn-active{
+    color: white!important;
+    background-color: #265cff !important;
+}
+.comment{
+    border:1px solid rgb(231, 225, 225);
+    height: 70px;
+    width: 180px;
+}
+
+.comment > div:first-child{
+    margin-top: 0px;
+}
+
+.ov{
+    scrollbar-width: none;
+    overflow: scroll;
+}
+
+.read{
+ position: fixed;
+ top:50%;
+ left:50%;
+ transform: translate(-50%,-50%);
+ background-color: white;
+ height: 400px;
+ width: 60%;
+ z-index: 10;
+}
+
+.ov::-webkit-scrollbar{
+    width: 0px;
+}
+  
+.overlay{
+    pointer-events: none;
+    background-color: rgba(119, 118, 118, 0.37);
+    opacity: 0;
+}
+
+.overlay.active{
+    pointer-events: all;
+    opacity: 1;
+}
+
+.add-comment{
+    z-index: 12;
+    width: 30%;
+    height: 60%;
+    textarea{
+        overflow: scroll;
+        scrollbar-width: none;
+        height: 50%;
+        resize: none;
+    }
+    textarea::-webkit-scrollbar{
+        width: 0px;
+    }
+    button{
+        color: white !important;
+        font-size: .875rem !important;
+        font-family: inherit !important;
+    }
+}
+
+.hide{
+    display: none;
+}
+
+// arrow box
+
+  .box:after {
+    content: "";
+    display: block;
+    border-width: 20px 20px 0;
+    border-style: solid;
+    border-color: #cbcccc transparent transparent;
+    margin-left: -20px;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+  }
+  
+  .arrow {
+    border-top-right-radius: 0;
+  }
+
+  .arrow:after {
+    border-width: 10px;
+    margin: 0;
+    border-width: 20px;
+    border-right-width: 0;
+    border-top-color: transparent;
+    border-left-color: white;
+    margin: -20px 0 0;
+    left: auto;
+    right: -20px;
+    top: 50%;
+    bottom: auto;
+    border-top-color: white;
+    top: 0;
+    border-width: 10px;
+    margin: 0;
+  }
+ 
+  @media only screen and (max-width: 1024px) {
+    .name_candidatebox{
+        width: 16vw;
+    }
+    .ch{
+        height: 120px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .name_candidatebox{
+        width: 25vw;
+    }
+    .ch{
+        height: 120px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .name_candidatebox{
+        width: 30vw;
+    }
+    .ch{
+        height: 90px;
+    }
+    .add-comment{
+        width: 80% !important;
+        height: 40%;
+    }
+    .cbtn{
+        color: #265cff !important;
+        background-color:  white!important;
+        font-size: 0.5rem !important;
+        font-family: inherit !important;
+        margin-left: 0.6rem !important;
+        height: 20% !important;
+    }
+    .cbtn:first-child{
+        margin-left: 0px !important;
+    }
+    .cbtn-active{
+        color: white!important;
+        background-color: #265cff !important;
+    }
+    .read{
+        width: 85%;
+    }
+    .ico,.candidate_search{
+        .MuiSvgIcon-root{
+            font-size: 1.2rem;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.card{
+    height: 120px;
+    border-left:2px solid #265cff;
+ }
+ 
+ .cardlist{
+     overflow-y: hidden;
+     overflow-x: scroll;
+     scrollbar-width: none;
+ }
+ .cardlist::-webkit-scrollbar{
+     display: none;
+ }
+ 
+ 
+//  @media only screen and (max-width: 480px) {
+    
+//  }
