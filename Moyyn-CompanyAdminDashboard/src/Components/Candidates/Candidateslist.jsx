@@ -5,14 +5,13 @@ import ChevronLeftTwoToneIcon from '@material-ui/icons/ChevronLeftTwoTone';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import Filter from './Filter';
-import { useMediaQuery } from 'react-responsive';
+import Tweak from '../Momatch-Tweak/Tweak';
 
 function Candidateslist({candidates}) {
     let history = useHistory();
     const [candidate_type,setcandidate_type] = useState(false);
     const [def,setdef] = useState(true);
     const [count, setcount] = useState(0);
-    const ismobile = useMediaQuery({query:`(max-width: 580px)`});
 
     let nrml =  candidates.filter((val)=>(val.short === false && val.reject === false)||(val.short === true && val.reject === true));
     let shortlisted = candidates.filter((val)=>(val.short === true && val.reject === false));
@@ -40,21 +39,43 @@ function Candidateslist({candidates}) {
     //console.log(def,candidate_type)
     return (
         <div style={{background:"#eef2f5"}} className='flex-1 w-100 pa4-l pa3'>
-            <div className='w-80-l w-100 center flex flex-column'>
+            <p className='gray tc f3-l f3-m f5 mt4 ma0 mb0'>Moyyn Company Dashboard</p>
+            <div className='w-80-l w-100 mt4 center flex flex-column'>
                 {/* job info */}
-                <div className='flex'>
-                    <ChevronLeftTwoToneIcon onClick={() => history.push("/Dashboard")} className='self-center dim pointer'/>
-                    <div className='flex flex-column items-start'>
-                        <p className='ma0 f4-l f5-m f7 pb2 tc'>(Senior) Software Engineer - Python</p>
-                        <p className='ma0 pl2 f6-l f7-m f8 gray tc'>New Delhi, India</p>
+                <div className='flex flex-row-l flex-row-m flex-column'>
+                    <div className='flex'>
+                        <ChevronLeftTwoToneIcon onClick={() => history.push("/Dashboard")} className='self-center dim pointer'/>
+                        <div className='flex flex-column items-start'>
+                            <p className='ma0 f4-l f5-m f7 pb2 tc'>(Senior) Software Engineer - Python</p>
+                            <p className='ma0 pl2 f6-l f7-m f8 gray tc'>New Delhi, India</p>
+                        </div>
+                    </div>
+                    <button style={{background:"#265cff"}} className="ml-auto-l ml-auto-m ml3 mt3 mt0-l mt0-m c-shadow h2 pointer h7-mo fw6 f8-mo f7-m f6-l mr2 w-20-l w-20-m w4 bn link dim br2 ph3 pv2 dib white">View Job</button>
+                </div>
+                <Tweak/>
+                <Filter/>
+                <div className='flex flex-row-l flex-column  mt4 w-100'>
+                    <div  className='flex flex-column justify-around items-center w-100'>
+                        <p className='ma0 gray f6-l f7-m f8-mo'>For Moyyn</p>
+                        <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start-l justify-center pt4 ml2-l pb1'>
+                            <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
+                            <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
+                            <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
+                            <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Selected</Button>
+                        </div>
+                    </div>
+                    <div className='flex flex-column justify-around mt3 mt0-l items-center w-100'>
+                        <p className='ma0 gray f6-l f7-m f8-mo'>For Client</p>
+                        <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-end-l justify-center pt4 pb1'>
+                            <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
+                            <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
+                            <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
+                            <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Selected</Button>
+                        </div>
                     </div>
                 </div>
-                <Filter/>
-                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start pt4 ml2 pb1'>
-                    <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
-                    <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
-                    <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
-                    <p className='ma0 gray f6-l f7-m f8-mo ml-auto mr3 self-center'>{ismobile?'All ':'Candidates '}({count})</p>
+                <div className='mv3'>
+                    <p className='ma0 gray mr2 f6-l f7-m f8-mo tr'>{'All Candidates'}({count})</p>
                 </div>
                 <div className='w-100 flex center flex-column'>
                     {

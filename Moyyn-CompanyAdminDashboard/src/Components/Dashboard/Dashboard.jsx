@@ -62,7 +62,6 @@ function Dashboard() {
 
     return (
         <div className=''>
-           <p className='gray tc f2-l f2-m f3 mt4 ma0 mb0'>Admin Dashboard</p>
            <div className='ma4-l ma4-m ma0 mt4'>
                 <p className='gray tl f5-l f5-m f6 center w-80-l w-80-m w-90 ma0'>Pending Approvals</p>
             </div>
