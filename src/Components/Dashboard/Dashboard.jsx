@@ -5,7 +5,7 @@ import '../../styles/dashboard.scss';
 import '../../styles/custom.css';
 import { useHistory } from 'react-router-dom';
 
-function Dashboard({company="Moyyn",data}) {
+function Dashboard({company="Moyyn",data,setcandidatedata}) {
     const [jobdata,setjobdata] = useState([]);
 
     let history = useHistory();
@@ -24,7 +24,7 @@ function Dashboard({company="Moyyn",data}) {
                     <button onClick={()=>history.push('/postjob')} style={{background:"#265cff"}} className="c-shadow h2 pointer h7-mo fw6 f8-mo f7-m f6-l mr2 w-20-l w-20-m w4 bn link dim br2 ph3 pv2 dib white">Post a Job</button>
                 </div>
                 <div className="flex ma-4 w-90-l w-90-m w-100 center ">
-                    <JobCardList jobs={jobdata}/>
+                    <JobCardList jobs={jobdata} setcandidatedata={setcandidatedata}/>
                 </div>
             </div>
         </div>

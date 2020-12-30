@@ -550,6 +550,6 @@ export const dummycandidates = [
 ]
 
 export const dummyjobposts = [
-{job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior"},
-{job_title:"Machine Learning Engeenier",city:"New Delhi",country:"India","Career Level":"Senior"},
+{job_title:"Full Stack Developer",city:"New Delhi",country:"India","Career Level":"Senior",candidatedata:dummycandidates},
+{job_title:"Machine Learning Engeenier",city:"New Delhi",country:"India","Career Level":"Senior",candidatedata:dummycandidates},
 ]

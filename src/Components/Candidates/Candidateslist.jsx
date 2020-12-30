@@ -65,7 +65,7 @@ function Candidateslist({candidates}) {
                 </div>
                 <div className='w-100 flex center flex-column'>
                     {
-                        candidates.length<=0 || candidates[0] === undefined ?<div className='mt4 flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>
+                        candidates.length<=0 || candidates === undefined ?<div className='mt4 flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>
                         :def && candidate_type?
                         <div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>Selected Candidates have been Notified!</p></div>
                         :def?

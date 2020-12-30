@@ -6,7 +6,7 @@ import ResumePreview from './ResumePreview';
 import { useMediaQuery } from 'react-responsive';
 import MailOutlinedIcon from '@material-ui/icons/MailOutlined';
 
-export const Candidatebox = ({candidate}) => {
+export const MCandidatebox = ({candidate}) => {
     const [isPreviewOpen, setisPreviewOpen] = useState(false);
     const ismobile = useMediaQuery({ query: `(max-width: 580px)` });
     const {name,cv,languages,notice,level,comments,date} = candidate;
@@ -40,7 +40,7 @@ export const Candidatebox = ({candidate}) => {
 }
 
 
-export const Shortlist = ({candidate}) => {
+export const MShortlist = ({candidate}) => {
     const {name,email,cv,languages,notice,level,comments,date} = candidate;
     const {native,other} = languages;
     const [isPreviewOpen, setisPreviewOpen] = useState(false);
@@ -75,7 +75,7 @@ export const Shortlist = ({candidate}) => {
     );
 }
 
-export const Rejected = ({candidate}) => {
+export const MRejected = ({candidate}) => {
     const {name,cv,languages,notice,level,comments,date} = candidate;
     const {native,other} = languages;
     const [isPreviewOpen, setisPreviewOpen] = useState(false)

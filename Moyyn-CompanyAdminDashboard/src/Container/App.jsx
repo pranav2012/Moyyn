@@ -6,12 +6,13 @@ import Login from '../Components/AdminLogin/Login';
 import Dashboard from '../Components/Dashboard/Dashboard';
 import 'tachyons';
 import Jobs from '../Components/Jobs/Joblist';
-import {dummyjobposts as jobdata, dummycandidates as candidates} from '../util/data/dummy'; 
 import Candidates from '../Components/Candidates/Candidateslist';
 
 function App() {
 
   const [loggedin, setloggedin] = useState(true);
+  const [jobdata, setjobdata] = useState([]);
+  const [candidates, setcandidates] = useState([])
 
   return (
     <div className="App">
@@ -25,12 +26,12 @@ function App() {
               {loggedin?<Redirect to='/dashboard'/>:<Redirect to='/'/>} 
               <div>
                 <Header setlog={setloggedin}/>
-                <Dashboard/>
+                <Dashboard setjobdata={setjobdata}/>
               </div>
           </Route>
           <Route exact path='/jobs'>
             <div className="flex ma-4 w-90-l w-90-m w-100 center ">
-              <Jobs jobs={jobdata}/>
+              <Jobs jobs={jobdata} setcandidatedata={setcandidates}/>
             </div>
           </Route>
           <Route exact path='/candidates'>

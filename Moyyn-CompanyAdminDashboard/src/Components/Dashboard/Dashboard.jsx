@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Jobs from '../Company/Companylist';
 import ApprovedJobs from '../Company/Approvedlist';
 import '../../styles/Dashboard.scss';
+import {dummyjobposts as jobdata} from '../../util/data/dummy'; 
+
 
 function Dashboard({setjobdata}) {
 
@@ -18,7 +20,8 @@ function Dashboard({setjobdata}) {
         phone:"+91-8976987231",
         jobposted:0,
         hired:0,
-        shortlisted:0
+        shortlisted:0,
+        jobdata:jobdata,
     },
     {
         pending:true,
@@ -32,7 +35,8 @@ function Dashboard({setjobdata}) {
         phone:"+91-8976987231",
         jobposted:0,
         hired:0,
-        shortlisted:0
+        shortlisted:0,
+        jobdata:jobdata,
     },
     {
         pending:false,
@@ -46,7 +50,8 @@ function Dashboard({setjobdata}) {
         phone:"+91-8976987231",
         jobposted:0,
         hired:0,
-        shortlisted:0
+        shortlisted:0,
+        jobdata:jobdata,
     },
     {
         pending:false,
@@ -60,7 +65,8 @@ function Dashboard({setjobdata}) {
         phone:"+91-8976987231",
         jobposted:0,
         hired:0,
-        shortlisted:0
+        shortlisted:0,
+        jobdata:jobdata,
     }]); 
 
     return (

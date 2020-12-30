@@ -14,7 +14,7 @@ import Settings from '../Components/Settings/Settings';
 import Candidates from '../Components/Candidates/Candidateslist';
 import {postjobinitialvalues,signupforminitialvalues} from "../util/data/initial-values";
 import EditJob from '../Components/PostJob/EditJob';
-import { dummycandidates, dummyjobposts } from '../util/data/dummy';
+import {dummyjobposts } from '../util/data/dummy';
 
 function App(){
 
@@ -22,7 +22,7 @@ function App(){
     const [registered, setregistered] = useState(false);
     const [loggedin] = useState(true); 
     const [data,setdata] = useState(dummyjobposts);
-    const [candidatedata] = useState(dummycandidates);
+    const [candidatedata,setcandidatedata] = useState([]);
 
     return (
       <div className='App w-100 vh-100 flex flex-column items-center'>
@@ -43,7 +43,7 @@ function App(){
             <Route exact path='/dashboard'>
               {loggedin?<Redirect to='/dashboard'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
-              <Dashboard data={data}/>
+              <Dashboard data={data} setcandidatedata={setcandidatedata}/>
             </Route>
             <Route exact path='/postjob'>
               {loggedin?<Redirect to='/postjob'/>:<Redirect to='/'/>} 
