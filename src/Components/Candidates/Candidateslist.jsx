@@ -5,14 +5,13 @@ import ChevronLeftTwoToneIcon from '@material-ui/icons/ChevronLeftTwoTone';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import Filter from './Filter';
-import { useMediaQuery } from 'react-responsive';
 
 function Candidateslist({candidates}) {
     let history = useHistory();
     const [candidate_type,setcandidate_type] = useState(false);
     const [def,setdef] = useState(true);
+
     const [count, setcount] = useState(0);
-    const ismobile = useMediaQuery({query:`(max-width: 580px)`})
 
     let nrml =  candidates.filter((val)=>(val.short === false && val.reject === false)||(val.short === true && val.reject === true));
     let shortlisted = candidates.filter((val)=>(val.short === true && val.reject === false));
@@ -37,6 +36,11 @@ function Candidateslist({candidates}) {
         setcandidate_type(false);
         setdef(false);
     }
+
+    const selectfun = () =>{
+        setcandidate_type(true);
+        setdef(true);
+    }
     //console.log(def,candidate_type)
     return (
         <div style={{background:"#eef2f5"}} className='flex-1 w-100 pa4-l pa3'>
@@ -50,15 +54,20 @@ function Candidateslist({candidates}) {
                     </div>
                 </div>
                 <Filter/>
-                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start pt4 ml2 pb1'>
-                    <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
-                    <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
-                    <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
-                    <p className='ma0 gray f6-l f7-m f8-mo ml-auto mr3 self-center'>{ismobile?'All ':'Candidates '}({count})</p>
+                <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start-l justify-center pt4 ml2-l pb1'>
+                            <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def && !candidate_type?'cbtn-active':''}`}>Candidates</Button>
+                            <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
+                            <Button onClick={reject}  variant="contained"   className={`cbtn ${!candidate_type && !def?'cbtn-active':''}`}>Rejected</Button>
+                            <Button onClick={selectfun}  variant="contained"   className={`cbtn ${candidate_type && def?'cbtn-active':''}`}><span className='hide-mo mr1'>Hire</span> Selected</Button>
+                </div>
+                <div className='mv3'>
+                    <p className='ma0 gray mr2 f6-l f7-m f8-mo tr'>{'All Candidates'}({count})</p>
                 </div>
                 <div className='w-100 flex center flex-column'>
                     {
                         candidates.length<=0 || candidates[0] === undefined ?<div className='mt4 flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>
+                        :def && candidate_type?
+                        <div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>Selected Candidates have been Notified!</p></div>
                         :def?
                            nrml.length<=0?<div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>Sorry, no candidate's were found!</p></div>:nrml.map((data,id) =><Candidate candidate={data} key={id}/>)
                         :candidate_type?

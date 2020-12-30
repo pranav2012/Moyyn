@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
-export default function ApprovedCompany({approvedclientlist}) {
+export default function ApprovedCompany({approvedclientlist,setjobdata}) {
 
     let history = useHistory();
 
@@ -22,7 +22,7 @@ export default function ApprovedCompany({approvedclientlist}) {
                     </div>
                     <div className='flex flex-column justify-between h-75 flex-1'>
                         <p className='ma0 tr gray f8-l f8-m f9-mo'><span className='hide-mo'>Registered on: </span>7th Nov, 2020</p>
-                        <div onClick={()=>history.push('/Jobs')} className='ac-btn c-shadow w-70 ml-auto'><Button style={{ borderColor: "#265cff", color: "#265cff" }} className='w-100' variant="outlined"><span className='hide-mo'>View Details</span></Button></div>
+                        <div onClick={()=>{history.push('/Jobs'); setjobdata(approvedclientlist.candidatedata)}} className='ac-btn c-shadow w-70 ml-auto'><Button style={{ borderColor: "#265cff", color: "#265cff" }} className='w-100' variant="outlined"><span className='hide-mo'>View Details</span></Button></div>
                     </div>
                 </div>
             </div>

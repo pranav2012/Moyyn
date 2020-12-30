@@ -9,8 +9,13 @@ import Tweak from '../Momatch-Tweak/Tweak';
 
 function Candidateslist({candidates}) {
     let history = useHistory();
+
     const [candidate_type,setcandidate_type] = useState(false);
     const [def,setdef] = useState(true);
+
+    const [mcandidate_type,setmcandidate_type] = useState(false);
+    const [mdef,setmdef] = useState(true);
+
     const [count, setcount] = useState(0);
 
     let nrml =  candidates.filter((val)=>(val.short === false && val.reject === false)||(val.short === true && val.reject === true));
@@ -22,19 +27,24 @@ function Candidateslist({candidates}) {
         def?setcount(nrml.length):candidate_type?setcount(shortlisted.length):setcount(rejected.length);
     }, [def,candidate_type,nrml,rejected,shortlisted]);
 
-    const defaultfunc = () =>{
-        setcandidate_type(false);
-        setdef(true);
+    const defaultfunc = (val1,val2) =>{
+        val2(false);
+        val1(true);
     }
 
-    const shortlist = () =>{
-        setcandidate_type(true);
-        setdef(false);
+    const shortlist = (val1,val2) =>{
+        val2(true);
+        val1(false);
     }
 
-    const reject = () =>{
-        setcandidate_type(false);
-        setdef(false);
+    const selectfun = (val1,val2) =>{
+        val2(true);
+        val1(true);
+    }
+
+    const reject = (val1,val2) =>{
+        val2(false);
+        val1(false);
     }
     //console.log(def,candidate_type)
     return (
@@ -58,19 +68,19 @@ function Candidateslist({candidates}) {
                     <div  className='flex flex-column justify-around items-center w-100'>
                         <p className='ma0 gray f6-l f7-m f8-mo'>For Moyyn</p>
                         <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start-l justify-center pt4 ml2-l pb1'>
-                            <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
-                            <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
-                            <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
-                            <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Selected</Button>
+                            <Button onClick={()=>defaultfunc(setdef,setcandidate_type)} variant="contained" className={`cbtn ${def && !candidate_type?'cbtn-active':''}`}>Candidates</Button>
+                            <Button onClick={()=>shortlist(setdef,setcandidate_type)} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
+                            <Button onClick={()=>reject(setdef,setcandidate_type)}  variant="contained"   className={`cbtn ${!candidate_type && !def?'cbtn-active':''}`}>Rejected</Button>
+                            <Button onClick={()=>selectfun(setdef,setcandidate_type)}  variant="contained"   className={`cbtn ${candidate_type && def?'cbtn-active':''}`}><span className='hide-mo mr1'>Sent to </span> Client</Button>
                         </div>
                     </div>
                     <div className='flex flex-column justify-around mt3 mt0-l items-center w-100'>
                         <p className='ma0 gray f6-l f7-m f8-mo'>For Client</p>
                         <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-end-l justify-center pt4 pb1'>
-                            <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def?'cbtn-active':''}`}>Candidates</Button>
-                            <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
-                            <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Rejected</Button>
-                            <Button onClick={reject}  variant="contained"   className={`cbtn ${candidate_type || def?'':'cbtn-active'}`}>Selected</Button>
+                            <Button onClick={()=>defaultfunc(setmdef,setmcandidate_type)} variant="contained" className={`cbtn ${mdef && !mcandidate_type?'cbtn-active':''}`}>Candidates</Button>
+                            <Button onClick={()=>shortlist(setmdef,setmcandidate_type)} variant="contained"   className={`cbtn ${mcandidate_type && !mdef?'cbtn-active':''}`}>Shortlisted</Button>
+                            <Button onClick={()=>reject(setmdef,setmcandidate_type)}  variant="contained"   className={`cbtn ${!mcandidate_type && !mdef?'cbtn-active':''}`}>Rejected</Button>
+                            <Button onClick={()=>selectfun(setmdef,setmcandidate_type)}  variant="contained"   className={`cbtn ${mcandidate_type && mdef?'cbtn-active':''}`}>Selected</Button>
                         </div>
                     </div>
                 </div>
@@ -80,6 +90,8 @@ function Candidateslist({candidates}) {
                 <div className='w-100 flex center flex-column'>
                     {
                         candidates.length<=0 || candidates[0] === undefined ?<div className='mt4 flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>
+                        :def && candidate_type?
+                        <div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>Selected Candidates have been Sent to Company!</p></div>
                         :def?
                            nrml.length<=0?<div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>Sorry, no candidate's were found!</p></div>:nrml.map((data,id) =><Candidate candidate={data} key={id}/>)
                         :candidate_type?

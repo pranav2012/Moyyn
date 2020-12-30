@@ -3,7 +3,7 @@ import Jobs from '../Company/Companylist';
 import ApprovedJobs from '../Company/Approvedlist';
 import '../../styles/Dashboard.scss';
 
-function Dashboard() {
+function Dashboard({setjobdata}) {
 
     const [pps, setpps] = useState(true)
     const [companylist] = useState([{
@@ -29,6 +29,7 @@ function Dashboard() {
         name:"Pranav Agarwal",
         email:"moyyn@gmail.com",
         website:"https://www.moyyn.com",
+        phone:"+91-8976987231",
         jobposted:0,
         hired:0,
         shortlisted:0
@@ -42,6 +43,7 @@ function Dashboard() {
         name:"Pranav Agarwal",
         email:"moyyn@gmail.com",
         website:"https://www.moyyn.com",
+        phone:"+91-8976987231",
         jobposted:0,
         hired:0,
         shortlisted:0
@@ -55,6 +57,7 @@ function Dashboard() {
         name:"Pranav Agarwal",
         email:"moyyn@gmail.com",
         website:"https://www.moyyn.com",
+        phone:"+91-8976987231",
         jobposted:0,
         hired:0,
         shortlisted:0
@@ -76,7 +79,7 @@ function Dashboard() {
                     <div onClick={()=>setpps(false)} className='flex-1'><button style={{background:"#265cff"}} className="c-shadow pointer f8-mo f7-m f6-l w-100 h2 bn link dim br1 ph3 pv2 dib white">Subscription Clients</button></div>
                 </div>
             </div>
-            <ApprovedJobs approvedclientlist={companylist} pps={pps}/>
+            <ApprovedJobs approvedclientlist={companylist} setjobdata={setjobdata} pps={pps}/>
         </div>
     )
 }

@@ -11,7 +11,7 @@ import Candidates from '../Components/Candidates/Candidateslist';
 
 function App() {
 
-  const [loggedin, setloggedin] = useState(localStorage.getItem("user")|| false);
+  const [loggedin, setloggedin] = useState(true);
 
   return (
     <div className="App">
@@ -24,7 +24,7 @@ function App() {
           <Route exact path='/dashboard'>
               {loggedin?<Redirect to='/dashboard'/>:<Redirect to='/'/>} 
               <div>
-                <Header/>
+                <Header setlog={setloggedin}/>
                 <Dashboard/>
               </div>
           </Route>

@@ -12,7 +12,6 @@ function Login({setlog}) {
 
     const auth = () =>{
         if(username==="admin" && pass === "admin"){
-            localStorage.setItem("user",true)
             setlog(true);
             history.push("/Dashboard");
         }
@@ -27,7 +26,7 @@ function Login({setlog}) {
     return (
         <div className='flex w-100 flex-column items-center justify-center vh-75'>
             <p className='gray tc f3'>Moyyn Admin Login</p>
-           <div className='c-shadow pa5-l pa5-m pa4 w-50-l w-60-m w-90'>
+           <div className='c-shadow bg-white pa5-l pa5-m pa4 w-50-l w-60-m w-90'>
                 <div className='mb4 center w-80-l w-80-m w-100'>
                     <TextField
                         name="login_id"
