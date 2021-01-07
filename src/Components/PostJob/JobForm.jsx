@@ -201,10 +201,11 @@ function JobForm({setdata,postjobinitialvalues,data}) {
 
                                 <button type='submit' disabled={isSubmitting} style={{ background: "#265cff" }} className="mt3 pointer fw6 f7 f6-l w-20-l w-30-m w-40 bn link dim br1  ph3 pv2 ph4-m pv3-m ph4-l pv3-l mb2 dib white">Post Job</button>
                             </form>
-                            <div className='flex-1 f5-l h-50-m f7 gray bw2 bg-white ma4-l ma4-m ma3 br2 pa3 vh-50-l vh-25'>
+                            <div className='flex-1 hide f5-l h-50-m f7 gray bw2 bg-white ma4-l ma4-m ma3 br2 pa3 vh-50-l vh-25'>
                                 <p className='tc'>Note</p>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dolores, consequuntur earum, nulla quisquam dicta fugiat aliquam similique quod eos perspiciatis recusandae nihil molestiae aspernatur illum dolore ab odit eum.</p>
                             </div>
+                            <div className='flex-1'></div>
                         </div>
                     );
                 }}

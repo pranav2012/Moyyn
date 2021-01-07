@@ -16,15 +16,20 @@ function Filter() {
     const [industriess] = useState(industries);
     const [languagess] = useState(languages);
     const [noticess] = useState(notices);
+
     const [country, setcountry] = useState(null);
     const [industry, setindustry] = useState(null);
     const [language, setlanguage] = useState(null);
     const [notice, setnotice] = useState(null);
+    const [level, setlevel] = useState(null);
+
+    const levels = ["A1","A2", "B1", "B2", "C1", "C2", "Native"];
 
     const [countryvalue, setcountryvalue] = useState(undefined);
     const [industryvalue, setindustryvalue] = useState(undefined);
     const [languagevalue, setlanguagevalue] = useState(undefined);
     const [noticevalue, setnoticevalue] = useState(undefined);
+    const [levelvalue, setlevelvalue] = useState(undefined);
     const [dl, setdl] = useState(false);
 
     function usePrevious(value) {
@@ -39,6 +44,7 @@ function Filter() {
           prevc=usePrevious(countryvalue),
           prevl=usePrevious(languagevalue),
           prevn=usePrevious(noticevalue),
+          prevll=usePrevious(levelvalue),
           prevdl=usePrevious(dl);
     
     useEffect(() => { 
@@ -46,6 +52,7 @@ function Filter() {
         if(countryvalue !==prevc)  setfilters(arr => [...filters ,countryvalue]);
         if(languagevalue !==prevl)  setfilters(arr => [...filters ,languagevalue]);
         if(noticevalue !==prevn)  setfilters(arr => [...filters ,noticevalue]);
+        if(levelvalue !== prevll) setfilters(arr => [...filters ,levelvalue]);
         if(dl !== prevdl) {
             dl?setfilters(arr => [...filters ,"EU License"])
             :setfilters((chips)=>chips.filter((chip)=> chip !== "EU License"))
@@ -132,6 +139,26 @@ function Filter() {
                                 {languagess.map((option, id) => (
                                     <MenuItem key={id} onClick={()=>{setlanguagevalue(option.name);setlanguage(null)}}>
                                         {option.name}
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                        </div>
+
+                        <div>
+                            <div aria-controls="level" aria-haspopup="true" onClick={(e)=>setlevel(e.currentTarget)} className='pointer dim flex flex-column items-center'>
+                                <TranslateOutlinedIcon />
+                                <p className='ma0 mt1 gray f8 f9-mo'>Language Level</p>
+                            </div>
+                            <Menu
+                                id="level"
+                                anchorEl={level}
+                                keepMounted
+                                open={Boolean(level)}
+                                onClose={()=>setlevel(null)}
+                            >
+                                {levels.map((option, id) => (
+                                    <MenuItem key={id} onClick={()=>{setlevelvalue(option);setlevel(null)}}>
+                                        {option}
                                     </MenuItem>
                                 ))}
                             </Menu>

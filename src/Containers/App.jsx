@@ -15,6 +15,9 @@ import Candidates from '../Components/Candidates/Candidateslist';
 import {postjobinitialvalues,signupforminitialvalues} from "../util/data/initial-values";
 import EditJob from '../Components/PostJob/EditJob';
 import {dummyjobposts } from '../util/data/dummy';
+import ResetEmail from '../Components/Reset Password/EmailtoReset';
+import ResetPass from '../Components/Reset Password/Resetpass';
+import Login from '../Components/Login/Login';
 
 function App(){
 
@@ -31,6 +34,11 @@ function App(){
             <Route exact path='/'>
               <Header/>
               <Signup backend_url={backend_url} registered={registered} setregistered={setregistered} signupforminitialvalues={signupforminitialvalues}/> 
+              <Footer/>
+            </Route>
+            <Route exact path='/login'>
+              <Header/>
+              <Login/>
               <Footer/>
             </Route>
             <Route exact path='/conformation'>
@@ -64,6 +72,16 @@ function App(){
               {loggedin?<Redirect to='/EditJob'/>:<Redirect to='/'/>} 
               <DashboardHeader/>
               <EditJob setdata={setdata}/>
+            </Route>
+            <Route exact path='/email'>
+              <Header/>
+              <ResetEmail/>
+              <Footer/>
+            </Route>
+            <Route exact path='/pass'>
+              <Header/>
+              <ResetPass/>
+              <Footer/>
             </Route>
             <Route>
               <Redirect to='/'/>

@@ -19,7 +19,7 @@ function Dashboard({company="Moyyn",data,setcandidatedata}) {
                 <div className='flex mt4 mb3 center justify-between w-90 items-center'>
                     <div className='flex flex-column justify-between '>
                         <p className='ma0 f3-l f4-m f6'>Welcome to {company} Dashboard!</p>
-                        <p className='f5-l f6-m f9-m gray ma0'>Get candidates by our A.I system</p>
+                        <p className='f5-l hide f6-m f9-m gray ma0'>Get candidates by our A.I system</p>
                     </div>
                     <button onClick={()=>history.push('/postjob')} style={{background:"#265cff"}} className="c-shadow h2 pointer h7-mo fw6 f8-mo f7-m f6-l mr2 w-20-l w-20-m w4 bn link dim br2 ph3 pv2 dib white">Post a Job</button>
                 </div>

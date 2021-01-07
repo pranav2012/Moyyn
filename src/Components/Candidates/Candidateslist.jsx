@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {Candidatebox as Candidate, Shortlist, Rejected} from './Candidatebox';
+import {Candidatebox as Candidate, Shortlist, Rejected, Selected} from './Candidatebox';
 import '../../styles/candidate.scss';
 import ChevronLeftTwoToneIcon from '@material-ui/icons/ChevronLeftTwoTone';
 import Button from '@material-ui/core/Button';
@@ -13,14 +13,14 @@ function Candidateslist({candidates}) {
 
     const [count, setcount] = useState(0);
 
-    let nrml =  candidates.filter((val)=>(val.short === false && val.reject === false)||(val.short === true && val.reject === true));
-    let shortlisted = candidates.filter((val)=>(val.short === true && val.reject === false));
-    let rejected =  candidates.filter((val)=>(val.short === false && val.reject === true));
-
+    let nrml =  candidates.filter((val)=>(val.short === false && val.reject === false && val.select === false)||(val.short === true && val.reject === true && val.select === true));
+    let shortlisted = candidates.filter((val)=>(val.short === true && val.reject === false && val.select === false));
+    let rejected =  candidates.filter((val)=>((val.short === false && val.select === false) && val.reject === true));
+    let selected = candidates.filter((val)=>(val.short === false && val.reject === false && val.select === true));
 
     useEffect(() => {
-        def?setcount(nrml.length):candidate_type?setcount(shortlisted.length):setcount(rejected.length);
-    }, [def,candidate_type,nrml,rejected,shortlisted]);
+        candidate_type && def?setcount(selected.length):def?setcount(nrml.length):candidate_type?setcount(shortlisted.length):setcount(rejected.length);
+    }, [selected,def,candidate_type,nrml,rejected,shortlisted]);
 
     const defaultfunc = () =>{
         setcandidate_type(false);
@@ -67,7 +67,7 @@ function Candidateslist({candidates}) {
                     {
                         candidates.length<=0 || candidates === undefined ?<div className='mt4 flex justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No, Candidate matched with your job Profile</p></div>
                         :def && candidate_type?
-                        <div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>Selected Candidates have been Notified!</p></div>
+                            selected.length<=0? <div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>No candidates selected!!</p></div>: selected.map((data,id) =><Selected candidate={data} key={id}/>)
                         :def?
                            nrml.length<=0?<div className='flex mt4 justify-center items-center'><p className='ma0 f3-l f4-m f6 gray tc'>Sorry, no candidate's were found!</p></div>:nrml.map((data,id) =><Candidate candidate={data} key={id}/>)
                         :candidate_type?

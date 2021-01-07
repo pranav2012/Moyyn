@@ -8,7 +8,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { countries, industries, languages, notices } from '../../util/data/static-data';
 
-function Filter() {
+function Filter({setfilter}) {
 
     const [filters, setfilters] = useState([]);
 
@@ -50,9 +50,10 @@ function Filter() {
             dl?setfilters(arr => [...filters ,"EU License"])
             :setfilters((chips)=>chips.filter((chip)=> chip !== "EU License"))
         }
+        setfilter(filters);
         // console.log(filters)
         // eslint-disable-next-line 
-    }, [industryvalue,countryvalue,languagevalue,noticevalue,dl])
+    }, [industryvalue,countryvalue,languagevalue,noticevalue,dl,filters])
 
     return (
         <>
@@ -145,8 +146,7 @@ function Filter() {
                     </div>
                 </div>
                 <div className='w-90 center tc mt3'>
-                    {
-                        console.log(filters)}{
+                 {
                         filters.length !== 0 ?
                             <div className='chips'>
                                 {

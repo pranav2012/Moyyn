@@ -13,6 +13,7 @@ export const dummycandidates = [
         email:"p2012agarwal@gmail.com",
         cv:cv,
         short:true,
+        select:false,
         reject:false,
         comments:[{
           name:"Pranav",
@@ -114,6 +115,7 @@ export const dummycandidates = [
         cv:cv,
         short:false,
         reject:true,
+        select:false,
         comments:[{
           name:"Pranav",
           msg:"Nice projects"
@@ -163,6 +165,7 @@ export const dummycandidates = [
         cv:cv,
         short:false,
         reject:false,
+        select:true,
         comments:[{
           name:"Pranav",
           msg:"Nice projects"
@@ -212,7 +215,8 @@ export const dummycandidates = [
         email:"p2012agarwal@gmail.com",
         cv:cv,
         short:false,
-        reject:false,
+        reject:true,
+        select:false,
         comments:[{
           name:"Pranav",
           msg:"Nice projects"
@@ -262,6 +266,7 @@ export const dummycandidates = [
         cv:cv,
         short:false,
         reject:false,
+        select:true,
         comments:[{
           name:"Pranav",
           msg:"Nice projects"
@@ -361,6 +366,7 @@ export const dummycandidates = [
         cv:cv,
         short:true,
         reject:true,
+        select:false,
         comments:[{
           name:"Pranav",
           msg:"Nice projects"
@@ -411,6 +417,7 @@ export const dummycandidates = [
         cv:cv,
         short:true,
         reject:true,
+        select:true,
         comments:[{
           name:"Pranav",
           msg:"Nice projects"
@@ -460,6 +467,7 @@ export const dummycandidates = [
         cv:cv,
         short:true,
         reject:false,
+        select:false,
         comments:[{
           name:"Pranav",
           msg:"Nice projects"
@@ -510,6 +518,7 @@ export const dummycandidates = [
         cv:cv,
         short:false,
         reject:false,
+        select:false,
         comments:[{
           name:"Pranav",
           msg:"Nice projects"
