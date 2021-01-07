@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react';
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
+import 'tachyons';
 
 export default function ApprovedCompany({approvedclientlist,setjobdata}) {
+
+    const [momatch, setmomatch] = useState(true);
 
     let history = useHistory();
 
@@ -21,8 +26,9 @@ export default function ApprovedCompany({approvedclientlist,setjobdata}) {
                         <p className='ma0 gray f5-l f6-m f9-mo'>Hired: {approvedclientlist.hired}</p>
                     </div>
                     <div className='flex flex-column justify-between h-75 flex-1'>
-                        <p className='ma0 tr gray f8-l f8-m f9-mo'><span className='hide-mo'>Registered on: </span>7th Nov, 2020</p>
+                        <p className='ma0 tr gray f8 f8-m f9-mo '><span className='hide-mo'>Registered on: </span>7th Nov, 2020</p>
                         <div onClick={()=>{history.push('/Jobs'); setjobdata(approvedclientlist)}} className='ac-btn c-shadow w-70 ml-auto'><Button style={{ borderColor: "#265cff", color: "#265cff" }} className='w-100' variant="outlined"><span className='hide-mo'>View Details</span></Button></div>
+                        <button onClick={()=>setmomatch(!momatch)} style={{ borderColor:momatch?'red':'green',color:momatch?'red':'green'}} className="bg-white pointer ml-auto ac-btn c-shadow w-70 h2-l mt2 mt0-l mt0-m bn link dim br2 ph3 pv-l pv1 dib"><div className='btnic flex f9-mo f8-m f7-l f8-m  items-center justify-center'>{momatch?<HighlightOffIcon/>:<DoneOutlineIcon/>}<span className='ml2'>{momatch?'Stop':'Start'} Momatch</span></div></button>
                     </div>
                 </div>
             </div>

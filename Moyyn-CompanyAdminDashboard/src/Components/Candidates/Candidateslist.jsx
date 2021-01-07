@@ -5,7 +5,7 @@ import '../../styles/candidate.scss';
 import ChevronLeftTwoToneIcon from '@material-ui/icons/ChevronLeftTwoTone';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
-import Filter from './Filter';
+// import Filter from './Filter';
 import Tweak from '../Momatch-Tweak/Tweak';
 
 function Candidateslist({candidates}) {
@@ -17,11 +17,11 @@ function Candidateslist({candidates}) {
     const [mcandidate_type,setmcandidate_type] = useState(false);
     const [mdef,setmdef] = useState(true);
 
-    const [filter,setfilter] = useState([]);
+    // const [filter,setfilter] = useState([]);
     const [changebtn, setchangebtn] = useState(true);
     const [count, setcount] = useState(0);
 
-    candidates = candidates.filter((val)=>filter.map(()=> true));
+    // candidates = candidates.filter((val)=>filter.map(()=> true));
 
     let nrml =  candidates.filter((val)=>(val.short === false && val.reject === false && val.select === false)||(val.short === true && val.reject === true && val.select === true));
     let shortlisted = candidates.filter((val)=>(val.short === true && val.reject === false && val.select === false));
@@ -71,7 +71,7 @@ function Candidateslist({candidates}) {
                     <button style={{background:"#265cff"}} className="ml-auto-l ml-auto-m ml3 mt3 mt0-l mt0-m c-shadow h2 pointer h7-mo fw6 f8-mo f7-m f6-l mr2 w-20-l w-20-m w4 bn link dim br2 ph3 pv2 dib white">View Job</button>
                 </div>
                 <Tweak/>
-                <Filter setfilter={setfilter}/>
+                {/* <Filter setfilter={setfilter}/> */}
                 <div className='flex flex-row-l flex-column  mt4 w-100'>
                     <div className='flex flex-column justify-around items-center w-100'>
                         <p className='ma0 gray f6-l f7-m f8-mo'>For Moyyn</p>

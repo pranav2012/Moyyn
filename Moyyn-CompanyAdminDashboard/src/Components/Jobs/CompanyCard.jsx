@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import '../../styles/custom.css';
 
 export default function CompanyCard({company}) {
     return (
@@ -16,7 +17,7 @@ export default function CompanyCard({company}) {
                         <p className='ma0 gray f5-l f6-m f9-mo'>Hired: {company.hired}</p>
                     </div>
                     <div className='flex flex-column justify-between h-75 flex-1'>
-                        <p className='ma0 tr gray f8-l f8-m f9-mo'><span className='hide-mo'>Registered on: </span>7th Nov, 2020</p>
+                        <p className='ma0 tr gray f8 f8-m f9-mo'><span className='hide-mo'>Registered on: </span>7th Nov, 2020</p>
                     </div>
                 </div>
             </div>

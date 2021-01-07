@@ -4,7 +4,7 @@ import '../../styles/candidate.scss';
 import ChevronLeftTwoToneIcon from '@material-ui/icons/ChevronLeftTwoTone';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
-import Filter from './Filter';
+// import Filter from './Filter';
 
 function Candidateslist({candidates}) {
     let history = useHistory();
@@ -53,7 +53,7 @@ function Candidateslist({candidates}) {
                         <p className='ma0 pl2 f6-l f7-m f8 gray tc'>New Delhi, India</p>
                     </div>
                 </div>
-                <Filter/>
+                {/* <Filter/> */}
                 <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start-l justify-center pt4 ml2-l pb1'>
                             <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def && !candidate_type?'cbtn-active':''}`}>Candidates</Button>
                             <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
