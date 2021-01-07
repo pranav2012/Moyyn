@@ -79,7 +79,7 @@ function Settings() {
                     :
                     //edit company details
                     <div className='mv4 pa3 w-95 center flex-1 tc bg-white'>
-                        <p className='gray tc f3'>Details</p>
+                        <p className='gray tc f3'>Edit Details</p>
                         <div className='center signupform w-80 '>
                             <SignUpForm signupforminitialvalues={signupforminitialvalues}/>
                         </div>

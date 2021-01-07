@@ -3,6 +3,13 @@
     min-height: 40vh;
 }
 
+.help-ico{
+    svg{
+        height: 0.74em !important;
+        width: 0.74em !important;
+    }
+}
+
 .tf{
     input{
         padding:1.66rem !important;

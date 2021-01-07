@@ -31,7 +31,6 @@ function Commentbox({comments_data}) {
     return (
         <div className='self-center'>
             <div onClick={()=> {setread(false); setaddcomment(false)}} className={`fixed overlay top-0 bottom-0 left-0 right-0 ${read || addcomment?'active':''}`}></div>
-
             <div onClick={()=>setread(true)} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><ChatOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Comments</p></div>
             <div>
                 <div onClick={()=> {setaddcomment(false)}} className={`fixed overlay top-0 bottom-0 left-0 right-0 ${addcomment?'active z-11':''}`}></div>
@@ -45,6 +44,7 @@ function Commentbox({comments_data}) {
                     </div>
                 </div>
                 <div className={`box arrow dib read f6 br2 gray ma0 mr4 flex flex-column comment pa1 ${read?'':'hide'}`}>
+                        <div onClick={()=>setread(false)} className='absolute black top-1 f4 dim right-1 pointer'>&times;</div>
                         <div className="flex flex-row-l flex-row-m flex-column mb3-l mb3-m mb0 center justify-between w-90-l w-90-m w-70 items-center-l items-center-m items-start">
                             <p className={`ml4-l ml4-m ml0 mt4 ma0 gray f3-l f4-m f5`}>Comments</p>
                             <button onClick={() => setaddcomment(true) }  style={{background:"#265cff"}} className="h2 mt4-l mt4-m mt2 pointer h7-mo fw6 f8-mo f7-m f6-l mr4 w-25-l w-25-m w-60 bn link dim br2 ph3-l ph3-m ph2 pv2-l pv2-m pv1 dib white">Add a comment</button>

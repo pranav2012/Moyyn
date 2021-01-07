@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Formik } from "formik";
 import { Postjobformvalidation } from "../../util/validation/form-validation";
 import 'tachyons';
+import HelpOutlineOutlinedIcon from '@material-ui/icons/HelpOutlineOutlined';
 import '../../styles/postjob.scss';
 import TextField from '@material-ui/core/TextField';
 import FormError from '../PostJob/Formelements/FormError';
@@ -18,6 +19,11 @@ import DateForm from './Formelements/DateForm';
 import {useHistory} from 'react-router-dom';
 
 function JobForm({setdata,postjobinitialvalues,data}) {
+
+    const [hov1, sethov1] = useState(false);
+    const [hov2, sethov2] = useState(false);
+    const [hov3, sethov3] = useState(false);
+
     let history = useHistory();
     return (
         <div className='jobform flex-1 w-100 vh-100'>
@@ -126,14 +132,22 @@ function JobForm({setdata,postjobinitialvalues,data}) {
                                             options={careerLevelOptions}
                                         />
                                     </div>
-                                    <div className='mt3'>
+                                    <div className='mt3 relative'>
                                         <WorkExperience />
-                                    </div>
-                                    <div className='mt3'>
-                                        <Languages />
-                                    </div>
+                                        <div style={{background:"#eef2f5"}} className={`${hov1?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 z-11 bottom--2 right--2`}>hellooo</div>
+                                        <div onMouseLeave={()=>sethov1(false)} onMouseOver={()=>sethov1(true)} style={{color:"#265cff"}} className="pointer help-ico dim bottom-2 mb2 right--2 absolute"><HelpOutlineOutlinedIcon/></div>
 
-                                    <Skills />
+                                    </div>
+                                    <div className='mt3 relative'>
+                                        <Languages />
+                                        <div style={{background:"#eef2f5"}} className={`${hov2?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 z-11 bottom--1 right--2`}>hellooo</div>
+                                        <div onMouseLeave={()=>sethov2(false)} onMouseOver={()=>sethov2(true)} style={{color:"#265cff"}} className="pointer help-ico dim top-1 mt1 right--2 absolute"><HelpOutlineOutlinedIcon/></div>
+                                    </div>
+                                    <div className='relative'>
+                                        <Skills />
+                                        <div style={{background:"#eef2f5"}} className={`${hov3?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 top-2 z-11 right--2`}>hellooo</div>
+                                        <div onMouseLeave={()=>sethov3(false)} onMouseOver={()=>sethov3(true)} style={{color:"#265cff"}} className="pointer help-ico dim top-1 right--2 absolute"><HelpOutlineOutlinedIcon/></div>
+                                    </div>
 
                                     <div className='sald flex flex-column flex-row-m flex-row-l w-100 mt4 center items-center justify-between'>
                                         <div className='flex-1 w-100'>
@@ -186,7 +200,6 @@ function JobForm({setdata,postjobinitialvalues,data}) {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="flex mt2 items-center justify-between">
                                     <p className='gray mr2 f6-l f6-m f7'>Willing to recruit from other Countries?</p>
                                     <input 
@@ -198,7 +211,6 @@ function JobForm({setdata,postjobinitialvalues,data}) {
                                     />
                                       <FormError name="othercountries"/>
                                 </div>
-
                                 <button type='submit' disabled={isSubmitting} style={{ background: "#265cff" }} className="mt3 pointer fw6 f7 f6-l w-20-l w-30-m w-40 bn link dim br1  ph3 pv2 ph4-m pv3-m ph4-l pv3-l mb2 dib white">Post Job</button>
                             </form>
                             <div className='flex-1 hide f5-l h-50-m f7 gray bw2 bg-white ma4-l ma4-m ma3 br2 pa3 vh-50-l vh-25'>
