@@ -11,8 +11,8 @@ export default function Resetpass() {
 
     return (
         <div className='w-100' style={{background:"#eef2f5"}}>
-            <div className='center br2 mv5 tc bg-white w-60 ma2 pa4'>
-            <p className='gray tc f3'>Reset Password</p>
+            <div className='center br2 mv5 tc bg-white w-60-l w-80-m w-90 pa4-l pa4-m pa3 ma2'>
+            <p className='gray tc f3-l f4-m f5'>Reset Password</p>
             <div>
                 <div className='creds mt3 w-100'>
                     <TextField
@@ -34,7 +34,7 @@ export default function Resetpass() {
                     />
                 </div>
                 <div className='mt4'>
-                    <Button onClick={()=>setreseted(!reseted)} className='dim' variant="outlined" style={{ borderColor: "#265cff", color: "#265cff" }}>Update Password</Button>
+                    <Button onClick={()=>setreseted(!reseted)} className='dim' variant="outlined" style={{ borderColor: "#265cff", color: "#265cff" }}>Update <span className="hide-mo ml1">Password</span></Button>
                 </div>
                 <div className={`${reseted?'':'hide'} mt4`}>
                     <Alert severity="success">Password reset Succesfull!</Alert>

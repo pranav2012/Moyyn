@@ -11,8 +11,8 @@ export default function EmailtoReset() {
 
     return (
         <div className='w-100' style={{background:"#eef2f5"}}>
-            <div className='center br2 mv5 tc bg-white w-60 ma2 pa4'>
-                <p className='gray tc f4'>Provide your email address to send a password reset link</p>
+            <div className='center br2 mv5 tc bg-white ma2 w-60-l w-80-m w-90 pa4-l pa4-m pa3'>
+                <p className='gray tc f4-l f5-m f6'>Provide your email address to send a password reset link</p>
                 <div>
                 <div className='creds mt3 w-100'>
                     <TextField
