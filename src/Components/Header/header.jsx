@@ -15,7 +15,7 @@ function Header() {
                         <li className='list fw5 f7 f6-l'><a className='link white dim dib' href="https://moyyn.com/DE"><p>DE</p></a></li>
                         <li className='list fw5 f7 f6-l'><a className='link white dim dib' href="https://moyyn.com/"><p>EN</p></a></li>
                         <li className='list btn fw5 f7 f6-l'><a className='link white dim dib' href="/login">Login</a></li>
-                        <li className='list btn fw5 f7 f6-l'><a className='link white dim dib br2-l ba-l ph3-l pv2-l' href="https://moyyn.com/register-login/">Signup</a></li>
+                        <li className='list btn fw5 f7 f6-l'><a className='link white dim dib br2-l ba-l ph3-l pv2-l' href="/">Signup</a></li>
                     </ul>
                 </div>
                 <div className={`burger mb2 ${burgerclicked ? 'toggle' : ''}`} onClick={() => { setburger(burgerclicked = !burgerclicked) }}>

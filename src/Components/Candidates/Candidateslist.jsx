@@ -58,7 +58,7 @@ function Candidateslist({candidates}) {
                             <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def && !candidate_type?'cbtn-active':''}`}>Candidates</Button>
                             <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
                             <Button onClick={reject}  variant="contained"   className={`cbtn ${!candidate_type && !def?'cbtn-active':''}`}>Rejected</Button>
-                            <Button onClick={selectfun}  variant="contained"   className={`cbtn ${candidate_type && def?'cbtn-active':''}`}><span className='hide-mo mr1'>Hire</span> Selected</Button>
+                            <Button onClick={selectfun}  variant="contained"   className={`cbtn ${candidate_type && def?'cbtn-active':''}`}>Hired</Button>
                 </div>
                 <div className='mv3'>
                     <p className='ma0 gray mr2 f6-l f7-m f8-mo tr'>{'All Candidates'}({count})</p>
