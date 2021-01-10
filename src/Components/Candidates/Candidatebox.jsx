@@ -22,7 +22,7 @@ export const Candidatebox = ({candidate}) => {
             <ResumePreview
 				open={isPreviewOpen}
 				close={() => setisPreviewOpen(!isPreviewOpen) }
-				src={cv}
+				src={cv+"#toolbar=0"}
 			/>
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>
@@ -102,7 +102,7 @@ export const Rejected = ({candidate}) => {
             <ResumePreview
 				open={isPreviewOpen}
 				close={() => setisPreviewOpen(!isPreviewOpen) }
-				src={cv}
+				src={cv + "#toolbar=0"}
 			/>
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>
