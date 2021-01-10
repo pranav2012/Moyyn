@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Header from '../Components/Header/DashboardHeader';
@@ -10,9 +10,15 @@ import Candidates from '../Components/Candidates/Candidateslist';
 
 function App() {
 
-  const [loggedin, setloggedin] = useState(true);
+  const [loggedin, setloggedin] = useState(false);
+
   const [jobdata, setjobdata] = useState([]);
   const [candidates, setcandidates] = useState([])
+
+  useEffect(() => {
+    let log = localStorage.getItem("logstate");
+    setloggedin(JSON.parse(log));
+  });
 
   return (
     <div className="App">
@@ -30,11 +36,13 @@ function App() {
               </div>
           </Route>
           <Route exact path='/jobs'>
+            {loggedin?<Redirect to='/jobs'/>:<Redirect to='/'/>} 
             <div className="flex ma-4 w-90-l w-90-m w-100 center ">
               <Jobs jobs={jobdata} setcandidatedata={setcandidates}/>
             </div>
           </Route>
           <Route exact path='/candidates'>
+            {loggedin?<Redirect to='/candidates'/>:<Redirect to='/'/>} 
             <Candidates candidates={candidates}/>
           </Route>
           <Route>

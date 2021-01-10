@@ -11,7 +11,7 @@ function DashboardHeader({setlog}) {
                 <div className={`w-100 navbar nav-dash ml-auto ${burgerclicked ? 'nav-active' : ''}`}>
                     <ul className='flex nav w-90 navlist pa0 ma0 items-center'>
                         <li className='center list fw5 f7 f6-l'><a className='link white dim dib' href="/Dashboard"><p>Dashboard</p></a></li>
-                        <li onClick={()=> setlog(false)} className='center list fw5 f7 f6-l'><a className='link white dim dib' href="/"><p>Sign Out</p></a></li>
+                        <li onClick={()=>{setlog(false);localStorage.setItem("logstate",JSON.stringify(false));}} className='center list fw5 f7 f6-l'><a className='link white dim dib' href="/"><p>Sign Out</p></a></li>
                     </ul>
                 </div>
                 <div className='dicon'><a href="/" className='white'><i className="fa fa-sign-out"></i></a></div>

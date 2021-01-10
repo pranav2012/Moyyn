@@ -13,13 +13,13 @@ function Login({setlog}) {
     const auth = () =>{
         if(username==="admin" && pass === "admin"){
             setlog(true);
+            localStorage.setItem("logstate",JSON.stringify(true));
             history.push("/Dashboard");
         }
         else{
             alert("wrong credentials!!");
             setusername("");
             setpass("");
-            setlog(false);
         }
     }
 

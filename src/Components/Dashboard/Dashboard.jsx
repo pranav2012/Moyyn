@@ -12,7 +12,7 @@ function Dashboard({company="Moyyn",data,setcandidatedata}) {
     useEffect(() => {
         setjobdata(data);
     }, [data]);
-    console.log(jobdata);
+    // console.log(jobdata);
     return (
         <div style={{background:"#eef2f5"}} className='flex-1 w-100'>
             <div className='w-90 center mb5'>

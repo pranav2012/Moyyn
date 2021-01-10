@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import 'tachyons';
 import '../../styles/header.scss';
 
-function DashboardHeader() {
+function DashboardHeader({logout}) {
     let [burgerclicked, setburger] = useState(false);
     return (
         <div className='header w-100 h3'>
@@ -14,7 +14,7 @@ function DashboardHeader() {
                         <li className='center list fw5 f7 f6-l'><a className='link white dim dib' href="/Settings"><p>Settings</p></a></li>
                     </ul>
                 </div>
-                <div className='dicon'><a href="/" className='white'><i className="fa fa-sign-out"></i></a></div>
+                <div onClick={()=>{logout(false);localStorage.setItem("loggedin",JSON.stringify(false));}} className='dicon'><a href="/" className='white'><i className="fa fa-sign-out"></i></a></div>
                 <div className={`burger mb2 ${burgerclicked ? 'toggle' : ''}`} onClick={() => { setburger(burgerclicked = !burgerclicked) }}>
                     <div className='line1'></div>
                     <div className='line2'></div>

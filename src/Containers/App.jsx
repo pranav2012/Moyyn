@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import RegistrationConformation from '../Components/RegistrationConformation/RegistrationConformation';
@@ -23,54 +23,63 @@ function App(){
 
     const backend_url = "https://www.moyyn.com";
     const [registered, setregistered] = useState(false);
-    const [loggedin] = useState(true); 
+
+    const [loggedin,setloggedin] = useState(false); 
+
     const [data,setdata] = useState(dummyjobposts);
     const [candidatedata,setcandidatedata] = useState([]);
+    // eslint-disable-next-line
+    useEffect(() => {
+      let test = localStorage.getItem("loggedin");
+      setloggedin(JSON.parse(test));
+    })
 
     return (
       <div className='App w-100 vh-100 flex flex-column items-center'>
         <Router>
           <Switch>
             <Route exact path='/'>
+            {loggedin?<Redirect to="/dashboard"/>:''}
               <Header/>
               <Signup backend_url={backend_url} registered={registered} setregistered={setregistered} signupforminitialvalues={signupforminitialvalues}/> 
               <Footer/>
             </Route>
             <Route exact path='/login'>
+              {loggedin?<Redirect to="/dashboard"/>:''}
               <Header/>
-              <Login/>
+              <Login setlog={setloggedin}/>
               <Footer/>
             </Route>
             <Route exact path='/conformation'>
-              {registered?<Redirect to='/conformation'/>:<Redirect to='/'/>} 
+              {registered?'':<Redirect to='/'/>} 
               <Header/>
               <Preloader/>
               <RegistrationConformation/>
               <Footer/>
             </Route>
             <Route exact path='/dashboard'>
-              {loggedin?<Redirect to='/dashboard'/>:<Redirect to='/'/>} 
-              <DashboardHeader/>
+              {loggedin?'':<Redirect to='/'/>} 
+              <DashboardHeader logout={setloggedin}/>
               <Dashboard data={data} setcandidatedata={setcandidatedata}/>
             </Route>
             <Route exact path='/postjob'>
-              {loggedin?<Redirect to='/postjob'/>:<Redirect to='/'/>} 
-              <DashboardHeader/>
+              {loggedin?'':<Redirect to='/'/>} 
+              <DashboardHeader logout={setloggedin}/>
               <JobPostForm setdata={setdata} postjobinitialvalues={postjobinitialvalues} data={data}/>
             </Route>
             <Route exact path='/Settings'>
-              {loggedin?<Redirect to='/Settings'/>:<Redirect to='/'/>} 
-              <DashboardHeader/>
+              {loggedin?'':<Redirect to='/'/>} 
+              <DashboardHeader logout={setloggedin}/>
               <Settings/>
             </Route>
             <Route exact path='/Candidates'>
-              {loggedin?<Redirect to='/Candidates'/>:<Redirect to='/'/>} 
-              <DashboardHeader/>
+              {loggedin?'':<Redirect to='/'/>} 
+              <DashboardHeader logout={setloggedin}/>
               <Candidates candidates={candidatedata}/>
             </Route>
             <Route exact path='/EditJob'>
-              {loggedin?<Redirect to='/EditJob'/>:<Redirect to='/'/>} 
-              <DashboardHeader/>
+              {loggedin?'':<Redirect to='/'/>} 
+              <DashboardHeader logout={setloggedin}/>
               <EditJob setdata={setdata}/>
             </Route>
             <Route exact path='/email'>

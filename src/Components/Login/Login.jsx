@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
@@ -11,14 +11,9 @@ function Login({setlog}) {
     const [username, setusername] = useState("");
     const [pass, setpass] = useState("");
     const [empty, setempty] = useState(false);
-    const [login, setlogin] = useState(false);
     const [wrong,setwrong] = useState(false);
 
     let history = useHistory();
-
-    useEffect(() => {
-      
-    }, [login]);
 
     const auth = () =>{
         if(username==="" || pass === ""){
@@ -27,14 +22,14 @@ function Login({setlog}) {
         else{
             setempty(false);
             if(username==="admin" && pass === "admin"){
-                setlogin(true);
+                setlog(true);
                 setwrong(false);
+                localStorage.setItem("loggedin",JSON.stringify(true));
                 history.push("/Dashboard");
             }
             else{
                 setusername("");
                 setpass("");
-                setlogin(false);
                 setwrong(true);
             }
         }
