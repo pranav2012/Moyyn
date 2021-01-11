@@ -67,11 +67,6 @@ function App(){
               <DashboardHeader logout={setloggedin}/>
               <JobPostForm setdata={setdata} postjobinitialvalues={postjobinitialvalues} data={data}/>
             </Route>
-            <Route exact path='/Settings'>
-              {loggedin?'':<Redirect to='/'/>} 
-              <DashboardHeader logout={setloggedin}/>
-              <Settings/>
-            </Route>
             <Route exact path='/Candidates'>
               {loggedin?'':<Redirect to='/'/>} 
               <DashboardHeader logout={setloggedin}/>
@@ -81,6 +76,12 @@ function App(){
               {loggedin?'':<Redirect to='/'/>} 
               <DashboardHeader logout={setloggedin}/>
               <EditJob setdata={setdata}/>
+            </Route>
+            <Route exact path='/Settings'>
+              {/* {!loggedin?<Redirect to='/'/>:''} */}
+              {console.log(loggedin)}
+              <DashboardHeader logout={setloggedin}/>
+              <Settings/>
             </Route>
             <Route exact path='/email'>
               <Header/>

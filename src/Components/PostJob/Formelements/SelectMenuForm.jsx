@@ -20,8 +20,8 @@ const FormikSelectMenu = ({ name, label, options }) => {
 							}}
 							variant="outlined"
 						>
-							{options.map((option) => (
-								<option key={option.value} value={option.value}>
+							{options.map((option,id) => (
+								<option key={id} value={option.value}>
 									{option.name}
 								</option>
 							))}
