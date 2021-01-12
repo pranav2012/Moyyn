@@ -1,7 +1,6 @@
 node_modules
 build
 package-lock.json
-Moyyn-FrontEnd
 build
 .firebaserc
 firebase.json

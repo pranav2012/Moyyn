@@ -1,0 +1,82 @@
+.active-btn{
+    background-color: #265cff !important;
+    color: white !important;
+    box-shadow: 1px 1px 4px 0px rgba(184, 182, 182, 0.712);
+}
+
+
+.signup{
+    flex:1;
+    position: relative;
+    grid-auto-rows: fit-content(1em);
+    grid-auto-rows: auto;
+    grid-row: auto;
+    background-color: white;
+
+}
+.error{
+    border: 1px solid red !important;
+}
+.CandidateBox{
+    flex:1;
+    align-self: center;
+    margin:-30px;
+    padding: -30px;
+    position: relative;
+
+
+    input{
+        height: 2.0rem;
+        border:1px solid rgb(236, 236, 236);
+        border-radius: 2px;
+        font-size: 0.6rem;
+        padding-left: 3px;
+    }
+    input:focus{
+        border-color: #265cff;
+    }
+
+    input::placeholder{
+        font-size: 0.8rem;
+    }
+    button{
+        height: 2.4rem;
+    }
+}
+
+.signleftp1{
+    color: rgb(84,84,84);
+}
+.signleftp2{
+    color: rgb(115,115,115);
+}
+.input-feedback{
+    font-size: 0.66rem;
+    color: red;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 70%;
+    margin-top: 2px;
+}
+
+@media only screen and (max-width: 960px) {
+    .input-feedback{
+        margin-top: 0;
+    }
+    hr{
+        display: none;
+    }
+    .CandidateBox{
+        flex: auto;
+        input{
+            height: 3rem;
+            font-size: 0.5rem;
+        }
+        input::placeholder{
+            font-size: 0.5rem;
+        }
+        button{
+            height: 2rem;
+        }
+    }
+}

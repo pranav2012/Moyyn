@@ -1,0 +1,114 @@
+.header{
+    position: sticky;
+    top:0;
+    background: #265cff;
+    z-index: 2;
+}
+
+.dicon{
+    font-size: 1.28rem;
+}
+
+.logoheader{
+    height: fit-content;
+    width: fit-content;
+}
+
+.nav-dash{
+    width: 18%;
+}
+
+.burger{
+    display: none;
+}
+.burger div{
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+
+@media screen and (max-width: "840px"){
+    .nav-dash{
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: "640px"){
+
+    .dicon{
+        margin-left: auto;
+    }
+
+    .navbar{
+        position: fixed;
+        right: 0;
+        height: 92vh;
+        top: 7vh;
+        width: 62%;
+        background-color: #265cff;
+        z-index: 50;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+    .navlist{
+        p{
+            font-size:1em;
+        }
+        width: 62%;
+        margin-left: 20%;
+    }
+    .nav{
+        justify-content: space-around;
+        flex-direction: column;
+        height: 80%;
+    }
+    .nav li{
+        opacity: 0;
+    }
+    .burger{
+        display: block;
+        margin-top: 8px;
+        padding-left: 6%;
+        cursor: pointer;
+    }
+    .nav-active{
+        transform: translateX(0%);
+        li{
+            opacity: 1;
+        }
+    }
+    .toggle .line1{
+        transform: rotate(-45deg) translate(-4px,6px);
+    }
+    .toggle .line2{
+        opacity: 0;
+    }
+    .toggle .line3{
+        transform: rotate(45deg) translate(-4px,-6px);
+    }
+}
+
+@media screen and (max-width: "486px") {
+    .navlist{
+        p{
+            font-size: 1em;
+            font-weight: 700;
+        }
+    
+    }
+    .nav-dash{
+        ul{
+            height: 40%;
+        }
+    } 
+   .headflex{
+        width: 95%;
+    }
+    .btn{
+        font-size: 0.68em;
+    }
+}
+

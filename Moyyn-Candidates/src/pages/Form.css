@@ -1,0 +1,34 @@
+
+	.BoxContainer {
+		width: '100%';
+		display: 'flex';
+		justifyContent: 'space-around';
+		height:"80%"
+	}
+	.LeftBox {
+		margin: theme.spacing(3);
+		padding: theme.spacing(8);
+		width: '50%';
+		display: 'flex';
+		justifyContent: 'center';
+		alignItems: 'center';
+		
+    }
+    
+	.RightBox {
+		margin: theme.spacing(3);
+		padding: theme.spacing(8);
+		width: '50%';
+		display: 'flex';
+		justifyContent: 'center';
+		alignItems: 'center'
+	}
+	.ActiveButton {
+		fontFamily: "Archivo";
+		fontSize: "14px";
+		fontWeight: "700";
+		color: "#ffffff";
+		backgroundColor: "#265CFF";
+		borderColor: "#265CFF";
+		borderRadius: "50px 50px 50px 50px";
+	}

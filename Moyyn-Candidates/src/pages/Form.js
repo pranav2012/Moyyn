@@ -1,0 +1,241 @@
+import React, { useState, useEffect } from 'react';
+import { sendRequest, checkFormComplete } from '../util/helpers/helper-methods';
+import { url } from '../util/data/base-url';
+import {Switch,Route,Redirect,useRouteMatch,useHistory} from 'react-router-dom';
+import { initialValues } from '../util/data/initial-values';
+import PageOne from '../components/FormPages/PageOne';
+import PageTwo from '../components/FormPages/PageTwo';
+import PageThree from '../components/FormPages/PageThree';
+import PageFour from '../components/FormPages/PageFour';
+import PageFive from '../components/FormPages/PageFive';
+import ErrorPage from '../components/Shared/ErrorPage';
+import Loading from '../components/Shared/Loading';
+import './../styles/CandidatesForm.scss'
+import 'tachyons';
+
+const Form = ({ setEmail ,setSuggestions }) => {
+
+	const [formValues, setFormValues] = useState(initialValues)
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(false);
+
+	const { path } = useRouteMatch();
+	const history = useHistory();
+
+	const [submitTrigger, setSubmitTrigger] = useState(false);
+
+	useEffect(() => {
+		//console.log('checking connection')
+		sendRequest()
+			.then(data => {
+				//console.log(data)
+				if (!data.found) {setError(true)}
+			})
+			.catch(err => setError(true)) //setError(true))
+	},[])
+
+	const moveToPage = (page) => {
+		history.push(`/application/${page}`);
+	}
+
+	const handleFormChange = (values, part, next = false, complete = true, submit = false) => {
+		if (complete) {
+			setFormValues(prevState => {
+				let newState = [...prevState];
+				newState[part] = {...values, Complete: true};
+				
+				return newState;
+			});	
+		} else {
+			setFormValues(prevState => {
+				let newState = [...prevState];
+				newState[part] = {...values};
+				
+				return newState;
+			});	
+		}
+
+		if(!!next) {
+			moveToPage(next)
+		}
+
+		if (submit) {
+			setSubmitTrigger(true);
+		}
+	}
+
+	const submitForm = () => {
+		
+
+		let form = [...formValues];
+
+		const fileName = `${form[0].Email}.pdf`;
+
+		const file = form[1].CV[0].file;
+		
+		form.splice(1,1)
+
+		
+		
+		form[2]["Desired Position"]=formValues[1]["Desired Position"];
+
+
+		console.clear();
+
+		let formData = new FormData();
+		formData.append('payload', JSON.stringify(form));
+		formData.append('file', file, fileName);
+
+		//set timeout
+		const timeout = setTimeout(() => {
+			history.push('/candidate/partner');
+		}, 1000 * 120)
+
+		
+		fetch(`${url}/store`, {method: 'POST',body: formData})
+			.then(res => res.json())
+			.then(data => {
+				clearTimeout(timeout);
+				//console.log('store returns:', data);
+				setEmail(form[0].Email);
+				setSuggestions(data.suggestions);
+				history.push('/candidate/suggestions');
+			})
+			.catch(err => {
+				clearTimeout(timeout);
+				//console.log('store error:', err);
+				setIsLoading(false);
+				setError(true);
+			})
+	}
+
+	useEffect(() => {
+		window.scrollTo({
+	   	top: 0,
+	   	behavior: "auto"
+	 	});
+	})
+
+	useEffect(() => {
+		const [isComplete] = checkFormComplete(formValues)
+		document.body.style.zoom = "90%";
+
+		if (isComplete) {
+			if (submitTrigger) {
+				setIsLoading(true);
+				submitForm()
+			}
+		}
+	// eslint-disable-next-line
+	}, [submitTrigger])
+
+	const formComplete = () => {
+		const [isComplete, missingParts] = checkFormComplete(formValues)
+		return [isComplete, missingParts];
+	}
+
+	const handleError = () => {
+		setFormValues(initialValues);
+		history.push('/application');
+		setError(false);
+	}
+
+	if (error) {
+		return(
+			<React.Fragment>
+				<ErrorPage setError={handleError} />
+			</React.Fragment>
+		)
+	}
+
+	if (isLoading) {
+		return(
+			<React.Fragment>
+				<Loading text='AI matchmaking in progress...' />
+			</React.Fragment>
+		)
+	}
+	
+	return(
+		<React.Fragment>
+		<div className="flex justify-around ph5 pv4 bg-white">			
+			<div className='mr4 mt4 '>
+				<div className='buttons flex'>
+					<button onClick={()=>history.push(`${path}`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={` mr2 dim ba br-100 pv2 ph3 bg-white`}>1</button>
+					<button onClick={()=>history.push(`${path}/cv`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`mr2 dim ba br-100 pv2 ph3 bg-white`}>2</button>
+					<button onClick={()=>history.push(`${path}/information`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`mr2 dim ba br-100 pv2 ph3 bg-white`}>3</button>
+					<button onClick={()=>history.push(`${path}/preferences`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`mr2 dim ba br-100 pv2 ph3 bg-white`}>4</button>
+					<button onClick={()=>history.push(`${path}/career`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`mr2 dim ba br-100 pv2 ph3 bg-white`}>5</button>
+				</div>						
+				<Switch >
+				<Route path={`${path}`} exact>
+						<p className='f4-l f4-m f5 tc signleftp1'>Fill the form</p>
+						<img src={require('./SignUpPicture.png')} alt="Moyyn" />
+				</Route>
+				<Route path={`${path}/cv`} >
+				<p className='f3-l f3-m f5 signleftp1'>The journey to your next job starts here.</p>
+					<img src={require('./SignUpPicture2.png')} alt="Moyyn" />
+             		   <p className='f5-l f5-m f6 signleftp2'>Join  our talent pool for free and let our AI find you the perfect job</p>
+				</Route>
+				<Route path={`${path}/information`} >
+				<p className='f3-l f3-m f5 signleftp1'>The journey to your next job starts here.</p>
+					<img src={require('./SignUpPicture3.png')} alt="Moyyn" />
+             		   <p className='f5-l f5-m f6 signleftp2'>Join  our talent pool for free and let our AI find you the perfect job</p>			
+				</Route>
+				<Route path={`${path}/preferences`} >
+				<p className='f3-l f3-m f5 signleftp1'>The journey to your next job starts here.</p>
+					<img src={require('./SignUpPicture4.png')} alt="Moyyn" />
+             		   <p className='f5-l f5-m f6 signleftp2'>Join  our talent pool for free and let our AI find you the perfect job</p>
+				</Route>
+				<Route path={`${path}/career`} >
+				<p className='f3-l f3-m f5 signleftp1'>The journey to your next job starts here.</p>
+					<img src={require('./SignUpPicture5.png')} alt="Moyyn" />
+             		   <p className='f5-l f5-m f6 signleftp2'>Join  our talent pool for free and let our AI find you the perfect job</p>
+				</Route>
+				<Redirect to={`${path}`} />
+				</Switch>
+			</div>
+
+			<div className=''>
+				<Switch >
+				<Route path={`${path}`} exact>
+					<PageOne 
+						initialValues={formValues[0]}
+						handleFormChange={handleFormChange} 
+					/>
+				</Route>
+				<Route path={`${path}/cv`} >
+					<PageTwo 
+						initialValues={formValues[1]}
+						handleFormChange={handleFormChange} 
+					/>
+				</Route>
+				<Route path={`${path}/information`} >
+					<PageThree
+						initialValues={formValues[2]}
+						handleFormChange={handleFormChange} 
+					/>
+				</Route>
+				<Route path={`${path}/preferences`} >
+					<PageFour 
+					 	initialValues={formValues[3]}
+					 	handleFormChange={handleFormChange} 
+					/>
+				</Route>
+				<Route path={`${path}/career`} >
+					<PageFive 
+						initialValues={formValues[4]}
+						handleFormChange={handleFormChange}
+						formComplete={formComplete}
+					/>
+				</Route>
+
+				<Redirect to={`${path}`} />
+			</Switch>
+			</div>
+		</div>
+		</React.Fragment>
+	)
+}
+
+export default Form;

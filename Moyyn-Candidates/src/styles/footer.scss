@@ -1,0 +1,53 @@
+.fig{
+    img{
+        object-fit: contain;
+    }
+}
+
+.iconfooter{
+    color: #265cff;
+}
+
+.foot2,.foot3,.foot1{
+    flex:1;
+}
+
+.leftheader{
+    letter-spacing: 3px;
+    color: #888888;
+}
+
+.footerli{
+    color: #888888;
+    i{
+        font-size: 1.2rem;
+        width: 19.2px;
+        text-align: center;
+    }
+}
+
+.footleftp{
+    color: #888888;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.socialfoot{
+    font-size: 1.6rem;
+}
+
+.footlinks{
+    color: #888888;
+}
+
+.footsupportimg{
+    width: 7rem;
+}
+
+.copyfoot{
+    background-color: #292828;
+}
+
+.footer{
+    flex:1;
+}

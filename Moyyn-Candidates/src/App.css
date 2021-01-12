@@ -1,0 +1,61 @@
+.App {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.moyynButton--main {
+  color: white;
+  background-color: #265CFF;
+  border: 1px solid #265CFF;
+  font-size: 0.8rem;
+  border-radius: 7.5px;
+  text-transform: capitalize;
+  padding: 0.5rem 2rem;
+  -webkit-box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  -moz-box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  height: 110%;
+  width: 25%;
+}
+
+.moyynButton--main:hover {
+  color: #265CFF;
+  background-color: white;
+  border: 1px solid #265CFF;
+}
+
+.languages {
+  height: 150%;
+}
+.moyynButton--secondary {
+  color: white;
+  background-color: #555a60;
+  border: 1px solid #555a60;
+  font-size: 0.8rem;
+  border-radius: 7.5px;
+  text-transform: capitalize;
+  padding: 0.5rem 2rem;
+  -webkit-box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  -moz-box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  width: 25%;
+  height: 110%;
+}
+
+.moyynButton--secondary:hover {
+  color: #555a60;
+  background-color: white;
+  border: 1px solid #555a60;
+}
+
+.lightShadow {
+  -webkit-box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  -moz-box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+}
+
+.fullHeight: {
+  height: 100%;
+  color: red;
+}
