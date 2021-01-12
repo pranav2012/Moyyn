@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Field } from "formik";
+import './language.css';
 import {
 	Grid,
 	TextField,
@@ -73,7 +74,7 @@ const ProfilePicker = () => {
 				}
 
 				return (
-					<Grid container spacing={3}>
+					<Grid container spacing={3} xs={12}>
 						<Grid item xs={12}>
 							<Typography
 								color='textSecondary'
@@ -104,6 +105,7 @@ const ProfilePicker = () => {
 						<Grid item xs={12} md={6}>
 							<TextField
 								fullWidth
+								className="lsv-pp"
 								variant="outlined"
 								value={inputValue}
 								onChange={handleInputChange}
@@ -111,21 +113,14 @@ const ProfilePicker = () => {
 								onKeyDown={handleKeyDown }
 							/>
 						</Grid>
-						<Grid
-							item
-							xs={12}
-							md={3}
-							style={{ display: "flex", alignItems: "center" }}
-						>
+						<Grid item xs={12} md={3} style={{ display: "flex", alignItems: "center" }}>
 							<Button
-								className="moyynButton--main"
 								startIcon={<AddIcon />}
 								fullWidth
-								style={{ margin: "0" }}
+								style={{ margin: "0",backgroundColor:"#265cff", color:"white" }}
 								onClick={handleAddItem}
-							>
-								Add
-							</Button>
+								className="dim"
+							>Add</Button>
 						</Grid>
 						<Grid item xs={12}>
 							{

@@ -43,7 +43,7 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 					({ values }) => {
 
 						return(
-							<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5"}}>	
+							<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>	
 								<div className='bg-white br2 ma4'>
 									<Form>
 										<Grid container spacing={3} xs={12} style={{padding:"1rem"}} >

@@ -159,40 +159,36 @@ const Form = ({ setEmail ,setSuggestions }) => {
 	return(
 		<React.Fragment>
 		<div className="flex justify-around ph5 pv4 bg-white">			
-			<div className='mr4 mt4 '>
+			<div className='mr4 mt4'>
 				<div className='buttons flex'>
-					<button onClick={()=>history.push(`${path}`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={` mr2 dim ba br-100 pv2 ph3 bg-white`}>1</button>
-					<button onClick={()=>history.push(`${path}/cv`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`mr2 dim ba br-100 pv2 ph3 bg-white`}>2</button>
-					<button onClick={()=>history.push(`${path}/information`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`mr2 dim ba br-100 pv2 ph3 bg-white`}>3</button>
-					<button onClick={()=>history.push(`${path}/preferences`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`mr2 dim ba br-100 pv2 ph3 bg-white`}>4</button>
-					<button onClick={()=>history.push(`${path}/career`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`mr2 dim ba br-100 pv2 ph3 bg-white`}>5</button>
+					<button onClick={()=>history.push(`${path}`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>1</button>
+					<button onClick={()=>history.push(`${path}/cv`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>2</button>
+					<button onClick={()=>history.push(`${path}/information`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>3</button>
+					<button onClick={()=>history.push(`${path}/preferences`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>4</button>
+					<button onClick={()=>history.push(`${path}/career`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>5</button>
 				</div>						
 				<Switch >
-				<Route path={`${path}`} exact>
+					<Route path={`${path}`} exact>
 						<p className='f4-l f4-m f5 tc signleftp1'>Fill the form</p>
 						<img src={require('./SignUpPicture.png')} alt="Moyyn" />
-				</Route>
-				<Route path={`${path}/cv`} >
-				<p className='f3-l f3-m f5 signleftp1'>The journey to your next job starts here.</p>
-					<img src={require('./SignUpPicture2.png')} alt="Moyyn" />
-             		   <p className='f5-l f5-m f6 signleftp2'>Join  our talent pool for free and let our AI find you the perfect job</p>
-				</Route>
-				<Route path={`${path}/information`} >
-				<p className='f3-l f3-m f5 signleftp1'>The journey to your next job starts here.</p>
-					<img src={require('./SignUpPicture3.png')} alt="Moyyn" />
-             		   <p className='f5-l f5-m f6 signleftp2'>Join  our talent pool for free and let our AI find you the perfect job</p>			
-				</Route>
-				<Route path={`${path}/preferences`} >
-				<p className='f3-l f3-m f5 signleftp1'>The journey to your next job starts here.</p>
-					<img src={require('./SignUpPicture4.png')} alt="Moyyn" />
-             		   <p className='f5-l f5-m f6 signleftp2'>Join  our talent pool for free and let our AI find you the perfect job</p>
-				</Route>
-				<Route path={`${path}/career`} >
-				<p className='f3-l f3-m f5 signleftp1'>The journey to your next job starts here.</p>
-					<img src={require('./SignUpPicture5.png')} alt="Moyyn" />
-             		   <p className='f5-l f5-m f6 signleftp2'>Join  our talent pool for free and let our AI find you the perfect job</p>
-				</Route>
-				<Redirect to={`${path}`} />
+					</Route>
+					<Route path={`${path}/cv`} >
+						<p className='f4-l f4-m f5 tc signleftp1'>Upload your Cv</p>
+						<img src={require('./SignUpPicture2.png')} alt="Moyyn" />
+					</Route>
+					<Route path={`${path}/information`} >
+						<p className='f4-l f4-m f5 tc signleftp1'>Fill your information</p>
+						<img src={require('./SignUpPicture3.png')} alt="Moyyn" />
+					</Route>
+					<Route path={`${path}/preferences`} >
+						<p className='f4-l f4-m f5 tc signleftp1'>What are yor preferences?</p>
+						<img src={require('./SignUpPicture4.png')} alt="Moyyn" />
+					</Route>
+					<Route path={`${path}/career`} >
+						<p className='f4-l f4-m f5 tc signleftp1'>Let us know about your career</p>
+						<img src={require('./SignUpPicture5.png')} alt="Moyyn" />
+					</Route>
+					<Redirect to={`${path}`} />
 				</Switch>
 			</div>
 

@@ -27,53 +27,51 @@ const PageTwo = ({ initialValues, handleFormChange }) => {
 
 						//console.log(values)
 						return(
-							<Form>
-								<Grid container spacing={5}>
-									<Grid item xs={12}>
-										<Typography
-											variant="h6"
-											style={{ marginBottom: "1rem" }}
-											align="center"
-											color='textSecondary'
-										>
-											Upload CV
-										</Typography>
-									</Grid>
-									<Grid item xs={1} md={2}>
-									</Grid>
-									<Grid item xs={12} md={8}>
-										<ResumeUpload />
-										<ResumeUploadGer/>
-									</Grid>
-									<Grid item xs={12}   >
-									<Typography
-											variant="h6"
-											style={{ marginBottom: "1rem" }}
-											align="center"
-											color='textSecondary'
-										>
-											Positions applying for (If Any)
-											</Typography>
+							<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>
+								<div className='bg-white br2 ma4'>
+									<Form>
+										<Grid container spacing={3} xs={12} style={{padding:"2rem"}}>
+											<Grid item xs={12}>
+												<Typography
+													variant="h6"
+													style={{ marginBottom: "1rem" }}
+													align="center"
+													color='textSecondary'
+												>
+													Upload CV
+												</Typography>
+											</Grid>
+											<div className='flex'>
+												<div className='mr4 flex-1'><ResumeUpload/></div>
+												<div className='flex-1'><ResumeUploadGer/></div>
+											</div>
+											<Grid item xs={12}>
+											<Typography
+													variant="h6"
+													style={{ marginBottom: "1rem" }}
+													align="center"
+													color='textSecondary'
+												>
+													Positions applying for (If Any)
+													</Typography>
 
-																							<Grid item xs={12}>
-														<AutocompleteChips
-															name="Desired Position"
-															placeholder="Desired Positions"
-															options={AvailableJobs}
-														/>
-													</Grid>
+																									<Grid item xs={12}>
+																<AutocompleteChips
+																	name="Desired Position"
+																	placeholder="Desired Positions"
+																	options={AvailableJobs}
+																/>
+															</Grid>
 
-									</Grid>
-									<Grid item xs={12}>
+											</Grid>
+											<Grid item xs={12}>
 
-										<Buttons back={() => handleFormChange(values, 1, true, false)} />
-									</Grid>
-
-									
-												
-												
-								</Grid>
-							</Form>
+												<Buttons back={() => handleFormChange(values, 1, true, false)} />
+											</Grid>			
+										</Grid>
+									</Form>
+								</div>
+							</div>
 						)
 					}
 				}

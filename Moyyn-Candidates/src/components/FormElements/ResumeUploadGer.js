@@ -6,6 +6,7 @@ import { DropzoneAreaBase } from "material-ui-dropzone";
 import Alert from '@material-ui/lab/Alert';
 import ResumePreview from './ResumePreview';
 import FormError from './FormError';
+import '../../styles/cv.scss';
 
 const useStyles = makeStyles(theme => ({
 	preview: {
@@ -45,7 +46,7 @@ const ResumeUploadGer = () => {
 								close={handleIsPreviewOpen}
 								src={field.value.length > 0 ? field.value[0].data : null}
 							/>
-							<Grid item xs={12}>
+							<Grid item xs={12} className="cv-drop">
 								<DropzoneAreaBase
 									fileObjects={field.value}
 									acceptedFiles={[".pdf"]}

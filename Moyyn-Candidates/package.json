@@ -1,5 +1,5 @@
 {
-  "name": "newmatchmaker",
+  "name": "moyyn-candidate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,14 +18,15 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+    "serve": "^11.3.2",
     "react-scripts": "^3.4.3",
     "tachyons": "^4.12.0",
     "yup": "^0.29.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts start",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

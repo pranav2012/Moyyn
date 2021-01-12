@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { pageFourValidation as validationSchema } from '../../util/validation/form-validation';
 import { europeanCountries, europeanCities } from '../../util/data/static-data'; 
-import { Grid, Typography, Divider } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import Checkbox from '../FormElements/CheckboxForm';
 import DesiredEmployment from '../FormElements/DesiredEmployment';
 import AutocompleteChips from '../FormElements/AutocompleteChipsForm';
@@ -32,8 +32,10 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 						({ values }) => {
 							
 							return(
-								<Form onKeyDown={onKeyDown}>
-									<Grid container spacing={5}>
+								<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>
+									<div className='bg-white br2 ma4'>
+										<Form onKeyDown={onKeyDown}>
+									<Grid container spacing={5} style={{padding:"2rem"}}>
 										<Grid item xs={12}>
 											<Typography
 												variant="h6"
@@ -50,9 +52,6 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 												label='I am willing to relocate'
 												variant='body1'
 											/>
-										</Grid>
-										<Grid item xs={12}>
-											<Divider />
 										</Grid>
 										{
 											values['Relocation Willingness'] && (
@@ -71,9 +70,6 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 															options={europeanCities}
 														/>
 													</Grid>
-													<Grid item xs={12}>
-														<Divider />
-													</Grid>
 												</React.Fragment>
 											)
 										}
@@ -83,9 +79,6 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 											<DesiredEmployment />
 										</Grid>
 										<Grid item xs={12}>
-											<Divider />
-										</Grid>
-										<Grid item xs={12}>
 											<ProfilePicker  />
 										</Grid>
 										<Grid item xs={12}>
@@ -93,6 +86,8 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 										</Grid>
 									</Grid>
 								</Form>
+									</div>
+								</div>
 							)
 						}
 					}

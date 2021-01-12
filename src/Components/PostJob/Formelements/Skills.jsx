@@ -44,7 +44,7 @@ const Skills = () => {
 							 onInputChange={handleInputChange}
 					         inputValue={inputValue}  
 							 multiple
-							 freeSolo
+							 freeSolo={true}
 					         options={skills}
 					         onChange={handleChange}
 					         value={form.values.Skills}
