@@ -3,6 +3,10 @@ import cv from './Resume.pdf';
 export const dummycandidates = [
       {
         name:"Pranav Agarwal",
+        company:"Abc Company",
+        job_url:"https://moyyn.com",
+        username:"arvi",
+        job_title:"Web Developer",
         level:"Senior",
         languages:{
           other:"English",
@@ -31,6 +35,10 @@ export const dummycandidates = [
       {
         name:"Pranav Agarwal",
         level:"Senior",
+        company:"Abc Company",
+        job_url:"https://moyyn.com",
+        username:"arvi",
+        job_title:"Web Developer",
         languages:{
           other:"English",
           native:"Hindi"
@@ -55,6 +63,10 @@ export const dummycandidates = [
       {
         name:"Pranav Agarwal",
         level:"Senior",
+        company:"Abc Company",
+        job_url:"https://moyyn.com",
+        username:"arvi",
+        job_title:"Web Developer",
         languages:{
           other:"English",
           native:"Hindi"
@@ -105,6 +117,10 @@ export const dummycandidates = [
       {
         name:"Sidharth Vardhan",
         level:"Senior",
+        company:"Abc Company",
+        job_url:"https://moyyn.com",
+        username:"arvi",
+        job_title:"Web Developer",
         languages:{
           other:"English",
           native:"Hindi"
@@ -155,6 +171,10 @@ export const dummycandidates = [
       },      {
         name:"Pranav",
         level:"Senior",
+        company:"Abc Company",
+        job_url:"https://moyyn.com",
+        username:"arvi",
+        job_title:"Web Developer",
         languages:{
           other:"English",
           native:"Hindi"
@@ -206,6 +226,10 @@ export const dummycandidates = [
       {
         name:"Pranav Agarwal",
         level:"Senior",
+        company:"Abc Company",
+        job_url:"https://moyyn.com",
+        username:"arvi",
+        job_title:"Web Developer",
         languages:{
           other:"English",
           native:"Hindi"
@@ -256,6 +280,7 @@ export const dummycandidates = [
       },      {
         name:"Pranav Agarwal",
         level:"Senior",
+        comapny:"Abc Company",
         languages:{
           other:"English",
           native:"Hindi"
@@ -307,6 +332,7 @@ export const dummycandidates = [
       {
         name:"Pranav Agarwal",
         level:"Senior",
+        comapny:"Abc Company",
         languages:{
           other:"English",
           native:"Hindi"
@@ -355,6 +381,7 @@ export const dummycandidates = [
         }]
       },      {
         name:"Pranav Agarwal",
+        comapny:"Abc Company",
         level:"Senior",
         languages:{
           other:"English",
@@ -407,6 +434,7 @@ export const dummycandidates = [
       {
         name:"Pranav Agarwal",
         level:"Senior",
+        comapny:"Abc Company",
         languages:{
           other:"English",
           native:"Hindi"
@@ -457,6 +485,7 @@ export const dummycandidates = [
       },      {
         name:"Pranav Agarwal",
         level:"Senior",
+        comapny:"Abc Company",
         languages:{
           other:"English",
           native:"Hindi"
@@ -508,6 +537,7 @@ export const dummycandidates = [
       {
         name:"Pranav Agarwal",
         level:"Senior",
+        comapny:"Abc Company",
         languages:{
           other:"English",
           native:"Hindi"

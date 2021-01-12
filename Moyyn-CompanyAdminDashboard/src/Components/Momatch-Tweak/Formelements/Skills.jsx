@@ -43,7 +43,8 @@ const Skills = () => {
 							<Autocomplete
 							onInputChange={handleInputChange}
 					         inputValue={inputValue}  
-					         multiple
+							 multiple
+							 freeSolo
 					         options={skills}
 					         onChange={handleChange}
 					         value={form.values.Skills}

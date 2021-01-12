@@ -51,11 +51,14 @@ export const Candidatebox = ({candidate}) => {
 }
 
 export const Shortlist = ({candidate}) => {
-    const {name,email,cv,languages,notice,level,comments,date} = candidate;
+    const {name,email,cv,languages,notice,level,comments,date,company,username,job_title,job_url} = candidate;
     const {native,other} = languages;
     const [isPreviewOpen, setisPreviewOpen] = useState(false);
     const istab = useMediaQuery({ query: `(max-width: 1024px)` });
     const ismobile = useMediaQuery({ query: `(max-width: 580px)` })
+
+    const  mail_body =`Dear ${name},%0d%0a %0d%0aGreetings from ${company}.%0d%0aI am ${username} from ${company} and your profile from Moyyn platform has been shortlisted by our company for the position of ${job_title}. We liked your application and would be interested in knowing more about you.%0d%0aJob description: ${job_url}%0d%0aPlease let me know whether you are interested in this position so that we can schedule an interview.%0d%0a %0d%0aBest regards,%0d%0a${username}%0d%0aSourced from Moyyn`;
+    const mail_sub = `You have been shortlisted for interview by ${company} via Moyyn`
 
     return (
         <div style={{borderLeft:"2px solid #265cff"}} className="ma1 dib ch bg-white pa3 mt3 br3">
@@ -79,7 +82,7 @@ export const Shortlist = ({candidate}) => {
                 </div>
                 <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View CV</p></div>
                 <Commentbox comments_data={comments}/>
-                <div onClick={(e) => {window.location.href = `mailto:${email}?subject=Job at Moyyn&body=Hello, thsnks for applying`; e.preventDefault();}} className={`ico mb2 pointer flex flex-column items-center self-center ${istab?'hide':''}`}><div style={{color:"gray"}} ><MailOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Mail</p></div>
+                <div onClick={(e) => {window.location.href = `mailto:${email}?subject=${mail_sub}&body=${mail_body}`; e.preventDefault();}} className={`ico mb2 pointer flex flex-column items-center self-center ${istab?'hide':''}`}><div style={{color:"gray"}} ><MailOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Mail</p></div>
                 <div className='h-100 w-25-l w-40-m w-30 pr4 mb2 self-center'>
                     <div className='flex justify-center flex-row-l flex-row-m flex-column justify-center items-center'>
                         <button style={{color:"green"}} className="bg-white c-shadow ml2-l ml2-m ml3 pointer mr2-l mr2-m mr0 w-60-l w-50-m w3 h2-l bn link dim br2 ph4 pv2-l pv1 dib white"><div className=' btnic flex f8-m f7-l f9-mo f8-m items-center justify-center'><DoneOutlineIcon/><span className='ml2'>Hire</span></div></button>

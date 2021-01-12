@@ -134,18 +134,17 @@ function JobForm({setdata,postjobinitialvalues,data}) {
                                     </div>
                                     <div className='mt3 relative'>
                                         <WorkExperience />
-                                        <div style={{background:"#eef2f5"}} className={`${hov1?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 z-11 bottom--2 right--2`}>hellooo</div>
+                                        <div style={{background:"#eef2f5"}} className={`${hov1?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 z-11 bottom--2 right--2`}>Please select the job roles relevant to your offer to filter the best candidates</div>
                                         <div onMouseLeave={()=>sethov1(false)} onMouseOver={()=>sethov1(true)} style={{color:"#265cff"}} className="pointer help-ico dim bottom-2 mb2 right--2 absolute"><HelpOutlineOutlinedIcon/></div>
-
                                     </div>
                                     <div className='mt3 relative'>
                                         <Languages />
-                                        <div style={{background:"#eef2f5"}} className={`${hov2?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 z-11 bottom--1 right--2`}>hellooo</div>
+                                        <div style={{background:"#eef2f5"}} className={`${hov2?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 z-11 bottom--1 right--2`}>Please select atleast one native language requirement</div>
                                         <div onMouseLeave={()=>sethov2(false)} onMouseOver={()=>sethov2(true)} style={{color:"#265cff"}} className="pointer help-ico dim top-1 mt1 right--2 absolute"><HelpOutlineOutlinedIcon/></div>
                                     </div>
                                     <div className='relative'>
                                         <Skills />
-                                        <div style={{background:"#eef2f5"}} className={`${hov3?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 top-2 z-11 right--2`}>hellooo</div>
+                                        <div style={{background:"#eef2f5"}} className={`${hov3?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 top-2 z-11 right--2`}>Please select as many skills as possible associated with the job</div>
                                         <div onMouseLeave={()=>sethov3(false)} onMouseOver={()=>sethov3(true)} style={{color:"#265cff"}} className="pointer help-ico dim top-1 right--2 absolute"><HelpOutlineOutlinedIcon/></div>
                                     </div>
 
