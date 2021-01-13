@@ -12,6 +12,7 @@ import ErrorPage from '../components/Shared/ErrorPage';
 import Loading from '../components/Shared/Loading';
 import './../styles/CandidatesForm.scss'
 import 'tachyons';
+import '../components/FormPages/toggle.css';
 
 const Form = ({ setEmail ,setSuggestions }) => {
 

@@ -4,7 +4,7 @@ import { pageThreeValidation as validationSchema } from '../../util/validation/f
 import { countriesArray, citiesArray, visaOptions } from '../../util/data/static-data';
 import { Grid, Typography } from '@material-ui/core';
 import TextField from '../FormElements/TextFieldForm'; 
-import Checkbox from '../FormElements/CheckboxForm';
+// import Checkbox from '../FormElements/CheckboxForm';
 import Autocomplete from '../FormElements/AutocompleteForm';
 import SelectMenu from '../FormElements/SelectMenuForm';
 import PhoneNumber from '../FormElements/PhoneNumberForm';
@@ -45,7 +45,7 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 											{/*Left*/}
 											<Grid item xs={12} lg={6} >
 												<Grid container spacing={5}>
-													<Grid item xs={12}>
+													<Grid item xs={12} className="lsv">
 														<Autocomplete freeSolo={false}
 															options={countriesArray}
 															optionLabel="name"
@@ -61,13 +61,20 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 														/>
 													</Grid>
 													<Grid item xs={12}>
-														<Checkbox
+													<div className='flex items-center'>
+														<span className='mr1 gray'>Currently Employed</span>
+														<label className="switch" htmlFor="employed">
+															<input type="checkbox" id="employed" value="true"/>
+															<div className="slider round"></div>
+														</label>
+													</div>
+														{/* <Checkbox
 															name="Currently Employed"
 															label="Currently Employed"
 															variant='body1'
-														/>
+														/> */}
 													</Grid>
-													<Grid item xs={12}>
+													<Grid item xs={12} className="lsv">
 														<PhoneNumber name="Contact Number" />
 													</Grid>
 												</Grid>
@@ -75,7 +82,7 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 											{/*Right*/}
 											<Grid item xs={12} lg={6}>
 												<Grid container spacing={5}>
-													<Grid item xs={12}>
+													<Grid item xs={12} className="lsv">
 														<Autocomplete 
 															options={citiesArray}
 															optionLabel="city"
@@ -90,13 +97,20 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 														/>
 													</Grid>
 													<Grid item xs={12}>
-														<Checkbox
+													<div className='flex items-center'>
+														<span className='mr1 gray'>EU Driver's License</span>
+														<label className="switch" htmlFor="dl">
+															<input type="checkbox" id="dl" value="true"/>
+															<div className="slider round"></div>
+														</label>
+													</div>
+														{/* <Checkbox
 															name="Driver's License"
 															label="EU Driver's License"
 															variant='body1'
-														/>
+														/> */}
 													</Grid>
-													<Grid item xs={12}>
+													<Grid item xs={12} className="lsv">
 														{/*eslint-disable-next-line*/}
 														<TextField
 															name="Notice Period"

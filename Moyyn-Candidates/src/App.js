@@ -12,7 +12,12 @@ import Candidate from './pages/Candidate';
 import Form from './pages/Form';
 import './App.css';
 import Header from './components/Header/header'
+import DashboardHeader from './components/Header/DashboardHeader';
 import Footer from './components/Footer/footer'
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Settings from './pages/Settings';
+import EditProfile from './pages/EditProfile';
 
 
 const App = () => {
@@ -22,23 +27,39 @@ const App = () => {
 
    return (
       <React.Fragment>
-         <Header/>
-
             <Router>
                      <Switch>
                         <Route path='/application' >
+                           <Header/>
                            <Form
                               setEmail={setEmail} 
                               setSuggestions={setSuggestions} 
                            />
                         </Route>
                         <Route path='/candidate'  >
+                           <Header/>
                            <Candidate 
                               email={email}
                               setEmail={setEmail}
                               suggestions={suggestions} 
                               setSuggestions={setSuggestions} 
                              />
+                        </Route>
+                        <Route path='/login'  >
+                           <Header/>
+                           <Login/>
+                        </Route>
+                        <Route path='/dashboard' >
+                           <DashboardHeader/>
+                           <Dashboard/>
+                        </Route>
+                        <Route path='/editprofile'  >
+                           <DashboardHeader/>
+                           <EditProfile/>
+                        </Route>
+                        <Route path='/settings'  >
+                           <DashboardHeader/>
+                           <Settings/>
                         </Route>
                         <Redirect to='/application' />
                      </Switch>

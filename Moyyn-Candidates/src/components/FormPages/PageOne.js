@@ -13,8 +13,9 @@ import {
 } from '@material-ui/core'
 import TextField from '../FormElements/TextFieldForm'; 
 import Checkbox from '../FormElements/CheckboxForm';
+import '../FormElements/language.css'
 
-import Switch from '../FormElements/SwitchForm';
+// import Switch from '../FormElements/SwitchForm';
 
 const PageOne = ({ initialValues, handleFormChange }) => {
 
@@ -46,7 +47,7 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 							<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>	
 								<div className='bg-white br2 ma4'>
 									<Form>
-										<Grid container spacing={3} xs={12} style={{padding:"1rem"}} >
+										<Grid className="lsv-pp" container spacing={3} item xs={12} style={{padding:"1rem"}} >
 											<Grid item xs={12}>
 												<Typography
 													variant="h6"
@@ -97,11 +98,18 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 															</Grid>
 
 															<Grid item xs={12}>
-															<Switch 
+															<div className='flex items-center'>
+																<span className='mr1 gray'>Currently Looking For a Job</span>
+																<label className="switch" htmlFor="job">
+																	<input type="checkbox" id="job" />
+																	<div className="slider round"></div>
+																</label>
+															</div>
+															{/* <Switch 
 																name="Currently Looking For Job"
 																label="Currently Looking For a Job"
 																variant='body1'
-															/>
+															/> */}
 															</Grid>
 															
 															<Grid item xs={12}>
