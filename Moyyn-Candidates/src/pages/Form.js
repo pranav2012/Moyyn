@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { sendRequest, checkFormComplete } from '../util/helpers/helper-methods';
 import { url } from '../util/data/base-url';
-import {Switch,Route,Redirect,useRouteMatch,useHistory} from 'react-router-dom';
+import {Switch,Route,Redirect,useRouteMatch,useHistory,NavLink} from 'react-router-dom';
 import { initialValues } from '../util/data/initial-values';
 import PageOne from '../components/FormPages/PageOne';
 import PageTwo from '../components/FormPages/PageTwo';
@@ -161,11 +161,11 @@ const Form = ({ setEmail ,setSuggestions }) => {
 		<div className="flex justify-around ph5 pv4 bg-white">			
 			<div className='mr4 mt4'>
 				<div className='buttons flex'>
-					<button onClick={()=>history.push(`${path}`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>1</button>
-					<button onClick={()=>history.push(`${path}/cv`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>2</button>
-					<button onClick={()=>history.push(`${path}/information`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>3</button>
-					<button onClick={()=>history.push(`${path}/preferences`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>4</button>
-					<button onClick={()=>history.push(`${path}/career`)} style={{border:"1px solid #265cff", color:"#265cff"}} className={`pointer mr2 dim ba br-100 pv2 ph3 bg-white`}>5</button>
+					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}`)} exact to={`${path}`} activeClassName="active-btn">1</NavLink>
+					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/cv`)} exact to={`${path}/cv`} activeClassName="active-btn">2</NavLink>
+					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/information`)} exact to={`${path}/information`} activeClassName="active-btn">3</NavLink>
+					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/preferences`)} exact to={`${path}/preferences`} activeClassName="active-btn">4</NavLink>
+					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/career`)} exact to={`${path}/career`} activeClassName="active-btn">5</NavLink>
 				</div>						
 				<Switch >
 					<Route path={`${path}`} exact>
