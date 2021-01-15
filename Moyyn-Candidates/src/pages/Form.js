@@ -165,7 +165,7 @@ const Form = ({ setEmail ,setSuggestions }) => {
 	return(
 		<React.Fragment>
 			<div>
-				<div className="flex justify-around ph5 pv4 bg-white">			
+				<div className="flex justify-around ph5-l pv4-l pa2-m pa2 bg-white" style={{minHeight:"90vh"}}>			
 					<div className='mr4 mt3'>
 						<div className='buttons flex mb5'>
 							{/* <NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}`)} exact to={`${path}`} activeClassName="active-btn">1</NavLink> */}
@@ -199,8 +199,8 @@ const Form = ({ setEmail ,setSuggestions }) => {
 					</Switch>
 					</div>
 
-					<div style={{minHeight:"80vh"}}>
-					<Switch >
+					<div>
+						<Switch >
 					<Route path={`${path}`} exact>
 						<PageOne 
 							initialValues={formValues[0]}
@@ -235,10 +235,10 @@ const Form = ({ setEmail ,setSuggestions }) => {
 
 					<Redirect to={`${path}`} />
 				</Switch>
-				</div>
+					</div>
 				</div>
 				{console.log(window.location.pathname)}
-				<div className={`${window.location.pathname==="/application"?"":"hide"}`}>
+				<div className={`${window.location.pathname==="/application" || window.location.pathname==="/application/"?"":"hide"}`}>
 					<Footer/>
 				</div>
 			</div>

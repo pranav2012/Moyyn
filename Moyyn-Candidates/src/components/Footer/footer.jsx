@@ -4,7 +4,7 @@ import 'tachyons';
 
 function footer() {
     return (
-        <div className='footer flex flex-column mt2 w-100'>
+        <div className='footer bg-white flex flex-column mt2 w-100'>
             <div className='center ma4 flex flex-column w-90 flex-row-l justify-center'>
                 <div className='flex flex-column items-start foot1'>
                     <h4 className='leftheader f6 f5-l f5-m'>Sourcing talents to germany</h4>

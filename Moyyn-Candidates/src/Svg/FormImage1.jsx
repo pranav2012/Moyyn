@@ -10,8 +10,8 @@ function FormImage1(props) {
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
-      width={ismobile?140:istab?200:320}
-      height={ismobile?80:istab?160:260}
+      width={ismobile?180:istab?200:320}
+      height={ismobile?120:istab?160:260}
       viewBox="0 0 711.188 669.683"
       {...props}
     >

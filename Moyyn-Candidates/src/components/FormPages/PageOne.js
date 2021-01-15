@@ -45,28 +45,27 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 					({ values }) => {
 
 						return (
-							<div className="flex">
-								<div className="flex flex-1" >
+							<div className="flex flex-row-l flex-row-m flex-column">
+								<div className="flex flex-1 mt5-m mt2 mt0-l" >
 									<div>
-										<p className='f4-l f4-m f5 tc signleftp1'>The journey to your next job starts here</p>
-										<FormImage1/>
-										<p className='f4-l f4-m f5 tc signleftp1'>Join  our talent pool for free and let our AI find you the perfect job</p>
+										<p className='f4-l f5-m f6 tc gray'>The journey to your next job starts here</p>
+										<div className="ml0-l pl0-l ml0-m pl0-m ml4 pl3"><FormImage1/></div>
+										<p className='f4-l f5-m f6 tc gray'>Join  our talent pool for free and let our AI find you the perfect job</p>
 									</div>
-									<hr className='vh-75 ml4' style={{ border: "1px solid rgb(249, 246, 246)" }} />
+									<hr className='vh-75-l vh-50-m ml4' style={{ border: "1px solid rgb(249, 246, 246)" }} />
 								</div>
 
-								<div className='flex-2 bg-white br2 pb6 pt3'>
+								<div className='flex-2 bg-white br2 pb6-l pb4-m pb4 pt3-l pt5-m pt2'>
 										<Form>
 											<Grid className="lsv-pp" container spacing={4} item xs={12} style={{ padding: "1rem"}} >
 												<Grid item xs={12}>
 													<Box width='100%' display='flex' justifyContent='center'>
-														<Box width={screenAtSmall ? '100%' : '60%'} display='flex' justifyContent='center'>
+														<Box width={screenAtSmall ? '100%' : '90%'} display='flex' justifyContent='center'>
 															<Grid container spacing={3}>
 																<Grid item xs={12}>
 																	<TextField
 																		name='Email'
 																		placeholder="Email"
-
 																	/>
 																</Grid>
 
@@ -99,7 +98,7 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 
 																<Grid item xs={12}>
 																	<div className='flex items-center'>
-																		<span className='mr1 gray'>Currently Looking For a Job</span>
+																		<span className='mr1 gray f5-l f5-m f6'>Currently Looking For a Job</span>
 																		<label className="switch" htmlFor="job">
 																			<input type="checkbox" id="job" />
 																			<div className="slider round"></div>
@@ -149,7 +148,7 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 													<Box display='flex' justifyContent='center'>
 														<Button type='submit' className='moyynButton--main'>
 															Next
-													</Button>
+														</Button>
 													</Box>
 												</Grid>
 												<Grid item xs={12}>
