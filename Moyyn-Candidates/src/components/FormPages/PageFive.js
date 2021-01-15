@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { pageFiveValidation as validationSchema } from '../../util/validation/form-validation';
 import { careerLevelOptions, industries } from '../../util/data/static-data'; 
-import { Grid, Typography} from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import SelectMenu from '../FormElements/SelectMenuForm';
 import WorkExperience from '../FormElements/WorkExperience';
 import Languages from '../FormElements/Languages';
@@ -45,10 +45,10 @@ const PageFive = ({ initialValues, handleFormChange, formComplete }) => {
 							
 							return(
 								<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>
-									<div className='bg-white br2 ma4'>
+									<div className='bg-white c-shadow'>
 										<Form onKeyDown={onKeyDown}> 
 											<Grid container spacing={3} style={{padding:"2rem"}}>
-												<Grid item xs={12}>
+												{/* <Grid item xs={12}>
 													<Typography 
 														variant="h6"
 														style={{ marginBottom: "1rem" }}
@@ -57,7 +57,7 @@ const PageFive = ({ initialValues, handleFormChange, formComplete }) => {
 													>
 														Career and skills
 													</Typography>
-												</Grid>
+												</Grid> */}
 												<Grid item xs={12}>
 													<SelectMenu
 														name='Career Level'

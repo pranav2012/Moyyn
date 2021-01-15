@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { pageThreeValidation as validationSchema } from '../../util/validation/form-validation';
 import { countriesArray, citiesArray, visaOptions } from '../../util/data/static-data';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import TextField from '../FormElements/TextFieldForm'; 
 // import Checkbox from '../FormElements/CheckboxForm';
 import Autocomplete from '../FormElements/AutocompleteForm';
@@ -29,10 +29,10 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 
 							return(
 								<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>
-									<div className='bg-white br2 ma4'>
+									<div className='bg-white c-shadow'>
 										<Form>
 										<Grid container spacing={5} style={{padding:"2rem"}}>
-											<Grid item xs={12}>
+											{/* <Grid item xs={12}>
 												<Typography
 													variant="h6"
 													style={{ marginBottom: "1rem" }}
@@ -41,7 +41,7 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 												>
 													Personal Info
 												</Typography>
-											</Grid>
+											</Grid> */}
 											{/*Left*/}
 											<Grid item xs={12} lg={6} >
 												<Grid container spacing={5}>

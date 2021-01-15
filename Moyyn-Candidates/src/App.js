@@ -5,9 +5,6 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import { 
-   Divider,
-} from '@material-ui/core';
 import Candidate from './pages/Candidate';
 import Form from './pages/Form';
 import './App.css';
@@ -44,10 +41,12 @@ const App = () => {
                               suggestions={suggestions} 
                               setSuggestions={setSuggestions} 
                              />
+                             <Footer/>
                         </Route>
                         <Route path='/login'  >
                            <Header/>
                            <Login/>
+                           <Footer/>
                         </Route>
                         <Route path='/dashboard' >
                            <DashboardHeader/>
@@ -66,8 +65,8 @@ const App = () => {
             </Router>
          
 
-         <Divider/>
-         <Footer/>
+         {/* <Divider/> */}
+         
       </React.Fragment>
    );
 }

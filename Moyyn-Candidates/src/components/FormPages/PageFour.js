@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { pageFourValidation as validationSchema } from '../../util/validation/form-validation';
 import { europeanCountries, europeanCities } from '../../util/data/static-data'; 
-import { Grid, Typography } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 // import Checkbox from '../FormElements/CheckboxForm';
 import DesiredEmployment from '../FormElements/DesiredEmployment';
 import AutocompleteChips from '../FormElements/AutocompleteChipsForm';
@@ -33,10 +33,10 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 							
 							return(
 								<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>
-									<div className='bg-white br2 ma4'>
+									<div className='bg-white c-shadow'>
 										<Form onKeyDown={onKeyDown}>
 									<Grid container spacing={5} style={{padding:"2rem"}}>
-										<Grid item xs={12}>
+										{/* <Grid item xs={12}>
 											<Typography
 												variant="h6"
 												style={{ marginBottom: "1rem" }}
@@ -45,7 +45,7 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 											>
 												Preferences
 											</Typography>
-										</Grid>
+										</Grid> */}
 										<Grid item xs={12}>
 											<div className='flex items-center'>
 												<span className='mr1 gray'>I am willing to relocate</span>

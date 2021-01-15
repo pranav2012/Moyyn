@@ -13,6 +13,11 @@ import Loading from '../components/Shared/Loading';
 import './../styles/CandidatesForm.scss'
 import 'tachyons';
 import '../components/FormPages/toggle.css';
+import Footer from '../components/Footer/footer'
+import FormImage2 from '../Svg/FormImage2';
+import FormImage3 from '../Svg/FormImage3';
+import FormImage4 from '../Svg/FormImage4';
+import FormImage5 from '../Svg/FormImage5';
 
 const Form = ({ setEmail ,setSuggestions }) => {
 
@@ -159,78 +164,84 @@ const Form = ({ setEmail ,setSuggestions }) => {
 	
 	return(
 		<React.Fragment>
-		<div className="flex justify-around ph5 pv4 bg-white">			
-			<div className='mr4 mt4'>
-				<div className='buttons flex'>
-					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}`)} exact to={`${path}`} activeClassName="active-btn">1</NavLink>
-					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/cv`)} exact to={`${path}/cv`} activeClassName="active-btn">2</NavLink>
-					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/information`)} exact to={`${path}/information`} activeClassName="active-btn">3</NavLink>
-					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/preferences`)} exact to={`${path}/preferences`} activeClassName="active-btn">4</NavLink>
-					<NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/career`)} exact to={`${path}/career`} activeClassName="active-btn">5</NavLink>
-				</div>						
-				<Switch >
+			<div>
+				<div className="flex justify-around ph5 pv4 bg-white">			
+					<div className='mr4 mt3'>
+						<div className='buttons flex mb5'>
+							{/* <NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}`)} exact to={`${path}`} activeClassName="active-btn">1</NavLink> */}
+							<NavLink exact to={`${path}`} activeClassName="hide" className="link">
+								<NavLink  className={`pointer link mr2 dim ba br-100 ph3 pv2 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/cv`)} exact to={`${path}/cv`} activeClassName="active-btn">1</NavLink>
+								<NavLink  className={`pointer link mr2 dim ba br-100 ph3 pv2 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/information`)} exact to={`${path}/information`} activeClassName="active-btn">2</NavLink>
+								<NavLink  className={`pointer link mr2 dim ba br-100 ph3 pv2 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/preferences`)} exact to={`${path}/preferences`} activeClassName="active-btn">3</NavLink>
+								<NavLink  className={`pointer link mr2 dim ba br-100 ph3 pv2 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/career`)} exact to={`${path}/career`} activeClassName="active-btn">4</NavLink>
+							</NavLink>
+						</div>						
+						<Switch >
+						<Route path={`${path}`} exact>
+						</Route>
+						<Route path={`${path}/cv`} >
+							<p className='f5 signleftp1'>Upload your Cv</p>
+							<FormImage2/>
+						</Route>
+						<Route path={`${path}/information`} >
+							<p className='f5 signleftp1'>Fill your information</p>
+							<FormImage3/>
+						</Route>
+						<Route path={`${path}/preferences`} >
+							<p className='f5 signleftp1'>What are yor preferences?</p>
+							<FormImage4/>
+						</Route>
+						<Route path={`${path}/career`} >
+							<p className='f5 signleftp1'>Let us know about your skills</p>
+							<FormImage5/>
+						</Route>
+						<Redirect to={`${path}`} />
+					</Switch>
+					</div>
+
+					<div style={{minHeight:"80vh"}}>
+					<Switch >
 					<Route path={`${path}`} exact>
-						<p className='f4-l f4-m f5 tc signleftp1'>Fill the form</p>
-						<img src={require('./SignUpPicture.png')} alt="Moyyn" />
+						<PageOne 
+							initialValues={formValues[0]}
+							handleFormChange={handleFormChange} 
+						/>
 					</Route>
 					<Route path={`${path}/cv`} >
-						<p className='f4-l f4-m f5 tc signleftp1'>Upload your Cv</p>
-						<img src={require('./SignUpPicture2.png')} alt="Moyyn" />
+						<PageTwo 
+							initialValues={formValues[1]}
+							handleFormChange={handleFormChange} 
+						/>
 					</Route>
 					<Route path={`${path}/information`} >
-						<p className='f4-l f4-m f5 tc signleftp1'>Fill your information</p>
-						<img src={require('./SignUpPicture3.png')} alt="Moyyn" />
+						<PageThree
+							initialValues={formValues[2]}
+							handleFormChange={handleFormChange} 
+						/>
 					</Route>
 					<Route path={`${path}/preferences`} >
-						<p className='f4-l f4-m f5 tc signleftp1'>What are yor preferences?</p>
-						<img src={require('./SignUpPicture4.png')} alt="Moyyn" />
+						<PageFour 
+							initialValues={formValues[3]}
+							handleFormChange={handleFormChange} 
+						/>
 					</Route>
 					<Route path={`${path}/career`} >
-						<p className='f4-l f4-m f5 tc signleftp1'>Let us know about your career</p>
-						<img src={require('./SignUpPicture5.png')} alt="Moyyn" />
+						<PageFive 
+							initialValues={formValues[4]}
+							handleFormChange={handleFormChange}
+							formComplete={formComplete}
+						/>
 					</Route>
+
 					<Redirect to={`${path}`} />
 				</Switch>
+				</div>
+				</div>
+				{console.log(window.location.pathname)}
+				<div className={`${window.location.pathname==="/application"?"":"hide"}`}>
+					<Footer/>
+				</div>
 			</div>
-
-			<div className=''>
-				<Switch >
-				<Route path={`${path}`} exact>
-					<PageOne 
-						initialValues={formValues[0]}
-						handleFormChange={handleFormChange} 
-					/>
-				</Route>
-				<Route path={`${path}/cv`} >
-					<PageTwo 
-						initialValues={formValues[1]}
-						handleFormChange={handleFormChange} 
-					/>
-				</Route>
-				<Route path={`${path}/information`} >
-					<PageThree
-						initialValues={formValues[2]}
-						handleFormChange={handleFormChange} 
-					/>
-				</Route>
-				<Route path={`${path}/preferences`} >
-					<PageFour 
-					 	initialValues={formValues[3]}
-					 	handleFormChange={handleFormChange} 
-					/>
-				</Route>
-				<Route path={`${path}/career`} >
-					<PageFive 
-						initialValues={formValues[4]}
-						handleFormChange={handleFormChange}
-						formComplete={formComplete}
-					/>
-				</Route>
-
-				<Redirect to={`${path}`} />
-			</Switch>
-			</div>
-		</div>
 		</React.Fragment>
 	)
 }

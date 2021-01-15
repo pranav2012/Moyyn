@@ -28,10 +28,10 @@ const PageTwo = ({ initialValues, handleFormChange }) => {
 						//console.log(values)
 						return(
 							<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>
-								<div className='bg-white br2 ma4'>
+								<div className='bg-white c-shadow'>
 									<Form>
 										<Grid container spacing={3} xs={12} style={{padding:"2rem"}}>
-											<Grid item xs={12}>
+											{/* <Grid item xs={12}>
 												<Typography
 													variant="h6"
 													style={{ marginBottom: "1rem" }}
@@ -40,7 +40,7 @@ const PageTwo = ({ initialValues, handleFormChange }) => {
 												>
 													Upload CV
 												</Typography>
-											</Grid>
+											</Grid> */}
 											<div className='flex'>
 												<div className='mr4 flex-1'><ResumeUpload/></div>
 												<div className='flex-1'><ResumeUploadGer/></div>

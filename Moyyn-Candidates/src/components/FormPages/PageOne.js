@@ -2,38 +2,39 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { useHistory } from 'react-router-dom';
 import { sendRequest } from '../../util/helpers/helper-methods';
+import '../../Svg/FormImage1';
 import { pageOneValidation as validationSchema } from '../../util/validation/form-validation';
-import { 
+import {
 	Grid,
 	Link,
 	Typography,
-	Box, 
+	Box,
 	Button,
 	useMediaQuery
 } from '@material-ui/core'
-import TextField from '../FormElements/TextFieldForm'; 
+import TextField from '../FormElements/TextFieldForm';
 import Checkbox from '../FormElements/CheckboxForm';
 import '../FormElements/language.css'
-
+import FormImage1 from '../../Svg/FormImage1';
 // import Switch from '../FormElements/SwitchForm';
 
 const PageOne = ({ initialValues, handleFormChange }) => {
 
 	const history = useHistory();
 	const screenAtSmall = useMediaQuery("(max-width:600px)");
- 
+
 	const handleSubmit = (values, { setErrors }) => {
-		sendRequest('/email' ,'POST', {email: values.Email})
+		sendRequest('/email', 'POST', { email: values.Email })
 			.then(data => {
 				if (data.found) {
-					setErrors({Email: '*Email address already in use'})
+					setErrors({ Email: '*Email address already in use' })
 				} else {
 					handleFormChange(values, 0, 'cv')
 				}
 			})
 	}
 
-	return(
+	return (
 		<React.Fragment>
 			<Formik
 				initialValues={initialValues}
@@ -43,34 +44,33 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 				{
 					({ values }) => {
 
-						return(
-							<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>	
-								<div className='bg-white br2 ma4'>
-									<Form>
-										<Grid className="lsv-pp" container spacing={3} item xs={12} style={{padding:"1rem"}} >
-											<Grid item xs={12}>
-												<Typography
-													variant="h6"
-													style={{ marginBottom: "1rem" }}
-													align="center"
-													color='textSecondary'
-												>
-													Submit your application to our talent pool and find jobs matching to your profile
-												</Typography>
-											</Grid>
-											<Grid item xs={12}>
-												<Box width='100%' display='flex' justifyContent='center'>
-													<Box width={screenAtSmall ? '100%' :'60%'} display='flex' justifyContent='center'>
-														<Grid container spacing={3}>
-															<Grid item xs={12}>
-																<TextField 
-																	name='Email'
-																	placeholder="Email"
+						return (
+							<div className="flex">
+								<div className="flex flex-1" >
+									<div>
+										<p className='f4-l f4-m f5 tc signleftp1'>The journey to your next job starts here</p>
+										<FormImage1/>
+										<p className='f4-l f4-m f5 tc signleftp1'>Join  our talent pool for free and let our AI find you the perfect job</p>
+									</div>
+									<hr className='vh-75 ml4' style={{ border: "1px solid rgb(249, 246, 246)" }} />
+								</div>
 
-																/>
-															</Grid>
+								<div className='flex-2 bg-white br2 pb6 pt3'>
+										<Form>
+											<Grid className="lsv-pp" container spacing={4} item xs={12} style={{ padding: "1rem"}} >
+												<Grid item xs={12}>
+													<Box width='100%' display='flex' justifyContent='center'>
+														<Box width={screenAtSmall ? '100%' : '60%'} display='flex' justifyContent='center'>
+															<Grid container spacing={3}>
+																<Grid item xs={12}>
+																	<TextField
+																		name='Email'
+																		placeholder="Email"
 
-															{/* <Grid item xs={12}>
+																	/>
+																</Grid>
+
+																{/* <Grid item xs={12}>
 																<TextField 
 																	name='Password'
 																	placeholder='Password'
@@ -84,89 +84,89 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 																/>
 															</Grid> */}
 
-															<Grid item xs={12} md={6}>
-																<TextField 
-																	name='First Name'
-																	placeholder='First Name'
-																/>
-															</Grid>
-															<Grid item xs={12} md={6}>
-																<TextField 
-																	name="Last Name"
-																	placeholder="Last Name"
-																/>
-															</Grid>
+																<Grid item xs={12} md={6}>
+																	<TextField
+																		name='First Name'
+																		placeholder='First Name'
+																	/>
+																</Grid>
+																<Grid item xs={12} md={6}>
+																	<TextField
+																		name="Last Name"
+																		placeholder="Last Name"
+																	/>
+																</Grid>
 
-															<Grid item xs={12}>
-															<div className='flex items-center'>
-																<span className='mr1 gray'>Currently Looking For a Job</span>
-																<label className="switch" htmlFor="job">
-																	<input type="checkbox" id="job" />
-																	<div className="slider round"></div>
-																</label>
-															</div>
-															{/* <Switch 
+																<Grid item xs={12}>
+																	<div className='flex items-center'>
+																		<span className='mr1 gray'>Currently Looking For a Job</span>
+																		<label className="switch" htmlFor="job">
+																			<input type="checkbox" id="job" />
+																			<div className="slider round"></div>
+																		</label>
+																	</div>
+																	{/* <Switch 
 																name="Currently Looking For Job"
 																label="Currently Looking For a Job"
 																variant='body1'
 															/> */}
-															</Grid>
-															
-															<Grid item xs={12}>
-																<Checkbox 
-																	name='TermsAndPrivacy'
-																	label={
-																		<React.Fragment>
-																			By submitting the application I confirm I have read
+																</Grid>
+
+																<Grid item xs={12}>
+																	<Checkbox
+																		name='TermsAndPrivacy'
+																		label={
+																			<React.Fragment>
+																				By submitting the application I confirm I have read
 																			and agreed to the{" "}
-																			<Link
-																				href="https://moyyn.com/terms-and-conditions-2/"
-																				rel="noopener"
-																				target="_blank"
-																				style={{ cursor: "pointer" }}
-																			>
-																				Terms of Use
+																				<Link
+																					href="https://moyyn.com/terms-and-conditions-2/"
+																					rel="noopener"
+																					target="_blank"
+																					style={{ cursor: "pointer" }}
+																				>
+																					Terms of Use
 																			</Link>{" "}
 																				and{" "}
-																			<Link
-																				href="https://moyyn.com/privacy/"
-																				rel="noopener"
-																				target="_blank"
-																				style={{ cursor: "pointer" }}
-																			>
-																				Privacy Policy
+																				<Link
+																					href="https://moyyn.com/privacy/"
+																					rel="noopener"
+																					target="_blank"
+																					style={{ cursor: "pointer" }}
+																				>
+																					Privacy Policy
 																			</Link>
 																			.{" "}
-																		</React.Fragment>
-																	}
-																/>
+																			</React.Fragment>
+																		}
+																	/>
+																</Grid>
 															</Grid>
-														</Grid>
+														</Box>
 													</Box>
-												</Box>
-											</Grid>
-											<Grid item xs={12}>
-												<Box display='flex' justifyContent='center'>
-													<Button type='submit' className='moyynButton--main'>
-														Next
+												</Grid>
+												<Grid item xs={12}>
+													<Box display='flex' justifyContent='center'>
+														<Button type='submit' className='moyynButton--main'>
+															Next
 													</Button>
-												</Box>
-											</Grid>
-											<Grid item xs={12}>
-											<Typography variant='subtitle2' color='textSecondary' align="center">
-												Already submitted an application? Check application status{" "}
-												<Link
-													onClick={() => history.push('/candidate')}
-													style={{ cursor: "pointer" }}
-												>
-													{" "}
+													</Box>
+												</Grid>
+												<Grid item xs={12}>
+													<Typography variant='subtitle2' color='textSecondary' align="center">
+														Already submitted an application? Check application status{" "}
+														<Link
+															onClick={() => history.push('/candidate')}
+															style={{ cursor: "pointer" }}
+														>
+															{" "}
 													here
 												</Link>
-											</Typography>
-										</Grid>
-										</Grid>
-									</Form>
-								</div>
+													</Typography>
+												</Grid>
+											</Grid>
+										</Form>
+									</div>
 							</div>
 						)
 					}
