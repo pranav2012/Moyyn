@@ -59,22 +59,22 @@ const PartnerSuggestions = () => {
 				<Grid item xs={12}>
 					<Divider />
 				</Grid>
-								<Grid item xs={12} md={6}>
+				<Grid item xs={12} md={6}>
 					<Grid container spacing={2}>
 						<Grid item xs={12} >
 							<Typography variant='subtitle2' color='primary' align='center'>
 								Partner Platform 1
 							</Typography>
 						</Grid>
-						<Grid item xs={12} style={{height: '200%'}} >
-							<Button
-								onClick={() => goToURL("https://moyyn.com/de-personal-recommendation")} 
-								fullWidth
-								className='moyynButton--main fullHeight'
-								style={{textTransform: 'none', padding: '1.2rem'}}
-							>
-								Personal recomendation link
-							</Button>
+						<Grid item xs={6} style={{margin:"0 auto"}}>
+								<Button
+									onClick={() => goToURL("https://moyyn.com/de-personal-recommendation")} 
+									fullWidth
+									className='moyynBtn'
+									//style={{textTransform: 'none', padding: '1.2rem'}}
+								>
+									Personal recomendation link
+								</Button>
 						</Grid>
 					</Grid>
 				</Grid>
@@ -85,14 +85,13 @@ const PartnerSuggestions = () => {
 								Partner Platform 2
 							</Typography>
 						</Grid>
-						<Grid item xs={12} >
+						<Grid item xs={12}>
 							<Grid container spacing={1}>
 								<Grid item xs={6} >
 									<Button 
 										onClick={() =>goToURL("https://moyyn.com/hu-personal-recommendation")}
 										fullWidth 
-										className='moyynButton--main' 
-										style={{textTransform: 'none'}}
+										className='moyynBtn' 
 									>
 										{
 										   screenAtSmall ? 'Hungary' : 'Recomendation link - Hungary'
@@ -103,7 +102,7 @@ const PartnerSuggestions = () => {
 									<Button 
 										onClick={() =>goToURL("https://moyyn.com/pl-personal-recommendation")}
 										fullWidth 
-										className='moyynButton--main' 
+										className='moyynBtn' 
 										style={{textTransform: 'none'}}
 									>
 										{

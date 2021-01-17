@@ -21,7 +21,7 @@ const App = () => {
 
    const [email, setEmail] = useState('');
    const [suggestions, setSuggestions] = useState({moyyn: [], moberries: [], talentuno: []}); //should be an empty object
-
+  //console.log(suggestions);
    return (
       <React.Fragment>
             <Router>

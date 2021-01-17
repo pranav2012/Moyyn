@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { sendRequest } from '../../util/helpers/helper-methods';
-import { 
-	Grid, 
+import {
+	Grid,
 	Typography,
 	TextField,
 	Box,
@@ -21,14 +21,14 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 	const history = useHistory();
 
 	const handleEmailChange = (event) => {
-		if (isNotFound) { 
+		if (isNotFound) {
 			setIsNotFound(false);
 		}
 		setEmail(event.target.value)
 	}
 
 	const handleRequest = () => {
-		sendRequest('/email', 'POST', {email})
+		sendRequest('/email', 'POST', { email })
 			.then(data => {
 				if (data.found) {
 					setName(data.name);
@@ -48,7 +48,7 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 	const handleNameApprove = () => {
 		setIsLoading(true);
 
-		sendRequest('/suggestions', 'POST', {email: email})
+		sendRequest('/suggestions', 'POST', { email: email })
 			.then(data => {
 
 				if (data.found) {
@@ -63,12 +63,12 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 			.catch(err => setError(true));
 	}
 
-	return(
+	return (
 		<React.Fragment>
 			<Grid container spacing={7}>
 				{
-					!name && (	
-						<React.Fragment>		
+					!name && (
+						<React.Fragment>
 							<Grid item xs={12}>
 								<Typography color='textSecondary' align='center'>
 									Check for new job matches
@@ -76,10 +76,10 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 							</Grid>
 							<Grid item xs={12}>
 								<Grid container>
-									<Grid item xs={12}>
+									<Grid item xs={12} >
 										<Box width='100%' display='flex' justifyContent='center'>
 											<Box width='80%' display='flex' justifyContent='center'>
-												<TextField 
+												<TextField
 													value={email}
 													onChange={handleEmailChange}
 													onKeyDown={handleKeyDown}
@@ -91,12 +91,22 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 												/>
 											</Box>
 										</Box>
+										<div className='flex justify-center items-center mt4'>
+												<Button
+													fullWidth
+													className='moyynButton--main'
+													onClick={handleRequest}
+												>
+												Check Jobs
+												</Button>
+										</div>
 									</Grid>
+									
 									{
 										isNotFound && (
 											<Grid item xs={12}>
 												<Box width='100%' display='flex' justifyContent='center'>
-													<FormHelperText style={{color: 'red'}}>
+													<FormHelperText style={{ color: 'red' }}>
 														*Email not found
 													</FormHelperText>
 												</Box>
@@ -108,14 +118,14 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 							{
 								screenAtSmall && (
 									<Grid item xs={12}>
-										<Button 
-											fullWidth 
+										<Button
+											fullWidth
 											className='moyynButton--main'
 											onClick={handleRequest}
 										>
 											Next
 										</Button>
-									</Grid>	
+									</Grid>
 								)
 							}
 							<Grid item xs={12}>
@@ -138,19 +148,19 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 						<React.Fragment>
 							<Grid item xs={12}>
 								<Typography variant='h6' color='textSecondary' align='center'>
-									Are you { name }?
+									Are you {name}?
 								</Typography>
 							</Grid>
 							<Grid item xs={12}>
 								<Box width='100%' display='flex' justifyContent='center'>
-									<Button onClick={() => setName('')} style={{ marginRight: '1rem', textTransform: 'none'}} className='moyynButton--secondary'>
+									<Button onClick={() => setName('')} style={{ marginRight: '1rem', textTransform: 'none' }} className='moyynButton--secondary'>
 										{
-											screenAtSmall? 'No' : 'No, let me try again'
+											screenAtSmall ? 'No' : 'No, let me try again'
 										}
 									</Button>
-									<Button onClick={() => handleNameApprove()} style={{ marginLeft: '1rem', textTransform: 'none'}} className='moyynButton--main'>
+									<Button onClick={() => handleNameApprove()} style={{ marginLeft: '1rem', textTransform: 'none' }} className='moyynButton--main'>
 										{
-											screenAtSmall ? 'Yes' :	"Yes, let's continue"
+											screenAtSmall ? 'Yes' : "Yes, let's continue"
 										}
 									</Button>
 								</Box>
