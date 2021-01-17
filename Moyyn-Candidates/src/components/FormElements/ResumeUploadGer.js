@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	paragraph: {
 		color: '#6c757d',
-		fontSize:'12px'
+		fontSize:'12px',
 	}
 }));
 

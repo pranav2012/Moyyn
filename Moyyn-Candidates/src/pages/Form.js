@@ -165,8 +165,8 @@ const Form = ({ setEmail ,setSuggestions }) => {
 	return(
 		<React.Fragment>
 			<div>
-				<div className="flex justify-around ph5-l pv4-l pa2-m pa2 bg-white" style={{minHeight:"90vh"}}>			
-					<div className='mr4 mt3'>
+				<div className="flex flex-row-l flex-column-m flex-column items-center items-start-l justify-around ph5-l pv4-l pa2-m pa2 bg-white" style={{minHeight:window.location.pathname==="/application" || window.location.pathname==="/application/"?"":"100vh"}}>			
+					<div className={`${window.location.pathname==="/application" || window.location.pathname==="/application/"?"hide":""} mr4 mt3`}>
 						<div className='buttons flex mb5'>
 							{/* <NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}`)} exact to={`${path}`} activeClassName="active-btn">1</NavLink> */}
 							<NavLink exact to={`${path}`} activeClassName="hide" className="link">
@@ -199,42 +199,42 @@ const Form = ({ setEmail ,setSuggestions }) => {
 					</Switch>
 					</div>
 
-					<div>
+					<div className="mt0-l mt2-m mt2">
 						<Switch >
-					<Route path={`${path}`} exact>
-						<PageOne 
-							initialValues={formValues[0]}
-							handleFormChange={handleFormChange} 
-						/>
-					</Route>
-					<Route path={`${path}/cv`} >
-						<PageTwo 
-							initialValues={formValues[1]}
-							handleFormChange={handleFormChange} 
-						/>
-					</Route>
-					<Route path={`${path}/information`} >
-						<PageThree
-							initialValues={formValues[2]}
-							handleFormChange={handleFormChange} 
-						/>
-					</Route>
-					<Route path={`${path}/preferences`} >
-						<PageFour 
-							initialValues={formValues[3]}
-							handleFormChange={handleFormChange} 
-						/>
-					</Route>
-					<Route path={`${path}/career`} >
-						<PageFive 
-							initialValues={formValues[4]}
-							handleFormChange={handleFormChange}
-							formComplete={formComplete}
-						/>
-					</Route>
+							<Route path={`${path}`} exact>
+								<PageOne 
+									initialValues={formValues[0]}
+									handleFormChange={handleFormChange} 
+								/>
+							</Route>
+							<Route path={`${path}/cv`} >
+								<PageTwo 
+									initialValues={formValues[1]}
+									handleFormChange={handleFormChange} 
+								/>
+							</Route>
+							<Route path={`${path}/information`} >
+								<PageThree
+									initialValues={formValues[2]}
+									handleFormChange={handleFormChange} 
+								/>
+							</Route>
+							<Route path={`${path}/preferences`} >
+								<PageFour 
+									initialValues={formValues[3]}
+									handleFormChange={handleFormChange} 
+								/>
+							</Route>
+							<Route path={`${path}/career`} >
+								<PageFive 
+									initialValues={formValues[4]}
+									handleFormChange={handleFormChange}
+									formComplete={formComplete}
+								/>
+							</Route>
 
-					<Redirect to={`${path}`} />
-				</Switch>
+							<Redirect to={`${path}`} />
+						</Switch>
 					</div>
 				</div>
 				{console.log(window.location.pathname)}

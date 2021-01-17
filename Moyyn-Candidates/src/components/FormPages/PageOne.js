@@ -45,11 +45,11 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 					({ values }) => {
 
 						return (
-							<div className="flex flex-row-l flex-row-m flex-column">
+							<div className="flex flex-row-l self-start flex-row-m flex-column">
 								<div className="flex flex-1 mt5-m mt2 mt0-l" >
-									<div>
+									<div className="tc">
 										<p className='f4-l f5-m f6 tc gray'>The journey to your next job starts here</p>
-										<div className="ml0-l pl0-l ml0-m pl0-m ml4 pl3"><FormImage1/></div>
+										<FormImage1/>
 										<p className='f4-l f5-m f6 tc gray'>Join  our talent pool for free and let our AI find you the perfect job</p>
 									</div>
 									<hr className='vh-75-l vh-50-m ml4' style={{ border: "1px solid rgb(249, 246, 246)" }} />

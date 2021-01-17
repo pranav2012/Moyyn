@@ -27,8 +27,7 @@ const PageTwo = ({ initialValues, handleFormChange }) => {
 
 						//console.log(values)
 						return(
-							<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>
-								<div className='bg-white c-shadow'>
+							<div className='bg-white c-shadow'>
 									<Form>
 										<Grid container spacing={3} xs={12} style={{padding:"2rem"}}>
 											{/* <Grid item xs={12}>
@@ -51,6 +50,7 @@ const PageTwo = ({ initialValues, handleFormChange }) => {
 													style={{ marginBottom: "1rem" }}
 													align="center"
 													color='textSecondary'
+													className="f4-l f5-m f6"
 												>
 													Positions applying for (If Any)
 													</Typography>
@@ -71,7 +71,6 @@ const PageTwo = ({ initialValues, handleFormChange }) => {
 										</Grid>
 									</Form>
 								</div>
-							</div>
 						)
 					}
 				}

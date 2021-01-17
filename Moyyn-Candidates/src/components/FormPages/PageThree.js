@@ -28,8 +28,7 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 						({ values }) => {
 
 							return(
-								<div className='flex justify-center items-center' style={{backgroundColor:"#eef2f5", width:"70vw"}}>
-									<div className='bg-white c-shadow'>
+								<div className='bg-white c-shadow'>
 										<Form>
 										<Grid container spacing={5} style={{padding:"2rem"}}>
 											{/* <Grid item xs={12}>
@@ -128,7 +127,6 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 										</Grid>
 									</Form>
 									</div>
-								</div>
 							)
 						}
 					}
