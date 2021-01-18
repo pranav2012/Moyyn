@@ -4,7 +4,7 @@ import { pageThreeValidation as validationSchema } from '../../util/validation/f
 import { countriesArray, citiesArray, visaOptions } from '../../util/data/static-data';
 import { Grid } from '@material-ui/core';
 import TextField from '../FormElements/TextFieldForm'; 
-// import Checkbox from '../FormElements/CheckboxForm';
+import Checkbox from '../FormElements/CheckboxForm';
 import Autocomplete from '../FormElements/AutocompleteForm';
 import SelectMenu from '../FormElements/SelectMenuForm';
 import PhoneNumber from '../FormElements/PhoneNumberForm';
@@ -16,7 +16,7 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 	const handleSubmit = (values) => {
 		handleFormChange(values, 2, 'preferences')
 	}
-
+	
 	return(
 		<React.Fragment>
 			<Formik
@@ -60,20 +60,20 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 														/>
 													</Grid>
 													<Grid item xs={12}>
-													<div className='flex items-center'>
+													{/* <div className='flex items-center'>
 														<span className='mr1 gray'>Currently Employed</span>
 														<label className="switch" htmlFor="employed">
-															<input type="checkbox" id="employed" value="true"/>
+															<input type="checkbox" name="Currently Employed" id="employed"/>
 															<div className="slider round"></div>
 														</label>
-													</div>
-														{/* <Checkbox
+													</div> */}
+														<Checkbox
 															name="Currently Employed"
 															label="Currently Employed"
 															variant='body1'
-														/> */}
+														/>
 													</Grid>
-													<Grid item xs={12} className="lsv">
+													<Grid item xs={12} className="lsv-pp">
 														<PhoneNumber name="Contact Number" />
 													</Grid>
 												</Grid>
@@ -96,20 +96,20 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 														/>
 													</Grid>
 													<Grid item xs={12}>
-													<div className='flex items-center'>
+													{/* <div className='flex items-center'>
 														<span className='mr1 gray'>EU Driver's License</span>
 														<label className="switch" htmlFor="dl">
-															<input type="checkbox" id="dl" value="true"/>
+															<input name="Driver's License" type="checkbox" id="dl"/>
 															<div className="slider round"></div>
 														</label>
-													</div>
-														{/* <Checkbox
+													</div> */}
+														<Checkbox
 															name="Driver's License"
 															label="EU Driver's License"
 															variant='body1'
-														/> */}
+														/>
 													</Grid>
-													<Grid item xs={12} className="lsv">
+													<Grid item xs={12} className="lsv-pp">
 														{/*eslint-disable-next-line*/}
 														<TextField
 															name="Notice Period"

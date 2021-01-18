@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import { pageFourValidation as validationSchema } from '../../util/validation/form-validation';
 import { europeanCountries, europeanCities } from '../../util/data/static-data'; 
 import { Grid } from '@material-ui/core'
-// import Checkbox from '../FormElements/CheckboxForm';
+import Checkbox from '../FormElements/CheckboxForm';
 import DesiredEmployment from '../FormElements/DesiredEmployment';
 import AutocompleteChips from '../FormElements/AutocompleteChipsForm';
 import ProfilePicker from '../FormElements/ProfilePicker';
@@ -46,18 +46,18 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 											</Typography>
 										</Grid> */}
 										<Grid item xs={12}>
-											<div className='flex items-center'>
+											{/* <div className='flex items-center'>
 												<span className='mr1 gray'>I am willing to relocate</span>
 												<label className="switch" htmlFor="dl">
-													<input type="checkbox" id="dl" />
+													<input type="checkbox" name='Relocation Willingness' id="rl" />
 													<div className="slider round"></div>
 												</label>
-											</div>
-											{/* <Checkbox
+											</div> */}
+											<Checkbox
 												name='Relocation Willingness'
 												label='I am willing to relocate'
 												variant='body1'
-											/> */}
+											/>
 										</Grid>
 										{
 											values['Relocation Willingness'] && (

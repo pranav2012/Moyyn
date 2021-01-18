@@ -16,7 +16,7 @@ import TextField from '../FormElements/TextFieldForm';
 import Checkbox from '../FormElements/CheckboxForm';
 import '../FormElements/language.css'
 import FormImage1 from '../../Svg/FormImage1';
-// import Switch from '../FormElements/SwitchForm';
+import Switch from '../FormElements/SwitchForm';
 
 const PageOne = ({ initialValues, handleFormChange }) => {
 
@@ -57,7 +57,7 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 
 								<div className='flex-2 bg-white br2 pb6-l pb4-m pb4 pt3-l pt5-m pt2'>
 										<Form>
-											<Grid className="lsv-pp" container spacing={4} item xs={12} style={{ padding: "1rem"}} >
+											<Grid className="lsv-pp" container spacing={4} item xs={12} style={{margin:"0", padding: "1rem"}} >
 												<Grid item xs={12}>
 													<Box width='100%' display='flex' justifyContent='center'>
 														<Box width={screenAtSmall ? '100%' : '90%'} display='flex' justifyContent='center'>
@@ -97,18 +97,18 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 																</Grid>
 
 																<Grid item xs={12}>
-																	<div className='flex items-center'>
+																	{/* <div className='flex items-center'>
 																		<span className='mr1 gray f5-l f5-m f6'>Currently Looking For a Job</span>
 																		<label className="switch" htmlFor="job">
-																			<input type="checkbox" id="job" />
+																			<input name="Currently Looking For Job" type="checkbox" id="job" />
 																			<div className="slider round"></div>
 																		</label>
-																	</div>
-																	{/* <Switch 
+																	</div> */}
+																	<Switch 
 																name="Currently Looking For Job"
 																label="Currently Looking For a Job"
 																variant='body1'
-															/> */}
+															/>
 																</Grid>
 
 																<Grid item xs={12}>

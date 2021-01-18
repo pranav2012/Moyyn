@@ -11,7 +11,7 @@ import './App.css';
 import Header from './components/Header/header'
 import DashboardHeader from './components/Header/DashboardHeader';
 import Footer from './components/Footer/footer'
-import Login from './pages/Login';
+// import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
 import EditProfile from './pages/EditProfile';
@@ -43,14 +43,14 @@ const App = () => {
                              />
                              <Footer/>
                         </Route>
-                        <Route path='/login'  >
+                        {/* <Route path='/login'  >
                            <Header/>
                            <Login/>
                            <Footer/>
-                        </Route>
+                        </Route> */}
                         <Route path='/dashboard' >
                            <DashboardHeader/>
-                           <Dashboard/>
+                           <Dashboard email={email} suggestions={suggestions} />
                         </Route>
                         <Route path='/editprofile'  >
                            <DashboardHeader/>

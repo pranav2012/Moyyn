@@ -149,16 +149,18 @@ const Form = ({ setEmail ,setSuggestions }) => {
 	if (error) {
 		return(
 			<React.Fragment>
-				<ErrorPage setError={handleError} />
+				<div className='flex items-center justify-center bg-white ma3 br2 vh-75'>
+					<ErrorPage setError={handleError} />
+				</div>
 			</React.Fragment>
 		)
 	}
 
 	if (isLoading) {
 		return(
-			<React.Fragment>
+			<div className='flex items-center justify-center bg-white ma3 br2 vh-75'>
 				<Loading text='AI matchmaking in progress...' />
-			</React.Fragment>
+			</div>
 		)
 	}
 	

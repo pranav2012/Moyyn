@@ -7,8 +7,7 @@ import {
 	useHistory
 } from 'react-router-dom';
 import EnterEmail from '../components/CandidatePages/EnterEmail';
-import Suggestions from '../components/CandidatePages/Suggestions';
-import PartnerSuggestions from '../components/CandidatePages/PartnerSuggestions';
+// import Suggestions from '../components/CandidatePages/Suggestions';
 import PartnersText from '../components/CandidatePages/PartnersText';
 import Feedback from '../components/CandidatePages/Feedback';
 import ErrorPage from '../components/Shared/ErrorPage';
@@ -38,7 +37,9 @@ const Candidate = ({ suggestions, setSuggestions, email, setEmail }) => {
 	if (error) {
 		return(
 			<React.Fragment>
-				<ErrorPage setError={setError} />
+				<div className='flex items-center justify-center bg-white ma3 br2 vh-75'>
+					<ErrorPage setError={setError} />
+				</div>
 			</React.Fragment>
 		)
 	}
@@ -65,25 +66,6 @@ const Candidate = ({ suggestions, setSuggestions, email, setEmail }) => {
 							moveToPage={moveToPage} 
 							email={email} 
 							setEmail={setEmail} 
-						/>
-					</Route>
-
-					<Route path={`${path}/suggestions`} >
-						<Suggestions 
-							setError={setError} 
-							moveToPage={moveToPage} 
-							email={email} 
-							suggestions={suggestions} 
-							setIsLoading={setIsLoading}
-						/>
-					</Route>
-
-					<Route path={`${path}/partner-suggestions`} >
-						<PartnerSuggestions 
-							talentuno={suggestions.talentuno} 
-							moberries={suggestions.moberries} 
-							moveToPage={moveToPage} 
-							setIsLoading={setIsLoading}
 						/>
 					</Route>
 

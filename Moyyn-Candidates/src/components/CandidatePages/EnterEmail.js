@@ -54,7 +54,7 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 				if (data.found) {
 					setSuggestions(data.suggestions)
 					setIsLoading(false);
-					history.push('/candidate/suggestions')
+					history.push('/dashboard')
 				} else {
 					setIsLoading(false);
 					history.push('/candidate/partners')
@@ -94,10 +94,10 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 										<div className='flex justify-center items-center mt4'>
 												<Button
 													fullWidth
-													className='moyynButton--main'
+													className='moyynButton--main mb4'
 													onClick={handleRequest}
 												>
-												Check Jobs
+												Check {screenAtSmall?'':"Jobs"}
 												</Button>
 										</div>
 									</Grid>
@@ -114,7 +114,7 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 										)
 									}
 								</Grid>
-							</Grid>
+							{/* </Grid>
 							{
 								screenAtSmall && (
 									<Grid item xs={12}>
@@ -128,7 +128,7 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 									</Grid>
 								)
 							}
-							<Grid item xs={12}>
+							<Grid item xs={12}> */}
 								<Typography variant='subtitle2' color='textSecondary' align="center">
 									New candidate? Click{" "}
 									<Link
