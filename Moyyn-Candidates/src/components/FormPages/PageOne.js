@@ -48,14 +48,14 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 							<div className="flex flex-row-l self-start flex-row-m flex-column">
 								<div className="flex flex-1 mt5-m mt2 mt0-l" >
 									<div className="tc">
-										<p className='f4-l f5-m f6 tc gray'>The journey to your next job starts here</p>
+										<p className='f3-l f4-m f6 tc gray'>The journey to your next job starts here</p>
 										<FormImage1/>
-										<p className='f4-l f5-m f6 tc gray'>Join  our talent pool for free and let our AI find you the perfect job</p>
+										<p className='f5-l f6-m f7 tc gray'>Join  our talent pool for free and let our AI find you the perfect job</p>
 									</div>
 									<hr className='vh-75-l vh-50-m ml4' style={{ border: "1px solid rgb(249, 246, 246)" }} />
 								</div>
 
-								<div className='flex-2 bg-white br2 pb6-l pb4-m pb4 pt3-l pt5-m pt2'>
+								<div className='flex-1 flex-2-m flex-2-mo bg-white br2 pb6-l pb4-m pb4 pt3-l pt5-m pt2'>
 										<Form>
 											<Grid className="lsv-pp" container spacing={4} item xs={12} style={{margin:"0", padding: "1rem"}} >
 												<Grid item xs={12}>

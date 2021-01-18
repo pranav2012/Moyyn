@@ -168,7 +168,7 @@ const Form = ({ setEmail ,setSuggestions }) => {
 		<React.Fragment>
 			<div>
 				<div className="flex flex-row-l flex-column-m flex-column items-center items-start-l justify-around ph5-l pv4-l pa2-m pa2 bg-white" style={{minHeight:window.location.pathname==="/application" || window.location.pathname==="/application/"?"":"100vh"}}>			
-					<div className={`${window.location.pathname==="/application" || window.location.pathname==="/application/"?"hide":""} mr4 mt3`}>
+					<div className={`${window.location.pathname==="/application" || window.location.pathname==="/application/"?"hide":""} ml5 mr5 mt3`}>
 						<div className='buttons flex mb5'>
 							{/* <NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}`)} exact to={`${path}`} activeClassName="active-btn">1</NavLink> */}
 							<NavLink exact to={`${path}`} activeClassName="hide" className="link">
@@ -201,7 +201,7 @@ const Form = ({ setEmail ,setSuggestions }) => {
 					</Switch>
 					</div>
 
-					<div className="mt0-l mt2-m mt2">
+					<div className="mt0-l mt2-m mt2 mr5">
 						<Switch >
 							<Route path={`${path}`} exact>
 								<PageOne 
