@@ -1,8 +1,15 @@
+.hide{
+    display: none !important;
+}
+
 .h7{
     height: 38%;
 }
 .fc{
     font-size: 0.5rem;
+}
+.w-32-l{
+    width: 33% !important;
 }
 .w7{
     width: 23%;
