@@ -25,7 +25,7 @@ export const initialValues = [
 		"Visa Status": '',
 		"Currently Employed": false,
 		"Driver's License": false,
-		"Notice Period": '0',
+		"Notice Period": '',
 		"Contact Number": '',
 		"Earliest Joining Date": ''
 	},

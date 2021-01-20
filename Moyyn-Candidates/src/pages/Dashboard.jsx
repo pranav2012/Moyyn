@@ -22,7 +22,7 @@ export default function Dashboard({ suggestions, email }) {
     useEffect(() => {
         if (client) setjobs(suggestions.moyyn);
         else {
-            let partner = suggestions.moberries.concat(suggestions.talentuno);
+        let partner = suggestions.moberries.concat(suggestions.talentuno);
             setjobs(partner);
         }
     }, [suggestions, client]);
@@ -47,15 +47,15 @@ export default function Dashboard({ suggestions, email }) {
     return (
         <div className="ma4-l ma4-m ma2">
             <p className='ma0 f3-l mb2 f4-m f6 pb2 gray tl'>Check out your job matches from</p>
-            <div className="flex ma3 ma0-l ma0-m w-32-l w-50-m w-80 justify-around br2 pa2 ph1">
-                <button onClick={() => setclient(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f6-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Direct {screenAtTab?"":"Clients"}</button>
-                <button onClick={() => setclient(false)} style={{ background: "#265cff" }} className={` ${client ? 'active' : ''} c-shadow h2 pointer h7-mo f8-mo f7-m f6-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Partner {screenAtTab?"":" Platforms"}</button>
+            <div className="flex ma3 ma0-l ma0-m w-25-l w-50-m w-80 justify-around br2 pa2 ph1">
+                <button onClick={() => setclient(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Direct {screenAtTab?"":"Clients"}</button>
+                <button onClick={() => setclient(false)} style={{ background: "#265cff" }} className={` ${client ? 'active' : ''} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Partner {screenAtTab?"":" Platforms"}</button>
             </div>
             <div className='flex justtify-around mt4'>
-                <div className={`${client ? 'flex-1' : 'flex-2'} br2 bg-white pa2 mr2 w-100`} >
+                <div className={` flex-1 ph2 mr2 w-100`} >
                     <Jobcards jobs={jobs} setdesc={setdescription} />
                 </div>
-                <div className={`${client ? 'flex-2' : 'flex-3'} br2 bg-white pa4 ml1 w-100 flex justify-center items-center`}>
+                <div className={` flex-2 br2 bg-white pa4 ml1 w-100 flex justify-center items-center`}>
                     {
                         description.desc === "" ? <p className='gray f4-l f5-m f6'>No Job Description!</p> : client ?
                             <Grid container item xs={12} spacing={3}>
@@ -90,7 +90,7 @@ export default function Dashboard({ suggestions, email }) {
                                             onClick={() => {
                                             }}
                                             fullWidth
-                                            className='moyynBtn mt4 ml4'
+                                            className='moyynBtn-sec dim mt4 ml4'
                                         >
                                             Reject
                                         </Button>
@@ -151,9 +151,15 @@ export default function Dashboard({ suggestions, email }) {
                             </div>
                     }
                 </div>
-                <div className={`${client ? 'hide' : 'flex-1'}`}>
-                    <div className="bg-white mh2 pa3 h-100">
-                        <p className='gray f6-l f6-m f7'>  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi aspernatur consequatur deleniti voluptas. A molestias totam repellat,sequi ut perspiciatis modi consequuntur maxime quidem corrupti ullam pariatur porro accusamus aperiam?</p>
+                <div className={` flex-1`}>
+                    <div className={`${client ? 'hide' : ''} bg-white mh2 pa3 h-100`}>
+                        <p className='gray f7-l f7-m f8-mo'> 
+                            At Moyyn, we work directly with clients as well as several partner platforms to increase your chances of getting a job, especially during the current Covid situation.<br/>
+                            <br/>What are the advantages of being recommended by us?<br/>
+                            <br/>• Because we work closely with our partners, companies are more willing to consider your application and hire you if you meet their requirements
+                            <br/><br/>• You are also considered as a skilled candidate recommended by Moyyn and you have a higher chance of being interviewed for suitable positions
+                            <br/><br/>After clicking the recommendation link, you can apply to the career network of our partner and start getting job offers matching your skills immediately.
+                        </p>
                     </div>
                 </div>
             </div>

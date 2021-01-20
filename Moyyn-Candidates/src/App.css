@@ -20,6 +20,19 @@
   color:#265CFF;
 }
 
+.moyynBtn-sec{
+  color:  #265CFF;
+  background-color: white;
+  border: 1px solid #265CFF;
+  font-size: 0.8rem;
+  border-radius: 7.5px;
+  text-transform: capitalize;
+  -webkit-box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  -moz-box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+  box-shadow: 0px 0px 12px 2px rgba(194,194,194,1);
+}
+
+
 .moyynButton--main {
   color: white;
   background-color: #265CFF;

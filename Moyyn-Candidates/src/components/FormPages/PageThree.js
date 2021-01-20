@@ -115,6 +115,7 @@ const PageThree = ({ initialValues, handleFormChange }) => {
 															name="Notice Period"
 															label="Notice Period (In Months)"
 															type="number"
+															placeholder="Notice Period (In Months)"
 															// eslint-disable-next-line
 															disabled={!values['Currently Employed']}
 														/>
