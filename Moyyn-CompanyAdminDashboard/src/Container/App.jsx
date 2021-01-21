@@ -15,9 +15,10 @@ function App() {
   const [jobdata, setjobdata] = useState([]);
   const [candidates, setcandidates] = useState([])
 
+  // eslint-disable-next-line
   useEffect(() => {
     let log = localStorage.getItem("logstate");
-    setloggedin(JSON.parse(log));
+    setloggedin(JSON.parse(log)); 
   });
 
   return (

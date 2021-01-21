@@ -201,7 +201,7 @@ const Form = ({ setEmail ,setSuggestions }) => {
 					</Switch>
 					</div>
 
-					<div className="mt0-l mt2-m mt2 mr5">
+					<div className="mt0-l mt2-m mt2 mr5-l mr5-m mr0">
 						<Switch >
 							<Route path={`${path}`} exact>
 								<PageOne 
