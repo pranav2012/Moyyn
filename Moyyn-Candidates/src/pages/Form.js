@@ -182,15 +182,15 @@ const Form = ({ setEmail ,setSuggestions }) => {
 						<Route path={`${path}`} exact>
 						</Route>
 						<Route path={`${path}/cv`} >
-							<p className='f5 signleftp1'>Upload your Cv</p>
+							<p className='f5 signleftp1'>Upload your CV</p>
 							<FormImage2/>
 						</Route>
 						<Route path={`${path}/information`} >
-							<p className='f5 signleftp1'>Fill your information</p>
+							<p className='f5 signleftp1'>Personal information</p>
 							<FormImage3/>
 						</Route>
 						<Route path={`${path}/preferences`} >
-							<p className='f5 signleftp1'>What are yor preferences?</p>
+							<p className='f5 signleftp1'>What are your preferences?</p>
 							<FormImage4/>
 						</Route>
 						<Route path={`${path}/career`} >

@@ -6,7 +6,7 @@ import Jobcards from '../components/JobCards/Jobcardlist';
 import { goToURL } from '../util/helpers/helper-methods';
 import { Button, Grid, Typography, useMediaQuery } from '@material-ui/core';
 import { sendRequest } from '../util/helpers/helper-methods';
-
+import HelpOutlineOutlinedIcon from '@material-ui/icons/HelpOutlineOutlined';
 
 export default function Dashboard({ suggestions, email }) {
 
@@ -15,35 +15,36 @@ export default function Dashboard({ suggestions, email }) {
     const [description, setdescription] = useState({desc:"",code:""});
     const [form, setform] = useState([]);
     const [sendjobpref, setsendjobpref] = useState(false)
+    const [hov3, sethov3] = useState(false)
 
     const screenAtSmall = useMediaQuery("(max-width:600px)");
     const screenAtTab = useMediaQuery("(max-width:1024px)");
 
     useEffect(() => {
+        // console.log(suggestions);
         if (client) setjobs(suggestions.moyyn);
         else {
         let partner = suggestions.moberries.concat(suggestions.talentuno);
             setjobs(partner);
         }
-    }, [suggestions, client]);
+    }, [suggestions, client,description]);
 
     useEffect(()=>{
         if(sendjobpref)
-        // console.log(email,form)
         sendRequest('/jobs', 'POST', {
             email,
             jobs: form
         })
     },[form,email,sendjobpref]);
 
-    const handleaccept = () =>{
-        if (form.includes(description.code)) {
-            setform((prev) => prev.filter((c) => c !== description.code));
-        } else {
-            setform((prev) => [...prev, description.code]);
-        }
-        setsendjobpref(true);
-    }
+    // const handleaccept = () =>{
+    //     if (form.includes(description.code)) {
+    //         setform((prev) => prev.filter((c) => c !== description.code));
+    //     } else {
+    //         setform((prev) => [...prev, description.code]);
+    //     }
+    //     setsendjobpref(true);
+    // }
     return (
         <div className="ma4-l ma4-m ma2">
             <p className='ma0 f3-l mb2 f4-m f6 pb2 gray tl'>Check out your job matches from</p>
@@ -51,9 +52,16 @@ export default function Dashboard({ suggestions, email }) {
                 <button onClick={() => setclient(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Direct {screenAtTab?"":"Clients"}</button>
                 <button onClick={() => setclient(false)} style={{ background: "#265cff" }} className={` ${client ? 'active' : ''} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Partner {screenAtTab?"":" Platforms"}</button>
             </div>
+            <div className="flex justify-start items-center mt3 ml4">
+                <button onClick={() => setsendjobpref(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>{screenAtTab?"":"Submit your"} preferences</button>
+                <div className="relative">
+                    <div style={{background:"#eef2f5"}} className={`${hov3?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 top-1 z-11 right--1`}>Please select your preferred jobs from below and click 'Submit your preferences' button to save preferred jobs</div>
+                    <div onMouseLeave={()=>sethov3(false)} onMouseOver={()=>sethov3(true)} style={{color:"#265cff"}} className="pointer help-ico dim bottom--1 absolute"><HelpOutlineOutlinedIcon/></div>
+                </div>
+            </div>
             <div className='flex justtify-around mt4'>
                 <div className={` flex-1 ph2 mr2 w-100`} >
-                    <Jobcards jobs={jobs} setdesc={setdescription} />
+                    <Jobcards jobs={jobs} setdesc={setdescription} form={form} setform={setform} />
                 </div>
                 <div className={` flex-2 br2 bg-white pa4 ml1 w-100 flex justify-center items-center`}>
                     {
@@ -74,7 +82,7 @@ export default function Dashboard({ suggestions, email }) {
                                         );
                                     })}
                                 </Grid>
-                                <div className='flex w-100 items-center justify-center'>
+                                {/* <div className='flex w-100 items-center justify-center'>
                                     <Grid container item xs={8}>
                                         <Grid item xs={5}>
                                             <Button
@@ -96,46 +104,26 @@ export default function Dashboard({ suggestions, email }) {
                                         </Button>
                                     </Grid>
                                     </Grid>
-                                </div>
+                                </div> */}
                             </Grid>
                             :
                             <div className="flex flex-column">
-                                <Grid container spacing={3}>
-                                    <Grid item xs={12}>
+                                <Grid container item xs={12} spacing={3}>
+                                    <Grid item xs={12} className="mb1">
                                         <Typography color='textSecondary' variant='h6' align='center'>
-                                            Partner Job Matches
-                            </Typography>
+                                            Job Description
+                                    </Typography>
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography color='textSecondary'>
-                                            At Moyyn, we work directly with clients as well as several partner platforms to increase your chances of getting a job, especially during the current Covid situation. We also work with several partner platforms and would like to give a recommendation to you.
-                                </Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography color='textSecondary'>
-                                            What are the advantages of being recommended by us?
-                                </Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography color='textSecondary'>
-                                            • Because we work closely with our partners, companies are more willing to consider your application and hire you if you meet their requirements
-                                </Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography color='textSecondary'>
-                                            • You are also considered as a skilled candidate recommended by Moyyn and you have a higher chance of being interviewed for suitable positions
-                                </Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography color='textSecondary'>
-                                            After clicking the link, you can apply to the career network of our partner and start getting job offers matching your skills immediately. Please note that we share your CV only with our direct clients and we do not share any info about your profile to other partner platforms. If you are interested in expanding your job opportunities, you can register directly on our partner platforms.
-                                </Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography color='textSecondary'>
-                                            P.S: If you are applying at a later point of time, please save and use your personal recommendation link while registering at our partners at any point of time.
-					</Typography>
-                                    </Grid>
+                                    <Grid container spacing={1}>
+                                    {/* {console.log(description)} */}
+                                    {description.desc.split("\n").map((node, i) => {
+                                        return (
+                                            <Grid key={i} item xs={12}>
+                                                <Typography variant={screenAtSmall ? 'body2' : 'body1'} color='textSecondary'>{node}</Typography>
+                                            </Grid>
+                                        );
+                                    })}
+                                </Grid>
                                 </Grid>
                                 <div className='flex justify-center items-center'>
                                     <Grid item xs={6}>

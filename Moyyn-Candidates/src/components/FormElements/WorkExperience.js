@@ -89,7 +89,7 @@ const FormikWorkExperience = () => {
                         <Grid container spacing={2}>
                            <Grid item xs={12}>
                               <Typography color='textSecondary'>
-                                 Work experience (multiple)
+                                 Work experience (Add your experiences)
                               </Typography>
                            </Grid>
                            <Grid item xs={12} md={4} style={{marginBottom: '0.4rem'}} >

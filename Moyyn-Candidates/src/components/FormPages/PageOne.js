@@ -57,7 +57,17 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 
 								<div className='flex-1 flex-2-m flex-2-mo bg-white br2 pb6-l pb4-m pb4 pt3-l pt5-m pt2'>
 										<Form>
-											<Grid className="lsv-pp" container spacing={4} item xs={12} style={{margin:"0", padding: "1rem"}} >
+											<Grid className="lsv-pp" container spacing={4} item xs={12} style={{margin:"0", padding: "1rem", paddingTop:"0"}} >
+												<Grid item xs={12} style={{ paddingTop: "0" }}>
+													<Typography
+														variant="h6"
+														style={{ marginBottom: "1rem" }}
+														align="center"
+														color='textSecondary'
+													>
+														Apply Now
+													</Typography>
+												</Grid>
 												<Grid item xs={12}>
 													<Box width='100%' display='flex' justifyContent='center'>
 														<Box width={screenAtSmall ? '100%' : '90%'} display='flex' justifyContent='center'>
