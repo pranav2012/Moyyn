@@ -4,7 +4,9 @@ import React, { useState} from 'react';
 function Company({companypendinglist}) {
     // eslint-disable-next-line
     const [pps, setpps] = useState(false);// eslint-disable-next-line
-    const [sub, setsub] = useState(false);
+    const [sub, setsub] = useState(false);// eslint-disable-next-line
+    const [free, setfree] = useState(false);
+
 
     // useEffect(() => {
         
@@ -27,7 +29,10 @@ function Company({companypendinglist}) {
                         <p className='ma0 tr gray f8'><span className='hide-mo'>Registered on: </span>7th Nov, 2020</p>
                         <div className='flex flex-column'>
                             <p className='ma0 self-center ml4 ml0-l ml0-m mb3-l mb3-m mb2 gray f6-l f7-m f7 hide-mo'>Approve For</p>
-                            <div className='flex flex-row-l flex-row-m flex-column'>
+                            <div className='flex flex-row-l flex-row-m flex-column justify-between'>
+                                
+                                <div onClick={()=>setfree(true)} className='flex-1 c-shadow ac-btn'><Button style={{borderColor:"#265cff", color:"#265cff"}} className='w-100' variant="outlined">Free</Button></div>
+                                <div className="w1 hcp"></div>
                                 <div onClick={()=>setpps(true)} className='flex-1 c-shadow ac-btn'><Button style={{borderColor:"#265cff", color:"#265cff"}} className='w-100' variant="outlined">PPH</Button></div>
                                 <div className="w1 hcp"></div>
                                 <div onClick={()=>setsub(true)} className='flex-1 c-shadow ac-btn'><Button style={{borderColor:"#265cff", color:"#265cff"}} className='w-100' variant="outlined">Subscription</Button></div>

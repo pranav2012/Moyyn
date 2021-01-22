@@ -1,13 +1,17 @@
 
-@media only screen and (max-width: 560px) {
-.ac-btn{
-    width: 70%;
-    margin-left: auto;
-    .MuiButton-root{
-        padding: 0px !important;
-        font-size: 0.6rem!important;
+@media only screen and (max-width: 860px) {
+    .ac-btn{
+        width: 70%;
+        margin-left: auto;
+        .MuiButton-root{
+            padding: 0px !important;
+            font-size: 0.6rem!important;
+        }
     }
 }
+
+@media only screen and (max-width: 560px) {
+
 .hcp{
     height: 0.4rem;
 }
