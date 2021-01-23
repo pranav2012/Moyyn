@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './check.css';
 
-function Jobcard({ job, setdesc, form, setform }) {
+function Jobcard({ job, setdesc, form, setform, client }) {
 
     const [show, setshow] = useState(true);
     const [check, setcheck] = useState(false)
@@ -32,24 +32,27 @@ function Jobcard({ job, setdesc, form, setform }) {
     //     }  // eslint-disable-next-line
     // },[job,check]);
 
+    // useEffect(()=>{
+    //     console.log(check)
+    // },[check])
+
     const handleaccept = () =>{
-        // console.log(job)
-            if (form.includes(job.Code)) {
-                setform((prev) => prev.filter((c) => c !== job.Code));
-            } else {
-                setform((prev) => [...prev, job.Code]);
-            }
+        if (form.includes(job.Code)) {
+        setform((prev) => prev.filter((c) => c !== job.Code));
+        } else {
+            setform((prev) => [...prev, job.Code]);
         }
+    }
 
     return (
         <div onClick={() => setshow(true)} className="card pointer c-shadow ma1 bg-white pa3-l pa3-m pa2 mt3 br3 flex justify-center items-center">
-            <div className="flex w-100 justify-around items-center ">
+            <div className={`${client?'flex w-100 justify-around items-center':''}`}>
                 <div className='flex-1 flex w-80-l w-80-m w-90 flex-column'>
                     {/* <p className='ma0 gray f8 f9-m f9-mo'></p> */}
                     <p className='ma0 f6-l f6-m mt1 f8-mo'>{job.Title}</p>
                     <p style={{ color: "#265cff" }} className='ma0 gray f8 mt1 f8-m f9-mo'>{job.Location[0] + ", " + job.Location[1]}</p>
                 </div>
-                <div>
+                <div className={`${client?'':'hide'}`}>
                     <div className="flex-1">
                     <div className="cbx">
                         <input onChange={()=>{setcheck(!check); handleaccept()}} checked={check} id="cbx" type="checkbox" />

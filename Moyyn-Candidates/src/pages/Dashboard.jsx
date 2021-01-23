@@ -52,8 +52,8 @@ export default function Dashboard({ suggestions, email }) {
                 <button onClick={() => setclient(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Direct {screenAtTab?"":"Clients"}</button>
                 <button onClick={() => setclient(false)} style={{ background: "#265cff" }} className={` ${client ? 'active' : ''} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Partner {screenAtTab?"":" Platforms"}</button>
             </div>
-            <div className="flex justify-start items-center mt3 ml4">
-                <button onClick={() => setsendjobpref(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>{screenAtTab?"":"Submit your"} preferences</button>
+            <div className={`flex justify-start items-center mt3 ml4 ${client?'':'hide'}`}>
+                <button onClick={() => setsendjobpref(true)} style={{ background: "#265cff" }} className={`c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>{screenAtTab?"":"Submit your"} preferences</button>
                 <div className="relative">
                     <div style={{background:"#eef2f5"}} className={`${hov3?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 top-1 z-11 right--1`}>Please select your preferred jobs from below and click 'Submit your preferences' button to save preferred jobs</div>
                     <div onMouseLeave={()=>sethov3(false)} onMouseOver={()=>sethov3(true)} style={{color:"#265cff"}} className="pointer help-ico dim bottom--1 absolute"><HelpOutlineOutlinedIcon/></div>
@@ -61,7 +61,7 @@ export default function Dashboard({ suggestions, email }) {
             </div>
             <div className='flex justtify-around mt4'>
                 <div className={` flex-1 ph2 mr2 w-100`} >
-                    <Jobcards jobs={jobs} setdesc={setdescription} form={form} setform={setform} />
+                    <Jobcards jobs={jobs} setdesc={setdescription} form={form} setform={setform} client={client}/>
                 </div>
                 <div className={` flex-2 br2 bg-white pa4 ml1 w-100 flex justify-center items-center`}>
                     {
