@@ -26,3 +26,19 @@
     pointer-events: all;
     opacity: 1;
 }
+
+@media screen and (max-width: "968px"){
+    .pop-up-box{
+        right: -7%;
+        height: 145px;
+    }
+
+}
+
+@media screen and (max-width: "640px"){
+    .pop-up-box{
+        right: -16%;
+        height: 145px;
+    }
+
+}

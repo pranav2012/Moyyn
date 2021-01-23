@@ -66,6 +66,7 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 														<AutocompleteChips
 															name="Countries of Preference"
 															label="Countries of preference"
+															placeholder="Countries of preference"
 															options={europeanCountries}
 														/>
 													</Grid>
@@ -73,6 +74,7 @@ const PageFour = ({ initialValues, handleFormChange }) => {
 														<AutocompleteChips
 															name="Cities of Preference"
 															label="Cities of preference"
+															placeholder="Cities of Preference"
 															options={europeanCities}
 														/>
 													</Grid>
