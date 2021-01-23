@@ -25,11 +25,17 @@ export default function Dashboard({ suggestions, email }) {
         // console.log(suggestions);
         if (client) setjobs(suggestions.moyyn);
         else {
-        let partner = suggestions.moberries.concat(suggestions.talentuno);
+            let partner = suggestions.moberries.concat(suggestions.talentuno);
             setjobs(partner);
         }
     }, [suggestions, client, description]);
 
+    useEffect(()=>{
+        for(let i=0;i<=20;i++){
+            localStorage.setItem(i,JSON.stringify(false));
+        }
+    },[])
+    
     useEffect(()=>{
         localStorage.setItem("Form",JSON.stringify(form));  
     },[form]);
