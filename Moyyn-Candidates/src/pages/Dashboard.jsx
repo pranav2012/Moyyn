@@ -14,8 +14,9 @@ export default function Dashboard({ suggestions, email }) {
     const [jobs, setjobs] = useState([]);
     const [description, setdescription] = useState({desc:"",code:""});
     const [form, setform] = useState([]);
-    const [sendjobpref, setsendjobpref] = useState(false)
-    const [hov3, sethov3] = useState(false)
+    const [sendjobpref, setsendjobpref] = useState(false);
+    const [hov3, sethov3] = useState(false);
+    const [read, setread] = useState(false);
 
     const screenAtSmall = useMediaQuery("(max-width:600px)");
     const screenAtTab = useMediaQuery("(max-width:1024px)");
@@ -27,14 +28,27 @@ export default function Dashboard({ suggestions, email }) {
         let partner = suggestions.moberries.concat(suggestions.talentuno);
             setjobs(partner);
         }
-    }, [suggestions, client,description]);
+    }, [suggestions, client, description]);
 
     useEffect(()=>{
-        if(sendjobpref)
-        sendRequest('/jobs', 'POST', {
-            email,
-            jobs: form
-        })
+        localStorage.setItem("Form",JSON.stringify(form));  
+    },[form]);
+
+    useEffect(()=>{
+        setform(JSON.parse(localStorage.getItem("Form")));
+    },[client,jobs])
+
+    useEffect(()=>{
+        if(sendjobpref){
+            setread(true);
+            if(form.length > 0){
+                sendRequest('/jobs', 'POST', {
+                    email,
+                    jobs: form
+                })
+            }
+            setsendjobpref(false);
+        }
     },[form,email,sendjobpref]);
 
     // const handleaccept = () =>{
@@ -47,10 +61,20 @@ export default function Dashboard({ suggestions, email }) {
     // }
     return (
         <div className="ma4-l ma4-m ma2">
+            <div onClick={()=> setread(false)} className={`fixed overlay top-0 bottom-0 left-0 right-0 ${read?'act':''}`}></div>
+            <div className={`br2 pop-up-box gray bg-white flex flex-column w-40 ma0 mr4 pa1 fixed ${read?'':'hide'}`}>
+                <div onClick={()=>setread(false)} className='absolute black top-1 f4 dim right-1 pointer'>&times;</div>
+                <Grid item xs={12} className="mt4">
+                    <Typography color='textSecondary' variant='h6' className="f5-l f5-m f7" align='center'>
+                        {form.length<=0?"No company selected yet, please select your prefered companies":"Thank you. Your preferences have been submitted.You will be contacted by our clients directly if they select your application to the next round"}
+                    </Typography>
+                </Grid>
+            </div>
+           
             <p className='ma0 f3-l mb2 f4-m f6 pb2 gray tl'>Check out your job matches from</p>
             <div className="flex ma3 ma0-l ma0-m w-25-l w-50-m w-80 justify-around br2 pa2 ph1">
-                <button onClick={() => setclient(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Direct {screenAtTab?"":"Clients"}</button>
-                <button onClick={() => setclient(false)} style={{ background: "#265cff" }} className={` ${client ? 'active' : ''} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>Partner {screenAtTab?"":" Platforms"}</button>
+                <button onClick={() => setclient(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w6 bn link dim br2 ph3 pv2 dib white flex-1`}>Direct {screenAtTab?"":"Clients"}</button>
+                <button onClick={() => setclient(false)} style={{ background: "#265cff" }} className={` ${client ? 'active' : ''} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w6 bn link dim br2 ph3 pv2 dib white`}>Partner {screenAtTab?"":"Platforms"}</button>
             </div>
             <div className={`flex justify-start items-center mt3 ml4 ${client?'':'hide'}`}>
                 <button onClick={() => setsendjobpref(true)} style={{ background: "#265cff" }} className={`c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>{screenAtTab?"":"Submit your"} preferences</button>
@@ -65,7 +89,7 @@ export default function Dashboard({ suggestions, email }) {
                 </div>
                 <div className={` flex-2 br2 bg-white pa4 ml1 w-100 flex justify-center items-center`}>
                     {
-                        description.desc === "" ? <p className='gray f4-l f5-m f6'>No Job Description!</p> : client ?
+                        description.desc === "" ? <p className='gray tc f4-l f5-m f6'>No matches found. We will get in touch with you if one of our direct clients pre-select you for a job!</p> : client ?
                             <Grid container item xs={12} spacing={3}>
                                 <Grid item xs={12} className="mb1">
                                     <Typography color='textSecondary' variant='h6' align='center'>
@@ -112,7 +136,7 @@ export default function Dashboard({ suggestions, email }) {
                                     <Grid item xs={12} className="mb1">
                                         <Typography color='textSecondary' variant='h6' align='center'>
                                             Job Description
-                                    </Typography>
+                                        </Typography>
                                     </Grid>
                                     <Grid container spacing={1}>
                                     {/* {console.log(description)} */}

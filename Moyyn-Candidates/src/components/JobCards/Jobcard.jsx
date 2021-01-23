@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './check.css';
 
-function Jobcard({ job, setdesc, form, setform, client }) {
+function Jobcard({ job, setdesc, form, setform, client, k }) {
 
     const [show, setshow] = useState(true);
-    const [check, setcheck] = useState(false)
+    const [check, setcheck] = useState(false);
+    const [clicked, setclicked] = useState(false);
 
     useEffect(() => {
         if (show) {
@@ -32,9 +33,19 @@ function Jobcard({ job, setdesc, form, setform, client }) {
     //     }  // eslint-disable-next-line
     // },[job,check]);
 
-    // useEffect(()=>{
-    //     console.log(check)
-    // },[check])
+    useEffect(()=>{
+        if(clicked){
+            if(check){
+                localStorage.setItem(k,JSON.stringify(true));
+            }
+            else{
+                localStorage.setItem(k,JSON.stringify(false));
+            }
+            setclicked(false);
+        }
+        setcheck(JSON.parse(localStorage.getItem(k)));
+        // console.log(form)
+    },[check,k,clicked]);
 
     const handleaccept = () =>{
         if (form.includes(job.Code)) {
@@ -55,7 +66,7 @@ function Jobcard({ job, setdesc, form, setform, client }) {
                 <div className={`${client?'':'hide'}`}>
                     <div className="flex-1">
                     <div className="cbx">
-                        <input onChange={()=>{setcheck(!check); handleaccept()}} checked={check} id="cbx" type="checkbox" />
+                        <input onChange={()=>{setcheck(!check); setclicked(true); handleaccept()}} checked={check} id="cbx" type="checkbox" />
                         <label htmlFor="cbx"></label>
                         <svg width="15" height="14" viewBox="0 0 15 14" fill="none">
                             <path d="M2 8.36364L6.23077 12L13 2"></path>

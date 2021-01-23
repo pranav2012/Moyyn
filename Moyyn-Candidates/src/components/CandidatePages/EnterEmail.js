@@ -86,7 +86,7 @@ const EnterEmail = ({ email, setEmail, setError, setIsLoading, setSuggestions })
 													fullWidth
 													placeholder='Enter email address'
 													inputProps={{
-														style: { textAlign: "center", paddingBottom:"1rem" },
+														style: { textAlign: "center", paddingBottom:"0.8rem" },
 													}}
 												/>
 											</Box>

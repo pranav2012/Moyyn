@@ -21,7 +21,15 @@ const App = () => {
 
    const [email, setEmail] = useState('');
    const [suggestions, setSuggestions] = useState({moyyn: [], moberries: [], talentuno: []}); //should be an empty object
-  //console.log(suggestions);
+   //console.log(suggestions);
+
+   // useEffect(()=>{
+   //    let mail = JSON.parse(localStorage.getItem("email"));
+   //    let sug = JSON.parse(localStorage.getItem("suggestions"));
+   //    localStorage.setItem("email",JSON.stringify(email));
+   //    localStorage.setItem("suggestions",JSON.stringify(suggestions));
+   // },[email,suggestions]);
+
    return (
       <React.Fragment>
             <Router>
