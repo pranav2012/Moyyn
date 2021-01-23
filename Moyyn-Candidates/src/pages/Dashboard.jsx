@@ -31,7 +31,7 @@ export default function Dashboard({ suggestions, email }) {
     }, [suggestions, client, description]);
 
     useEffect(()=>{
-        for(let i=0;i<=20;i++){
+        for(let i=0;i<=30;i++){
             localStorage.setItem(i,JSON.stringify(false));
         }
     },[])
