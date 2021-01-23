@@ -46,7 +46,7 @@ const PageOne = ({ initialValues, handleFormChange }) => {
 
 						return (
 							<div className="flex flex-row-l self-start flex-row-m flex-column">
-								<div className="flex flex-1 mt5-m mt2 mt0-l" >
+								<div className="flex flex-1 mt5-m mt2 mt5-l" >
 									<div className="tc">
 										<p className='f3-l f4-m f6 tc gray'>The journey to your next job starts here</p>
 										<FormImage1/>

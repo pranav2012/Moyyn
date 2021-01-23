@@ -105,7 +105,7 @@ const Form = ({ setEmail ,setSuggestions }) => {
 				//console.log('store returns:', data);
 				setEmail(form[0].Email);
 				setSuggestions(data.suggestions);
-				history.push('/candidate/suggestions');
+				history.push('/dashboard');
 			})
 			.catch(err => {
 				clearTimeout(timeout);

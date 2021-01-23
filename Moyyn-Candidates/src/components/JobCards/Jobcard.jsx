@@ -57,7 +57,7 @@ function Jobcard({ job, setdesc, form, setform, client, k }) {
 
     return (
         <div onClick={() => setshow(true)} className="card pointer c-shadow ma1 bg-white pa3-l pa3-m pa2 mt3 br3 flex justify-center items-center">
-            <div className={`${client?'flex w-100 justify-around items-center':''}`}>
+            <div className={`${client?'flex justify-around items-center':''} w-100`}>
                 <div className='flex-1 flex w-80-l w-80-m w-90 flex-column'>
                     {/* <p className='ma0 gray f8 f9-m f9-mo'></p> */}
                     <p className='ma0 f6-l f6-m mt1 f8-mo'>{job.Title}</p>
