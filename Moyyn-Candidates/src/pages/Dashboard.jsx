@@ -17,9 +17,19 @@ export default function Dashboard({ suggestions, email }) {
     const [sendjobpref, setsendjobpref] = useState(false);
     const [hov3, sethov3] = useState(false);
     const [read, setread] = useState(false);
+    const [directempty, setdirectempty] = useState(false);
 
     const screenAtSmall = useMediaQuery("(max-width:600px)");
     const screenAtTab = useMediaQuery("(max-width:1024px)");
+
+    useEffect(()=>{
+        if(suggestions.moyyn.length <=0 ){
+            setdirectempty(true);
+        }
+        else{
+            setdirectempty(false);
+        }
+    },[suggestions]);
 
     useEffect(() => {
         // console.log(suggestions);
@@ -82,7 +92,7 @@ export default function Dashboard({ suggestions, email }) {
                 <button onClick={() => setclient(true)} style={{ background: "#265cff" }} className={` ${client ? '' : 'active'} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w6-l w5-m w5 bn link dim br2 ph3 pv2 dib white flex-1-l`}>Direct {screenAtTab?"":"Clients"}</button>
                 <button onClick={() => setclient(false)} style={{ background: "#265cff" }} className={` ${client ? 'active' : ''} c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w6-l w5-m w5 bn link dim br2 ph3 pv2 dib white`}>Partner {screenAtTab?"":"Platforms"}</button>
             </div>
-            <div className={`flex justify-start items-center mt3 ml4 ${client?'':'hide'}`}>
+            <div className={`flex justify-start items-center mt3 ml4 ${client && !directempty?'':'hide'}`}>
                 <button onClick={() => setsendjobpref(true)} style={{ background: "#265cff" }} className={`c-shadow h2 pointer h7-mo f8-mo f7-m f7-l mr2 w5 bn link dim br2 ph3 pv2 dib white`}>{screenAtTab?"":"Submit your"} Preferences</button>
                 <div className="relative">
                     <div style={{background:"#eef2f5"}} className={`${hov3?'':'hide'} flex justify-center items-center c-shadow tc h3 w5 br2 absolute gray f7 top-1 z-11 right--1`}>Please select your preferred jobs from below and click 'Submit your preferences' button to save preferred jobs</div>
@@ -93,9 +103,9 @@ export default function Dashboard({ suggestions, email }) {
                 <div className={` flex-1 ph2 mr2 w-100`} >
                     <Jobcards jobs={jobs} setdesc={setdescription} form={form} setform={setform} client={client}/>
                 </div>
-                <div className={` flex-2 br2 bg-white pa4 ml1 mt0-l mt3-m mt3 w-100 flex justify-center items-center`}>
+                <div className={` flex-2 br2 bg-white pa4 ml1 mt0-l mt3-m mt3 w-100 flex justify-center items-start`}>
                     {
-                        description.desc === "" ? <p className='gray tc f4-l f5-m f6'>No matches found. We will get in touch with you if one of our direct clients pre-select you for a job!</p> : client ?
+                        description.desc === "" ? <p className='gray tc f4-l f5-m f6'>{directempty?"No matches found for direct Client's. For the time you can checkout our partner platform jobs":"No matches found. We will get in touch with you if one of our direct clients pre-select you for a job!"}</p> : client ?
                             <Grid container item xs={12} spacing={3}>
                                 <Grid item xs={12} className="mb1">
                                     <Typography color='textSecondary' variant='h6' align='center'>

@@ -171,33 +171,33 @@ const Form = ({ setEmail ,setSuggestions }) => {
 					<div className={`${window.location.pathname==="/application" || window.location.pathname==="/application/"?"hide":""} ml5 mr5 mt3`}>
 						<div className='buttons flex mb5'>
 							{/* <NavLink  className={`pointer link mr2 dim ba br-100 pv2 ph3 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}`)} exact to={`${path}`} activeClassName="active-btn">1</NavLink> */}
-							<NavLink exact to={`${path}`} activeClassName="hide" className="link">
+							<div exact to={path} activeClassName="hide">
 								<NavLink  className={`pointer link mr2 dim ba br-100 ph3 pv2 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/cv`)} exact to={`${path}/cv`} activeClassName="active-btn">1</NavLink>
 								<NavLink  className={`pointer link mr2 dim ba br-100 ph3 pv2 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/information`)} exact to={`${path}/information`} activeClassName="active-btn">2</NavLink>
 								<NavLink  className={`pointer link mr2 dim ba br-100 ph3 pv2 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/preferences`)} exact to={`${path}/preferences`} activeClassName="active-btn">3</NavLink>
 								<NavLink  className={`pointer link mr2 dim ba br-100 ph3 pv2 bg-white`} style={{border:"1px solid #265cff", color:"#265cff"}} onClick={()=>history.push(`${path}/career`)} exact to={`${path}/career`} activeClassName="active-btn">4</NavLink>
-							</NavLink>
+							</div>
 						</div>						
 						<Switch >
-						<Route path={`${path}`} exact>
-						</Route>
-						<Route path={`${path}/cv`} >
+						{/* <Route exact path={`${path}`} exact>
+						</Route> */}
+						<Route exact path={`${path}/cv`} >
 							<p className='f5 signleftp1'>Upload your CV</p>
 							<FormImage2/>
 						</Route>
-						<Route path={`${path}/information`} >
+						<Route exact path={`${path}/information`} >
 							<p className='f5 signleftp1'>Personal information</p>
 							<FormImage3/>
 						</Route>
-						<Route path={`${path}/preferences`} >
+						<Route exact path={`${path}/preferences`} >
 							<p className='f5 signleftp1'>What are your preferences?</p>
 							<FormImage4/>
 						</Route>
-						<Route path={`${path}/career`} >
+						<Route exact path={`${path}/career`} >
 							<p className='f5 signleftp1'>Let us know about your skills</p>
 							<FormImage5/>
 						</Route>
-						<Redirect to={`${path}`} />
+						{/* <Redirect to={`${path}`} /> */}
 					</Switch>
 					</div>
 
