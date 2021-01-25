@@ -18,22 +18,52 @@ import Skills from './Formelements/Skills';
 import DateForm from './Formelements/DateForm';
 import {useHistory} from 'react-router-dom';
 
-function JobForm({setdata,postjobinitialvalues,data}) {
+function JobForm({postjobinitialvalues,backend_url,companyid,jobid,editjob}) {
 
     const [hov1, sethov1] = useState(false);
     const [hov2, sethov2] = useState(false);
     const [hov3, sethov3] = useState(false);
-
     let history = useHistory();
     return (
         <div className='jobform flex-1 w-100 vh-100'>
             <Formik
                 initialValues={postjobinitialvalues}
+                enableReinitialize={true}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
-                    setSubmitting(true);
-                    setdata(arr=>[...data,values]);
-                    history.push('/dashboard')
-                    resetForm({ values: '' });
+                    fetch(`${backend_url}/job/${editjob?'update':'create'}`, {
+                        method:'POST',
+                        headers:{'Content-Type':'application/json'},
+                        body: JSON.stringify({
+                            _id:jobid,
+                            company:companyid,
+                            jobTitle:values.jobTitle,
+                            jobUrl:values.jobUrl,
+                            requirements:values.requirements,
+                            description:values.description,
+                            careerLevel:values.careerLevel,
+                            Date: values.Date,
+                            Industries:values.Industries,
+                            Languages:values.Languages,
+                            Skills:values.Skills,
+                            workExperience:values.workExperience,
+                            city: values.city,
+                            country: values.country,
+                            currency: values.currency,
+                            from:values.from,
+                            to:values.to,
+                            otherCountries:values.otherCountries,
+                            timestamp:new Date() 
+                        })  
+                    }).then(response=>response.json())
+                    .then(data => {
+                        if(data.success){
+                            setSubmitting(true);
+                            history.push('/dashboard')
+                            resetForm({ values: '' });
+                        }
+                    }).catch(()=>{
+                        console.error("error submitting job form!")
+                    });
                 }}
 
                 validationSchema={Postjobformvalidation}
@@ -41,8 +71,6 @@ function JobForm({setdata,postjobinitialvalues,data}) {
                 {props => {
                     const {
                         values,// eslint-disable-line
-                        touched,// eslint-disable-line
-                        errors,// eslint-disable-line
                         isSubmitting,// eslint-disable-line
                         handleChange,// eslint-disable-line
                         handleBlur,// eslint-disable-line
@@ -55,29 +83,29 @@ function JobForm({setdata,postjobinitialvalues,data}) {
                                 <p className='gray f3'>Enter Job Details</p>
                                 <div className={`tf w-80-l w-90 w-80-m `}>
                                     <TextField
-                                        name="job_title"
+                                        name="jobTitle"
                                         id="outlined-basic"
                                         label="Job Title"
                                         variant="outlined"
-                                        value={values.job_title}
+                                        value={values.jobTitle}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         className='w-100'
                                     />
-                                    <FormError name="job_title" />
+                                    <FormError name="jobTitle" />
                                 </div>
                                 <div className='tf mt3 w-80-l w-90 w-80-m'>
                                     <TextField
-                                        name="job_url"
+                                        name="jobUrl"
                                         id="outlined-basic"
                                         label="Job URL"
                                         variant="outlined"
-                                        value={values.job_url}
+                                        value={values.jobUrl}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         className={`w-100`}
                                     />
-                                    <FormError name="job_url" />
+                                    <FormError name="joburl" />
                                 </div>
                                 <div className='w-80-l w-90 w-80-m mt2-l mb2-l mt1 mb1'>
                                     <div className='btex mt3'>
@@ -127,7 +155,7 @@ function JobForm({setdata,postjobinitialvalues,data}) {
                                     <div className='mt3'>
                                         <SelectMenu
                                             className='flex-1'
-                                            name='Career Level'
+                                            name='careerLevel'
                                             label='Career level'
                                             options={careerLevelOptions}
                                         />
@@ -202,9 +230,9 @@ function JobForm({setdata,postjobinitialvalues,data}) {
                                 <div className="flex mt2 items-center justify-between">
                                     <p className='gray mr2 f6-l f6-m f7'>Willing to recruit from other Countries?</p>
                                     <input 
-                                        name="othercountries"
+                                        name="otherCountries"
                                         type="checkbox" 
-                                        value={values.othercountries}
+                                        checked={values.otherCountries}
                                         onChange={handleChange}
                                         onBlur={handleBlur} 
                                     />

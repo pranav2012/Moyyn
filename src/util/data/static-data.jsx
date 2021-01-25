@@ -168,6 +168,9 @@ export const visaOptions = [
 
 export const currency = [
 	{
+		name:"Choose Your Currency"
+	},
+	{
 		name: "Euro",
 		"countries": [
 			"Åland Islands",

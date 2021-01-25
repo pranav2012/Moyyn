@@ -21,18 +21,23 @@ import Login from '../Components/Login/Login';
 
 function App(){
 
-    const backend_url = "https://www.moyyn.com";
+    const backend_url = "http://138.197.189.222";
     const [registered, setregistered] = useState(false);
 
     const [loggedin,setloggedin] = useState(false); 
 
-    const [data,setdata] = useState(dummyjobposts);
+    const [companyid, setcompanyid] = useState("");
+    const [jobid, setjobid] = useState("");
+
+    const [data] = useState(dummyjobposts);
     const [candidatedata,setcandidatedata] = useState([]);
+    
     // eslint-disable-next-line
     useEffect(() => {
-      let test = localStorage.getItem("loggedin");
-      setloggedin(JSON.parse(test));
-    })
+      setloggedin(JSON.parse(localStorage.getItem("loggedin")));
+      setcompanyid(JSON.parse(localStorage.getItem("c_id")));
+      setjobid(JSON.parse(localStorage.getItem("j_id")));
+    },[]);
 
     return (
       <div className='App w-100 vh-100 flex flex-column items-center'>
@@ -47,7 +52,7 @@ function App(){
             <Route exact path='/login'>
               {loggedin?<Redirect to="/dashboard"/>:''}
               <Header/>
-              <Login setlog={setloggedin}/>
+              <Login setlog={setloggedin} setcompanydata={setcompanyid} backend_url={backend_url}/>
               <Footer/>
             </Route>
             <Route exact path='/conformation'>
@@ -60,12 +65,12 @@ function App(){
             <Route exact path='/dashboard'>
               {loggedin?'':<Redirect to='/'/>} 
               <DashboardHeader logout={setloggedin}/>
-              <Dashboard data={data} setcandidatedata={setcandidatedata}/>
+              <Dashboard setcompanyid={setcompanyid} setjobid={setjobid} backend_url={backend_url} companyid={companyid} data={data} setcandidatedata={setcandidatedata}/>
             </Route>
             <Route exact path='/postjob'>
               {loggedin?'':<Redirect to='/'/>} 
               <DashboardHeader logout={setloggedin}/>
-              <JobPostForm setdata={setdata} postjobinitialvalues={postjobinitialvalues} data={data}/>
+              <JobPostForm backend_url={backend_url} companyid={companyid} postjobinitialvalues={postjobinitialvalues} editjob={false}/>
             </Route>
             <Route exact path='/Candidates'>
               {loggedin?'':<Redirect to='/'/>} 
@@ -75,13 +80,13 @@ function App(){
             <Route exact path='/EditJob'>
               {loggedin?'':<Redirect to='/'/>} 
               <DashboardHeader logout={setloggedin}/>
-              <EditJob setdata={setdata}/>
+              <EditJob backend_url={backend_url} setjobid={setjobid} companyid={companyid} jobid={jobid}/>
             </Route>
             <Route exact path='/Settings'>
               {/* {!loggedin?<Redirect to='/'/>:''} */}
-              {console.log(loggedin)}
+              {/* {console.log(loggedin)} */}
               <DashboardHeader logout={setloggedin}/>
-              <Settings/>
+              <Settings backend_url={backend_url} companyid={companyid} setlogin = {setloggedin}/>
             </Route>
             <Route exact path='/email'>
               <Header/>

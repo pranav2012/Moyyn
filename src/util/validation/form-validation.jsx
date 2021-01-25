@@ -37,10 +37,10 @@ function hasNativeLanguage(myArray) {
 }
 
 export const Postjobformvalidation = Yup.object().shape({
-	job_title: Yup.string()
+	jobTitle: Yup.string()
 		.trim()
 		.required("Required"),
-	job_url: Yup.string()
+	jobUrl: Yup.string()
 		.trim()
 		.required("Required")
 		.matches(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/,"Not a valid link"), // eslint-disable-line
@@ -56,14 +56,14 @@ export const Postjobformvalidation = Yup.object().shape({
 	city: Yup.string()
 		.trim()
 		.required("Required"),
-	"Career Level": Yup.string()
+	careerLevel: Yup.string()
 		.trim()
 		.required("Required"),
 	Industries: Yup.array()
 		.required("Required"),
 	Skills: Yup.array()
 		.required("Required"),
-	"Work Experience": Yup.array()
+	workExperience: Yup.array()
 		.required("Required"),
 	Languages: Yup.array()
 	.test("nativeTest", "*Please pick at least one native language.", (value) =>
@@ -80,6 +80,6 @@ export const Postjobformvalidation = Yup.object().shape({
 	to: Yup.number()
 		.positive("Can't be a Negative value") 
 		.required("Required"),
-	othercountries: Yup.bool()
+	otherCountries: Yup.bool()
 		.required("Required"),
 	});

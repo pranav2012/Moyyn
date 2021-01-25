@@ -1,20 +1,20 @@
 export const postjobinitialvalues = { 
-	job_title: "", 
-	job_url: "", 
+	jobTitle: "", 
+	jobUrl: "", 
 	description: "", 
 	requirements: "", 
 	country: "", 
 	city: "", 
-	"Career Level": '', 
+	careerLevel: '', 
 	Industries: [],
 	Skills: [], 
-	"Work Experience": [], 
+	workExperience: [], 
 	Languages: [], 
 	Date: '',
 	currency:'',
 	from:"",
 	to:"",
-	othercountries:false
+	otherCountries:false
 }
 
 export const signupforminitialvalues = { 

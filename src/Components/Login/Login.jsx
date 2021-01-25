@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
@@ -6,32 +6,58 @@ import 'tachyons';
 import '../../styles/login.scss';
 import { useHistory } from 'react-router-dom';
 
-function Login({setlog}) {
+function Login({setlog,backend_url,setcompanydata}) {
 
     const [username, setusername] = useState("");
     const [pass, setpass] = useState("");
     const [empty, setempty] = useState(false);
-    const [wrong,setwrong] = useState(false);
+    const [wrong, setwrong] = useState(false);
+    const [clicked, setclicked] = useState(false)
 
     let history = useHistory();
 
+    useEffect(()=>{
+        if(clicked && !empty){
+            fetch(backend_url + '/company/login', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    email:username,
+                    password:pass,
+                    timestamp: new Date()
+                })  
+            }).then(response=>response.json())
+            .then(data => {
+                if(data.success === true){
+                    setlog(true);
+                    setwrong(false);
+                    setcompanydata(data.result._id)
+                    console.log(data.result._id)
+                    localStorage.setItem("c_id",JSON.stringify(data.result._id));
+                    localStorage.setItem("loggedin",JSON.stringify(true));
+                    history.push("/dashboard");
+                }
+                else{
+                    setusername("");
+                    setpass("");
+                    setwrong(true);
+                }
+            }).catch(()=>{
+                setusername("");
+                setpass("");
+                setwrong(true);
+            })
+            setclicked(false);
+        }// eslint-disable-next-line
+    },[clicked,empty]);
+
     const auth = () =>{
-        if(username==="" || pass === ""){
+        setclicked(true);
+        if(username === "" || pass === ""){
             setempty(true);
         }
         else{
             setempty(false);
-            if(username==="admin" && pass === "admin"){
-                setlog(true);
-                setwrong(false);
-                localStorage.setItem("loggedin",JSON.stringify(true));
-                history.push("/Dashboard");
-            }
-            else{
-                setusername("");
-                setpass("");
-                setwrong(true);
-            }
         }
     }
 

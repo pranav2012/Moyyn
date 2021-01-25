@@ -63,13 +63,13 @@ const FormikWorkExperience = () => {
    }
 
    return(
-      <FieldArray name='Work Experience'>
+      <FieldArray name='workExperience'>
          {
             ({ form, push, remove }) => {
 
                const handleExperienceChange = (event) => {
 
-                  if (!form.values['Work Experience'].some(item => item.Role === role[0])) {
+                  if (!form.values['workExperience'].some(item => item.Role === role[0])) {
                      const newItem = {
                         Category: category[0], 
                         Role: role[0], 
@@ -89,7 +89,7 @@ const FormikWorkExperience = () => {
                         <Grid container spacing={2}>
                            <Grid item xs={12}>
                               <Typography color='textSecondary'>
-                                 Work experience (multiple)
+                                 Work Experience (multiple)
                               </Typography>
                            </Grid>
                            <Grid item xs={12} md={4} style={{marginBottom: '0.4rem'}} >
@@ -153,11 +153,11 @@ const FormikWorkExperience = () => {
                         </Grid>
                      </Grid>
                      <Grid item xs={12}>
-                        <FormError name='Work Experience' />
+                        <FormError name='workExperience' />
                      </Grid>
                      <Grid item xs={12}>
                         <List>
-                           {form.values['Work Experience'].map((item, i) => {
+                           {form.values['workExperience'].map((item, i) => {
                               return (
                                  <ListItem key={i} button divider>
                                     <ListItemText

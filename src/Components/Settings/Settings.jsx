@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button} from '@material-ui/core';
 import '../../styles/candidate.scss';
 import SignUpForm from "../CompanySignUp/SignUpForm";
@@ -8,11 +8,74 @@ import '../../styles/signup.scss';
 import ToggleButton from 'react-toggle-button';
 import '../../styles/setting.scss'
 import TextField from '@material-ui/core/TextField';
+import { useHistory } from 'react-router-dom';
 
-function Settings() {
+function Settings({companyid, setlogin,backend_url}) {
+
     const [edit_company,setedit_company] = useState(false);
     const [general_settings,setgeneral_settings] = useState(true);
     const [toggle, settoggle] = useState(false);
+    const [deleteaccount, setdeleteaccount] = useState(false);
+    const [confirmdelete, setconfirmdelete] = useState(false);
+    const [clicked, setclicked] = useState(false);
+
+    let history = useHistory();
+
+    useEffect(()=>{
+        if(companyid!==""){
+            fetch(backend_url + '/company/checkNotification', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    _id: companyid,
+                })
+            }).then(res=>res.json())
+            .then(data=>{
+                if(data.success){
+                    settoggle(data.result.notification);
+                }
+            }).catch(()=>console.error("can't fetch notification status"));
+        }
+    },[companyid,backend_url])
+
+    useEffect(()=>{
+        if(clicked){
+            fetch(backend_url + '/company/updateNotification', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    _id: companyid,
+                    notification: toggle,
+                    timestamp: new Date()
+                })
+            }).then(res=>res.json())
+            .then(data=>{
+                if(data.sucess){
+                    console.log("notification changed!");
+                }
+            })
+        }
+    },[toggle,companyid,backend_url,clicked]);
+
+    useEffect(()=>{
+        if(confirmdelete){
+            fetch(backend_url + '/company/delete', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    _id: companyid,
+                    timestamp: new Date()
+                })
+            }).then(res=>res.json())
+            .then(data=>{
+                if(data.success){
+                    setlogin(false);
+                    localStorage.setItem("loggedin",false);
+                    history.push('/');
+                }
+            }).catch(()=>console.error("can't delete your account"))
+        }// eslint-disable-next-line 
+    },[confirmdelete]);
     
     const general = () =>{
         setedit_company(false);
@@ -41,13 +104,25 @@ function Settings() {
                     general_settings?
                     //General settings
                     <div className='mv4 pa4 w-95 center flex-1 tc bg-white'>
+                        <div className={`${deleteaccount?'':'hide'} fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center`}>
+                            <div className='h5 w-50 flex justify-center items-center bg-white c-shadow br2'>
+                                <div className="w-100">
+                                    <p className='gray f5-l f6-m f7'>All your data will be deleted. Are you Sure?</p>
+                                    <div className='flex center justify-around w-80'>
+                                        <Button onClick={()=>setconfirmdelete(true)} className='dim flex-1' variant="outlined" style={{borderColor:"red", color:"red"}}>Confirm Delete</Button>
+                                        <div className="w2"></div>
+                                        <Button onClick={()=>setdeleteaccount(false)} className='dim flex-1' variant="outlined" style={{borderColor:"#265cff", color:"#265cff"}}>Cancel</Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <p className='gray tc f3'>General Settings</p>
                         <div className='flex items-center mt4 justify-center'> 
                             <p className='gray f5-l f6-m f7 ma0 mr3'>Turn {toggle?'off':'on'} notification's ?</p>
-                            <div className='toggle-btn' ><ToggleButton value={toggle} onToggle={() => settoggle(!toggle) } /></div>
+                            <div className='toggle-btn' ><ToggleButton value={toggle} onToggle={() =>{ setclicked(true); settoggle(!toggle); }} /></div>
                         </div>
                         <div className='mt4'>
-                            <Button className='dim' variant="outlined" style={{borderColor:"red", color:"red"}}>Delete Account</Button>
+                            <Button onClick={()=>setdeleteaccount(true)} className='dim' variant="outlined" style={{borderColor:"red", color:"red"}}>Delete Account</Button>
                         </div>
                     </div>
                     :edit_company?

@@ -1,40 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import {Signupformvalidation}  from "../../util/validation/form-validation";
 import 'tachyons';
+import MuiAlert from "@material-ui/lab/Alert";
+import {Snackbar} from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
 function SignUpForm({backend_url,registered,setregistered,signupforminitialvalues}) {
+    
     let history = useHistory();
+
+    const [IsSnackbarOpen, setIsSnackbarOpen] = useState(true);
+
     return (
     <div>
         <Formik
             initialValues={signupforminitialvalues}
             onSubmit={(values, {setSubmitting, resetForm}) => {
                 setSubmitting(true);
-                /*fetch(backend_url + '/register', {
-                        method:'post',
-                        headers:{'Content-Type':'application/json'},
-                        body: */console.log(JSON.stringify({
-                            company: values.company,
-                            name: values.name,
-                            website: values.website,
-                            location:values.location,
-                            email: values.email,
-                            phone: values.phone,
-                            password: values.password
-                        }))/*
-                    }).then(response=>response.json())
-                    .then(data => {*/
-                     //   if(data.status === 'sucess' || true){
-                            setregistered(true);
-                            history.push('/Dashboard');
-                     /*   }
-                        else{
-                            setisregistered(false);
-                        }
-                    }).catch(console.log('cant register!'));*/
-                    resetForm({values: ''});
+                fetch(backend_url + '/company/create', {
+                    method:'POST',
+                    headers:{'Content-Type':'application/json'},
+                    body: JSON.stringify(values)
+                }).then(response=>response.json())
+                .then(data => {
+                    console.log(data)
+                    if(data.success === true){
+                        setregistered(true);
+                        setIsSnackbarOpen({
+                            state:true,
+                            msg:data.message
+                        })
+                        history.push('/conformation');
+                    }
+                    else{
+                        setIsSnackbarOpen({
+                            state:false,
+                            msg:data.message
+                        })
+                    }
+                }).catch(console.log('cant register!'));
+                resetForm({values: ''});
             }}
 
             validationSchema={Signupformvalidation}
@@ -160,6 +166,20 @@ function SignUpForm({backend_url,registered,setregistered,signupforminitialvalue
                 );
             }}
         </Formik>
+        <Snackbar
+			open={IsSnackbarOpen.state}
+			autoHideDuration={3000}
+			onClose={() => setIsSnackbarOpen(false)}
+		>
+		<MuiAlert
+            elevation={6}
+            variant="filled"
+            onClose={() => setIsSnackbarOpen(false)}
+            severity={IsSnackbarOpen.state?"success":"error"}
+		>
+		{IsSnackbarOpen.msg}
+		</MuiAlert>
+		</Snackbar>
     </div>
     );
 }
