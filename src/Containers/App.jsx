@@ -46,7 +46,7 @@ function App(){
             <Route exact path='/'>
             {loggedin?<Redirect to="/dashboard"/>:''}
               <Header/>
-              <Signup backend_url={backend_url} registered={registered} setregistered={setregistered} signupforminitialvalues={signupforminitialvalues}/> 
+              <Signup companyid={companyid} backend_url={backend_url} registered={registered} setregistered={setregistered} editcompany={true} signupforminitialvalues={signupforminitialvalues}/> 
               <Footer/>
             </Route>
             <Route exact path='/login'>

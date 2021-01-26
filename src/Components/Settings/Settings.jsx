@@ -9,17 +9,74 @@ import ToggleButton from 'react-toggle-button';
 import '../../styles/setting.scss'
 import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom';
+import MuiAlert from "@material-ui/lab/Alert";
+import { Snackbar } from "@material-ui/core";
 
 function Settings({companyid, setlogin,backend_url}) {
 
     const [edit_company,setedit_company] = useState(false);
     const [general_settings,setgeneral_settings] = useState(true);
+    
+    const [clicked, setclicked] = useState(false);
     const [toggle, settoggle] = useState(false);
+    
     const [deleteaccount, setdeleteaccount] = useState(false);
     const [confirmdelete, setconfirmdelete] = useState(false);
-    const [clicked, setclicked] = useState(false);
+
+    const [passwordupdate, setpasswordupdate] = useState(false);
+    const [new_password, setnew_password] = useState("");
+    const [old_password, setold_password] = useState("");
+    const [resetpassword, setresetpassword] = useState(false);
+    const [errormsg, seterrormsg] = useState("");
+    const [showerror, setshowerror] = useState(false);
+
+    const [value, setvalue] = useState(signupforminitialvalues);
 
     let history = useHistory();
+
+    useEffect(()=>{
+        if(!edit_company){
+            fetch(backend_url + '/company/find', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    _id: companyid,
+                })
+            }).then(res=>res.json())
+            .then((data)=>{
+                if(data.success){
+                    setvalue(data.result);
+                }
+            })
+        }
+    },[backend_url,companyid,edit_company]);
+
+    useEffect(()=>{
+        if(passwordupdate){
+            fetch(backend_url + '/company/updatePassword', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    _id: companyid,
+                    old_password:old_password,
+                    new_password:new_password,
+                    timestamp:new Date()
+                })
+            }).then(res=>res.json())
+            .then(data=>{
+                if(data.success){
+                    setresetpassword(true);
+                    seterrormsg(data.message);
+                }
+                else{
+                    setshowerror(true);
+                    seterrormsg(data.message[0].message[0]);
+                }
+            }).catch((e)=>console.error("can't update password"));
+            setpasswordupdate(false);
+        }
+        console.log(showerror,errormsg,new_password)// eslint-disable-next-line
+    },[passwordupdate,backend_url,companyid,new_password,old_password])
 
     useEffect(()=>{
         if(companyid!==""){
@@ -135,6 +192,8 @@ function Settings({companyid, setlogin,backend_url}) {
                                     name="Old"
                                     label="Old Password"
                                     variant="outlined"
+                                    value={old_password}
+                                    onChange={(e)=>setold_password(e.target.value)}
                                     className={`w-50-l w-70-m w-80`}
                                 />
                         </div>
@@ -142,21 +201,37 @@ function Settings({companyid, setlogin,backend_url}) {
                             <TextField
                                 name="new"
                                 label="New Password"
+                                value={new_password}
+                                onChange={(e)=>setnew_password(e.target.value)}
                                 variant="outlined"
                                 className={`w-50-l w-70-m w-80`}
                             />
                         </div>
                             <div className='mt4'>
-                                <Button className='dim' variant="outlined" style={{borderColor:"#265cff", color:"#265cff"}}>Update Password</Button>
+                                <Button className='dim' onClick={()=>setpasswordupdate(true)} variant="outlined" style={{borderColor:"#265cff", color:"#265cff"}}>Update Password</Button>
                             </div>
-                       </div>
+                        </div>
+                        <Snackbar
+							open={resetpassword || showerror}
+							autoHideDuration={5000}
+							onClose={() => {setresetpassword(false); setshowerror(false);} }
+						>
+							<MuiAlert
+								elevation={6}
+								variant="filled"
+								onClose={() => {setresetpassword(false); setshowerror(false);}}
+								severity={showerror?"error":"success"}
+							>
+								{errormsg}
+							</MuiAlert>
+						</Snackbar>
                     </div>
                     :
                     //edit company details
                     <div className='mv4 pa3 w-95 center flex-1 tc bg-white'>
                         <p className='gray tc f3'>Edit Details</p>
                         <div className='center signupform w-80 '>
-                            <SignUpForm signupforminitialvalues={signupforminitialvalues}/>
+                            <SignUpForm signupforminitialvalues={value} backend_url={backend_url} companyid={companyid} editcompany={true}/>
                         </div>
                     </div>
                 }

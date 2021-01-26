@@ -6,7 +6,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import {Snackbar} from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
-function SignUpForm({backend_url,registered,setregistered,signupforminitialvalues}) {
+function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalues,editcompany}) {
     
     let history = useHistory();
 
@@ -16,17 +16,27 @@ function SignUpForm({backend_url,registered,setregistered,signupforminitialvalue
     <div>
         <Formik
             initialValues={signupforminitialvalues}
+            enableReinitialize={true}
             onSubmit={(values, {setSubmitting, resetForm}) => {
                 setSubmitting(true);
-                fetch(backend_url + '/company/create', {
+                fetch(`${backend_url}/company/${editcompany?'update':'create'}`, {
                     method:'POST',
                     headers:{'Content-Type':'application/json'},
-                    body: JSON.stringify(values)
+                    body: JSON.stringify({
+                        _id:companyid,
+                        company: values.company, 
+                        name: values.name,
+                        website: values.website,
+                        location:values.location,
+                        email: values.email, 
+                        phone: values.phone,
+                        password:values.password
+                    })
                 }).then(response=>response.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     if(data.success === true){
-                        setregistered(true);
+                        !editcompany?setregistered(true):console.log();
                         setIsSnackbarOpen({
                             state:true,
                             msg:data.message
@@ -36,7 +46,7 @@ function SignUpForm({backend_url,registered,setregistered,signupforminitialvalue
                     else{
                         setIsSnackbarOpen({
                             state:false,
-                            msg:data.message
+                            msg:data.message[0].message[0]
                         })
                     }
                 }).catch(console.log('cant register!'));
@@ -122,6 +132,7 @@ function SignUpForm({backend_url,registered,setregistered,signupforminitialvalue
                             name="email"
                             placeholder=" Email"
                             value={values.email}
+                            disabled={editcompany}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             className={`w-60-l w-90 w-80-m ${errors.email && touched.email ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
@@ -149,7 +160,7 @@ function SignUpForm({backend_url,registered,setregistered,signupforminitialvalue
                         <input
                             type="password"
                             name="password"
-                            placeholder=" Password"
+                            placeholder={editcompany?" Confirm password to edit details":" Password"}
                             value={values.password}
                             onChange={handleChange}
                             onBlur={handleBlur}
