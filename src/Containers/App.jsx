@@ -21,7 +21,7 @@ import Login from '../Components/Login/Login';
 
 function App(){
 
-    const backend_url = "http://138.197.189.222";
+    const backend_url = "https://moyynclient.eu";
     const [registered, setregistered] = useState(false);
 
     const [loggedin,setloggedin] = useState(false); 
@@ -44,7 +44,7 @@ function App(){
         <Router>
           <Switch>
             <Route exact path='/'>
-            {loggedin?<Redirect to="/dashboard"/>:''}
+              {loggedin?<Redirect to="/dashboard"/>:''}
               <Header/>
               <Signup companyid={companyid} backend_url={backend_url} registered={registered} setregistered={setregistered} editcompany={true} signupforminitialvalues={signupforminitialvalues}/> 
               <Footer/>
