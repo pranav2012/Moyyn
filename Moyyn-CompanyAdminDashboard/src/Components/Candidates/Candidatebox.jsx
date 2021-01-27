@@ -10,12 +10,14 @@ import { useMediaQuery } from 'react-responsive';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import MailOutlinedIcon from '@material-ui/icons/MailOutlined';
 import KeyboardBackspaceOutlinedIcon from '@material-ui/icons/KeyboardBackspaceOutlined';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 export const Candidatebox = ({candidate}) => {
     const [isPreviewOpen, setisPreviewOpen] = useState(false);
     const ismobile = useMediaQuery({ query: `(max-width: 580px)` });
     const {name,cv,languages,notice,level,comments,date} = candidate;
     const {native,other} = languages;
+    const [viewdetails, setviewdetails] = useState(false);
     
     return (
         <div style={{borderLeft:"2px solid #265cff"}} className="ma1 dib ch bg-white pa3 mt3 br3">
@@ -24,6 +26,12 @@ export const Candidatebox = ({candidate}) => {
 				close={() => setisPreviewOpen(!isPreviewOpen) }
 				src={cv}
 			/>
+            <div onClick={()=>setviewdetails(false)} className={`${viewdetails?'active':''} overlay fixed top-0 bottom-0 right-0 left-0`}></div>
+            <div className={`dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${viewdetails?'':'hide'}`}>
+                <div onClick={()=>setviewdetails(false)} className='absolute dim right-1 pointer'>&times;</div>
+                <div className='flex flex-column w-80 center justify-between'></div>
+            </div>
+                
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>
                     <div className='flex name_candidatebox flex-column'>
@@ -38,6 +46,7 @@ export const Candidatebox = ({candidate}) => {
                     <p className='ma0 flex-1 mb3 gray f7 f8-m f8-mo'>{native + ", " + other}</p>
                 </div>
                 <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View CV</p></div>
+                <div onClick={() => setviewdetails(true)} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><VisibilityIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View More</p></div>
                 <Commentbox comments_data={comments}/>
                 <div className='h-100 w-25-l w-40-m w-30 pr4 mb2 self-center'>
                     <div className='flex justify-center flex-row-l flex-row-m flex-column justify-center items-center'>
@@ -56,6 +65,8 @@ export const Shortlist = ({candidate}) => {
     const [isPreviewOpen, setisPreviewOpen] = useState(false);
     const istab = useMediaQuery({ query: `(max-width: 1024px)` });
     const ismobile = useMediaQuery({ query: `(max-width: 580px)` })
+    const [viewdetails, setviewdetails] = useState(false);
+
 
     return (
         <div style={{borderLeft:"2px solid #265cff"}} className="ma1 dib ch bg-white pa3 mt3 br3">
@@ -64,6 +75,11 @@ export const Shortlist = ({candidate}) => {
 				close={() => setisPreviewOpen(!isPreviewOpen) }
 				src={cv}
 			/>
+            <div onClick={()=>setviewdetails(false)} className={`${viewdetails?'active':''} overlay fixed top-0 bottom-0 right-0 left-0`}></div>
+            <div className={`dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${viewdetails?'':'hide'}`}>
+                <div onClick={()=>setviewdetails(false)} className='absolute dim right-1 pointer'>&times;</div>
+                <div className='flex flex-column w-80 center justify-between'></div>
+            </div>
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex name_candidatebox items-center'>
                     <div className='flex flex-column'>
@@ -78,6 +94,7 @@ export const Shortlist = ({candidate}) => {
                     <p className='ma0 flex-1 mb3 gray f7 f8-m f8-mo'>{native + ", " + other}</p>
                 </div>
                 <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View CV</p></div>
+                <div onClick={() => setviewdetails(true)} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><VisibilityIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View More</p></div>
                 <Commentbox comments_data={comments}/>
                 <div onClick={(e) => {window.location.href = `mailto:${email}?subject=Job at Moyyn&body=Hello, thsnks for applying`; e.preventDefault();}} className={`ico mb2 pointer flex flex-column items-center self-center ${istab?'hide':''}`}><div style={{color:"gray"}} ><MailOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Mail</p></div>
                 <div className='h-100 w-25-l w-40-m w-30 pr4 mb2 self-center'>
@@ -96,6 +113,8 @@ export const Rejected = ({candidate}) => {
     const {native,other} = languages;
     const [isPreviewOpen, setisPreviewOpen] = useState(false)
     const ismobile = useMediaQuery({ query: `(max-width: 580px)` })
+    const [viewdetails, setviewdetails] = useState(false);
+
 
     return (
         <div style={{borderLeft:"2px solid #265cff"}} className="ma1 dib ch bg-white pa3 mt3 br3">
@@ -104,6 +123,11 @@ export const Rejected = ({candidate}) => {
 				close={() => setisPreviewOpen(!isPreviewOpen) }
 				src={cv}
 			/>
+            <div onClick={()=>setviewdetails(false)} className={`${viewdetails?'active':''} overlay fixed top-0 bottom-0 right-0 left-0`}></div>
+            <div className={`dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${viewdetails?'':'hide'}`}>
+                <div onClick={()=>setviewdetails(false)} className='absolute dim right-1 pointer'>&times;</div>
+                <div className='flex flex-column w-80 center justify-between'></div>
+            </div>
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>
                     <div className='flex name_candidatebox flex-column'>
@@ -118,6 +142,7 @@ export const Rejected = ({candidate}) => {
                     <p className='ma0 flex-1 mb3 gray f7 f8-m f8-mo'>{native + ", " + other}</p>
                 </div>
                 <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View CV</p></div>
+                <div onClick={() => setviewdetails(true)} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><VisibilityIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View More</p></div>
                 <Commentbox comments_data={comments}/>
                 <div className='h-100 w-25-l w-40-m w-30 pr4 mb2 self-center'>
                     <div className='flex justify-center flex-row-l flex-row-m flex-column justify-center items-center'>
@@ -134,6 +159,7 @@ export const Selected = ({candidate}) => {
     const {native,other} = languages;
     const [isPreviewOpen, setisPreviewOpen] = useState(false)
     const ismobile = useMediaQuery({ query: `(max-width: 580px)` })
+    const [viewdetails, setviewdetails] = useState(false);
 
     return (
         <div style={{borderLeft:"2px solid #265cff"}} className="ma1 dib ch bg-white pa3 mt3 br3">
@@ -142,6 +168,11 @@ export const Selected = ({candidate}) => {
 				close={() => setisPreviewOpen(!isPreviewOpen) }
 				src={cv}
 			/>
+            <div onClick={()=>setviewdetails(false)} className={`${viewdetails?'active':''} overlay fixed top-0 bottom-0 right-0 left-0`}></div>
+            <div className={`dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${viewdetails?'':'hide'}`}>
+                <div onClick={()=>setviewdetails(false)} className='absolute dim right-1 pointer'>&times;</div>
+                <div className='flex flex-column w-80 center justify-between'></div>
+            </div>
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>
                     <div className='flex name_candidatebox flex-column'>
@@ -156,6 +187,7 @@ export const Selected = ({candidate}) => {
                     <p className='ma0 flex-1 mb3 gray f7 f8-m f8-mo'>{native + ", " + other}</p>
                 </div>
                 <div onClick={() => setisPreviewOpen(!isPreviewOpen) } className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><DescriptionOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View CV</p></div>
+                <div onClick={() => setviewdetails(true)} className='ico mb2 pointer flex flex-column items-center self-center'><div style={{color:"gray"}} ><VisibilityIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>View More</p></div>
                 <Commentbox comments_data={comments}/>
                 <div className='h-100 w-25-l w-40-m w-30 pr4 mb2 self-center'>
                     <div className='flex justify-center flex-row-l flex-row-m flex-column justify-center items-center'>
