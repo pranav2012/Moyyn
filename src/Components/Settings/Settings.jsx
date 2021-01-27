@@ -72,10 +72,9 @@ function Settings({companyid, setlogin,backend_url}) {
                     setshowerror(true);
                     seterrormsg(data.message[0].message[0]);
                 }
-            }).catch((e)=>console.error("can't update password"));
+            }).catch(()=>console.error("can't update password"));
             setpasswordupdate(false);
         }
-        console.log(showerror,errormsg,new_password)// eslint-disable-next-line
     },[passwordupdate,backend_url,companyid,new_password,old_password])
 
     useEffect(()=>{

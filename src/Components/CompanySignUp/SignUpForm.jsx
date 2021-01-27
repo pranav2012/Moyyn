@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
-import {Signupformvalidation}  from "../../util/validation/form-validation";
+import {Signupformvalidation, SignupEditformvalidation}  from "../../util/validation/form-validation";
 import 'tachyons';
 import MuiAlert from "@material-ui/lab/Alert";
 import {Snackbar} from "@material-ui/core";
@@ -9,6 +9,34 @@ import { useHistory } from "react-router-dom";
 function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalues,editcompany}) {
     
     let history = useHistory();
+
+    const [email, setemail] = useState("");
+    const [err,seterr] = useState({
+        is:false,
+        msg:""
+    });
+
+    useEffect(()=>{
+        if(email !==""){
+            fetch(backend_url + '/company/validateEmail', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    email: email
+                })
+            }).then(res=>res.json())
+            .then((data)=>{
+                if(data.success){
+                    if(!data.result.Availability){
+                        seterr({
+                            is:true,
+                            msg:"Account already exist's with this email"
+                        })
+                    }
+                }
+            })
+        }
+    },[email,backend_url,err]);
 
     const [IsSnackbarOpen, setIsSnackbarOpen] = useState(true);
 
@@ -39,13 +67,15 @@ function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalu
                         !editcompany?setregistered(true):console.log();
                         setIsSnackbarOpen({
                             state:true,
+                            error:false,
                             msg:data.message
                         })
                         history.push('/conformation');
                     }
                     else{
                         setIsSnackbarOpen({
-                            state:false,
+                            state:true,
+                            error:true,
                             msg:data.message[0].message[0]
                         })
                     }
@@ -53,7 +83,7 @@ function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalu
                 resetForm({values: ''});
             }}
 
-            validationSchema={Signupformvalidation}
+            validationSchema={editcompany?SignupEditformvalidation:Signupformvalidation}
             >    
             {props => {
                 const {
@@ -65,6 +95,17 @@ function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalu
                     handleBlur,// eslint-disable-line
                     handleSubmit,// eslint-disable-line
                 } = props;
+
+                const handleEmail = (e) => {
+                    if(editcompany){
+                        handleChange(e);
+                    } 
+                    else{
+                        setemail(e.target.value);
+                        handleChange(e);
+                    }
+                }
+
                 return (
                 <>
                     <form method='post' onSubmit={handleSubmit}>
@@ -133,12 +174,12 @@ function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalu
                             placeholder=" Email"
                             value={values.email}
                             disabled={editcompany}
-                            onChange={handleChange}
+                            onChange={(e)=>handleEmail(e)}
                             onBlur={handleBlur}
-                            className={`w-60-l w-90 w-80-m ${errors.email && touched.email ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
+                            className={`w-60-l w-90 w-80-m ${((errors.email && touched.email) || err.is )  ? 'error mt0 mb0' : 'mt2-l mb2-l mt1 mb1'}`}
                         />
-                        {errors.email && touched.email && (
-                            <p className="input-feedback">{errors.email}</p>
+                        {((errors.email && touched.email) || err.is ) && (
+                            <p className="input-feedback">{err.is?err.msg:errors.email}</p>
                         )}
 
                         <br />
@@ -156,7 +197,8 @@ function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalu
                         )}
 
                         <br />
-
+                        {!editcompany?
+                        <>
                         <input
                             type="password"
                             name="password"
@@ -169,9 +211,10 @@ function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalu
                         {errors.password && touched.password && (
                             <p className="input-feedback">{errors.password}</p>
                         )}   
-                        
+                        </>:<></>}
                         <br/>
-                        <button type='submit' disabled={isSubmitting} style={{background:"#265cff"}} className="mt3 pointer fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">Submit</button>
+
+                        <button type='submit' disabled={isSubmitting} style={{background:"#265cff"}} className="mt3 pointer fw6 f7 f6-l w-30-l w-40-m w-50 bn link dim br1 ph3 pv2 mb2 dib white">{editcompany?"Make Changes":"Submit"}</button>
                     </form>
                 </>
                 );
@@ -179,14 +222,14 @@ function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalu
         </Formik>
         <Snackbar
 			open={IsSnackbarOpen.state}
-			autoHideDuration={3000}
+			autoHideDuration={5000}
 			onClose={() => setIsSnackbarOpen(false)}
 		>
 		<MuiAlert
             elevation={6}
             variant="filled"
             onClose={() => setIsSnackbarOpen(false)}
-            severity={IsSnackbarOpen.state?"success":"error"}
+            severity={IsSnackbarOpen.error?"error":"success"}
 		>
 		{IsSnackbarOpen.msg}
 		</MuiAlert>
