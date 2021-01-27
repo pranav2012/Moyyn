@@ -33,7 +33,18 @@ function SignUpForm({backend_url, companyid, setregistered,signupforminitialvalu
                             msg:"Account already exist's with this email"
                         })
                     }
+                    else{
+                        seterr({
+                            is:false,
+                            msg:""
+                        })
+                    }
                 }
+            }).catch(()=>{
+                seterr({
+                    is:false,
+                    msg:""
+                })
             })
         }
     },[email,backend_url,err]);
