@@ -24,9 +24,18 @@ export const pageOneValidation = object({
 	),
 });
 
-export const pageTwoValidation = object({
-	CV: array().min(1, '*Please pick a file.').required('*Please pick a file.')
-});
+export const pageTwoValidation = object().shape({
+	CV:  array().when('CV2',{
+		is:(CV2)=> !CV2 || CV2.length <=0,
+		then:array().min(1, '*Please pick a file.').required('*Please pick a file.'),
+		otherwise: array()
+	}),
+	CV2: array().when('CV',{
+		is:(CV)=> !CV || CV.length <=0,
+		then:array().min(1, '*Please pick a file.').required('*Please pick a file.'),
+		otherwise: array()
+	})
+},[['CV','CV2']]);
 
 export const pageThreeValidation = object({
 	"Country of Residence": string("*Please enter a valid country name.")

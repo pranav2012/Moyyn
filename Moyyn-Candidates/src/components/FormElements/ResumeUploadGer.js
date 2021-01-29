@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Field } from 'formik';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { DropzoneAreaBase } from "material-ui-dropzone";
-// import Alert from '@material-ui/lab/Alert';
+import Alert from '@material-ui/lab/Alert';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ResumePreview from './ResumePreview';
 import FormError from './FormError';
 import '../../styles/cv.scss';
@@ -24,7 +25,7 @@ const ResumeUploadGer = () => {
 
 	const [isPreviewOpen, setIsPreviewOpen] = useState(false)
 
-	// const screenAtSmall = useMediaQuery("(max-width:600px)");
+	const screenAtSmall = useMediaQuery("(max-width:600px)");
 
 	const handleIsPreviewOpen = () => {
 		isPreviewOpen ? setIsPreviewOpen(false) : setIsPreviewOpen(true);
@@ -59,7 +60,7 @@ const ResumeUploadGer = () => {
 
 							</Grid>
 							<FormError name='CV2' />
-							{/* {
+							{
 								field.value.length > 0 && (
 									<React.Fragment>
 										<Grid item xs={12}>
@@ -83,7 +84,7 @@ const ResumeUploadGer = () => {
 										}
 									</React.Fragment>
 								)
-							} */}
+							}
 						</Grid>
 					)
 				}

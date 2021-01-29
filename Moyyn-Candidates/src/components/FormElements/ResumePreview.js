@@ -18,7 +18,7 @@ const ResumePreview = ({ open, src, close }) => {
 
 	return (
 		<Backdrop className={custom.backdrop} open={open} onClick={close}>
-			<iframe title="CV Preview" src={src} className={custom.img} />
+			<embed title="CV Preview" src={src} className={custom.img} />
 		</Backdrop>
 	);
 };
