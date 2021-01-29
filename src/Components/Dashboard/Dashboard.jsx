@@ -8,6 +8,7 @@ import FreeBanner from '../Candidates/FreeTrialPrompt';
 import quirin from '../../svg/quirin.png';
 import {Avatar} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Loading from '../Loading/Loading';
 
 const useStyles = makeStyles((theme) => ({
     large: {
@@ -24,10 +25,12 @@ function Dashboard({companyid,backend_url,setcompanyid,setjobid}) {
     const [company, setcompany] = useState("");
     const [free, setfree] = useState(false);
     const [username,setusername] = useState("");
-
+    const [isloading, setisloading] = useState(false);
+    
     let history = useHistory();
     useEffect(() => {
         if(companyid !== "" ){
+            setisloading(true);
             fetch(backend_url + '/company/find', {
                 method:'POST',
                 headers:{'Content-Type':'application/json'},
@@ -37,6 +40,7 @@ function Dashboard({companyid,backend_url,setcompanyid,setjobid}) {
             }).then(response=>response.json())
             .then(data => {
                 if(data.success){
+                    setisloading(false);
                     setjobdata(data.result.Jobs);
                     setcompany(data.result.company);
                     setusername(data.result.name);
@@ -45,10 +49,21 @@ function Dashboard({companyid,backend_url,setcompanyid,setjobid}) {
                     }
                 }
             }).catch((e)=>{
+                setisloading(false);
                 console.error("can't fetch jobs!",e);
             });
         }// eslint-disable-next-line
     }, [companyid]);
+
+    if(isloading){
+        return(
+        <React.Fragment>
+            <div className='flex items-center justify-center bg-white ma3 br2 vh-75'>
+				<Loading text="Loading Dashboard" />
+			</div>
+        </React.Fragment>
+        );
+    }
 
     return (
         <div style={{background:"#eef2f5"}} className='flex-1 w-100'>

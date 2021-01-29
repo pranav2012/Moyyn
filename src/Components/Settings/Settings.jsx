@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom';
 import MuiAlert from "@material-ui/lab/Alert";
 import { Snackbar } from "@material-ui/core";
+// import Loading from '../Loading/Loading';
 
 function Settings({companyid, setlogin,backend_url}) {
 
@@ -29,6 +30,8 @@ function Settings({companyid, setlogin,backend_url}) {
     const [resetpassword, setresetpassword] = useState(false);
     const [errormsg, seterrormsg] = useState("");
     const [showerror, setshowerror] = useState(false);
+
+    // const [isloading, setisloading] = useState(false);
 
     const [value, setvalue] = useState(signupforminitialvalues);
 
@@ -79,6 +82,7 @@ function Settings({companyid, setlogin,backend_url}) {
 
     useEffect(()=>{
         if(companyid!==""){
+            // setisloading(true);
             fetch(backend_url + '/company/checkNotification', {
                 method:'POST',
                 headers:{'Content-Type':'application/json'},
@@ -88,9 +92,13 @@ function Settings({companyid, setlogin,backend_url}) {
             }).then(res=>res.json())
             .then(data=>{
                 if(data.success){
+                    // setisloading(false);
                     settoggle(data.result.notification);
                 }
-            }).catch(()=>console.error("can't fetch notification status"));
+            }).catch(()=>{
+                // setisloading(false);
+                console.error("can't fetch notification status");
+            });
         }
     },[companyid,backend_url])
 
@@ -147,6 +155,17 @@ function Settings({companyid, setlogin,backend_url}) {
         setedit_company(false);
         setgeneral_settings(false);
     }
+
+    // if(isloading){
+    //     return(
+    //     <React.Fragment>
+    //         <div className='flex items-center justify-center bg-white ma3 br2 vh-75'>
+	// 			<Loading text="Loading Settings" />
+	// 		</div>
+    //     </React.Fragment>
+    //     );
+    // }
+
     return (
         <div style={{background:"#eef2f5"}} className='flex-1 w-100'>
            <div className='w-90 center'>
