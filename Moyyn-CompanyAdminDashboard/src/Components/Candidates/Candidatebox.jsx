@@ -99,7 +99,7 @@ export const Shortlist = ({candidate}) => {
                 <div onClick={(e) => {window.location.href = `mailto:${email}?subject=Job at Moyyn&body=Hello, thsnks for applying`; e.preventDefault();}} className={`ico mb2 pointer flex flex-column items-center self-center ${istab?'hide':''}`}><div style={{color:"gray"}} ><MailOutlinedIcon/></div><p className='ma0 flex-1 mt1 gray f8 f9-m f9-mo'>Mail</p></div>
                 <div className='h-100 w-25-l w-40-m w-30 pr4 mb2 self-center'>
                     <div className='flex justify-center flex-row-l flex-row-m flex-column justify-center items-center'>
-                        <button style={{color:"green"}} className="bg-white c-shadow ml2-l ml2-m ml3 pointer mr2-l mr2-m mr0 w-60-l w-50-m w3 h2-l bn link dim br2 ph4 pv2-l pv1 dib white"><div className=' btnic flex f8-m f7-l f9-mo f8-m items-center justify-center'><DoneOutlineIcon/><span className='ml2'>Hire</span></div></button>
+                        <button style={{color:"green"}} className="bg-white c-shadow ml2-l ml2-m ml3 pointer mr2-l mr2-m mr0 w-60-l w-50-m w3 h2-l bn link dim br2 ph4 pv2-l pv1 dib white"><div className=' btnic flex f8-m f7-l f9-mo f8-m items-center justify-center'><DoneOutlineIcon/><span className='ml2'><span className="hide-mo">Sent to</span> Client</span></div></button>
                         <button style={{color:"red"}} className="bg-white pointer ml2-l ml2-m ml3 c-shadow w-60-l w-50-m w3 h2-l mt2  mt0-l mt0-m bn link dim br2 ph3 pv2-l pv1 dib"><div className='btnic flex f9-mo f8-m f7-l f8-m  items-center justify-center'><HighlightOffIcon/><span className='ml2'>Reject</span></div></button>
                     </div>
                 </div>
