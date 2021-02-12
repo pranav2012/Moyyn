@@ -20,7 +20,7 @@ export const Candidatebox = ({candidate}) => {
     const [viewdetails, setviewdetails] = useState(false);
     
     return (
-        <div style={{borderLeft:"2px solid #265cff"}} className="ma1 dib ch bg-white pa3 mt3 br3">
+        <div style={{borderLeft:"2px solid #265cff"}} className=" relative ma1 dib ch bg-white pa3 mt3 br3">
             <ResumePreview
 				open={isPreviewOpen}
 				close={() => setisPreviewOpen(!isPreviewOpen) }
@@ -29,9 +29,10 @@ export const Candidatebox = ({candidate}) => {
             <div onClick={()=>setviewdetails(false)} className={`${viewdetails?'active':''} overlay fixed top-0 bottom-0 right-0 left-0`}></div>
             <div className={`dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${viewdetails?'':'hide'}`}>
                 <div onClick={()=>setviewdetails(false)} className='absolute dim right-1 pointer'>&times;</div>
-                <div className='flex flex-column w-80 center justify-between'></div>
+                <div className='flex flex-column w-80 center justify-between'>
+                {candidate.name+ ","+ candidate.email}
+                </div>
             </div>
-                
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>
                     <div className='flex name_candidatebox flex-column'>
@@ -55,6 +56,7 @@ export const Candidatebox = ({candidate}) => {
                     </div>
                 </div>
             </div>
+                <p className="absolute top-1 right-1 ma0 pa1 fw6 br2 f8" style={{border:"1px solid #265cff", color:"#265cff"}}>Recomended by Moyyn</p>
         </div>     
     )
 }
@@ -79,7 +81,7 @@ export const Shortlist = ({candidate}) => {
             <div className={`dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${viewdetails?'':'hide'}`}>
                 <div onClick={()=>setviewdetails(false)} className='absolute dim right-1 pointer'>&times;</div>
                 <div className='flex flex-column w-80 center justify-between'>
-                    {console.log(candidate)}
+                    {candidate.name+ ","+ candidate.email}
                 </div>
             </div>
             <div className='flex justify-between items-start mt2-l mt0'>
@@ -128,7 +130,9 @@ export const Rejected = ({candidate}) => {
             <div onClick={()=>setviewdetails(false)} className={`${viewdetails?'active':''} overlay fixed top-0 bottom-0 right-0 left-0`}></div>
             <div className={`dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${viewdetails?'':'hide'}`}>
                 <div onClick={()=>setviewdetails(false)} className='absolute dim right-1 pointer'>&times;</div>
-                <div className='flex flex-column w-80 center justify-between'></div>
+                <div className='flex flex-column w-80 center justify-between'>
+                {candidate.name+ ","+ candidate.email}
+                </div>
             </div>
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>
@@ -173,7 +177,9 @@ export const Selected = ({candidate}) => {
             <div onClick={()=>setviewdetails(false)} className={`${viewdetails?'active':''} overlay fixed top-0 bottom-0 right-0 left-0`}></div>
             <div className={`dib read ba br2 b--gray ph2-l ph2-m ph1 pv3 ${viewdetails?'':'hide'}`}>
                 <div onClick={()=>setviewdetails(false)} className='absolute dim right-1 pointer'>&times;</div>
-                <div className='flex flex-column w-80 center justify-between'></div>
+                <div className='flex flex-column w-80 center justify-between'>
+                {candidate.name+ ","+ candidate.email}
+                </div>
             </div>
             <div className='flex justify-between items-start mt2-l mt0'>
                 <div className='flex items-center'>

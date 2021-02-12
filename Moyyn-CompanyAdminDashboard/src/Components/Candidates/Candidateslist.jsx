@@ -9,8 +9,9 @@ import { useHistory } from 'react-router-dom';
 import Tweak from '../Momatch-Tweak/Tweak';
 import SearchIcon from '@material-ui/icons/Search';
 import { useMediaQuery } from '@material-ui/core';
+import {dummycandidates as candidates} from '../../util/data/dummy';
 
-function Candidateslist({candidates}) {
+function Candidateslist({/*candidates*/}) {
     let history = useHistory();
 
     const screenatsamll = useMediaQuery("(max-width:600px)");
@@ -109,7 +110,7 @@ function Candidateslist({candidates}) {
                 <div className='mv3'>
                     <p className='ma0 gray mr2 f6-l f7-m f8-mo tr'>{'All Candidates'}({count})</p>
                 </div>
-                <div className="flex items-center relative">
+                <div className={`${mdef && !mcandidate_type && changebtn?'':'dn hide'} flex items-center relative`}>
                     <input onChange={(e)=>searchfilter(e)} type="text" placeholder="Search with Email" className={`${screenatsamll?'h2 w-60 f7':''} c-shadow pa2 pl5 h-30 bn br4 f6`}/>
                     <div className="gray absolute left-1 flex items-center"><SearchIcon/></div>
                 </div>
