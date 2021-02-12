@@ -18,7 +18,7 @@ const Candidate = ({ suggestions, setSuggestions, email, setEmail }) => {
 	//console.log(suggestions)
 
 	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(false);
+	const [error, setError] = useState(true);
 
 	const { path } = useRouteMatch();
 	const history = useHistory();

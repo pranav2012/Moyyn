@@ -7,10 +7,14 @@ import { useHistory } from 'react-router-dom';
 import FreeBanner from '../Candidates/FreeTrialPrompt';
 // import Filter from './Filter';
 
-function Candidateslist({candidates}) {
+function Candidateslist({candidates,companyid, backend_url}) {
     let history = useHistory();
+
     const [candidate_type,setcandidate_type] = useState(false);
     const [def,setdef] = useState(true);
+    const [iswithd, setiswithd] = useState(false);
+
+    const [isfree, setisfree] = useState(false);
 
     const [count, setcount] = useState(0);
 
@@ -23,25 +27,55 @@ function Candidateslist({candidates}) {
         candidate_type && def?setcount(selected.length):def?setcount(nrml.length):candidate_type?setcount(shortlisted.length):setcount(rejected.length);
     }, [selected,def,candidate_type,nrml,rejected,shortlisted]);
 
+    useEffect(()=>{
+        if(companyid !== "" ){
+            fetch(backend_url + '/company/find', {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    _id:companyid,
+                })  
+            }).then(response=>response.json())
+            .then(data => {
+                if(data.success){
+                    if(data.result.category === "Free"){
+                        setisfree(true);
+                    }
+                }
+            }).catch(()=>console.log("error fetching data"))
+        }
+    },[backend_url,companyid]);
+
     const defaultfunc = () =>{
         setcandidate_type(false);
         setdef(true);
+        setiswithd(false);
     }
 
     const shortlist = () =>{
         setcandidate_type(true);
         setdef(false);
+        setiswithd(false);
     }
 
     const reject = () =>{
         setcandidate_type(false);
         setdef(false);
+        setiswithd(false);
     }
 
     const selectfun = () =>{
         setcandidate_type(true);
         setdef(true);
+        setiswithd(false);
     }
+
+    // const selectwith = () =>{
+    //     setcandidate_type(false);
+    //     setdef(false);
+    //     setiswithd(true);
+    // }
+
     //console.log(def,candidate_type)
     return (
         <div style={{background:"#eef2f5"}} className='flex-1 w-100 pa4-l pa3'>
@@ -54,15 +88,16 @@ function Candidateslist({candidates}) {
                         <p className='ma0 pl2 f6-l f7-m f8 gray tc'>New Delhi, India</p>
                     </div>
                 </div>
-                {/* <Filter/> */}
-                <div className="hide">
+                <div className={`${isfree?'':'hide'}`}>
                     <FreeBanner/>
                 </div>
+                {/* <Filter/> */}
                 <div style={{borderColor:"rgb(249, 246, 246)"}}className='flex self-start w-100 justify-start-l justify-center pt4 ml2-l pb1'>
-                            <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def && !candidate_type?'cbtn-active':''}`}>Candidates</Button>
-                            <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def?'cbtn-active':''}`}>Shortlisted</Button>
-                            <Button onClick={reject}  variant="contained"   className={`cbtn ${!candidate_type && !def?'cbtn-active':''}`}>Rejected</Button>
-                            <Button onClick={selectfun}  variant="contained"   className={`cbtn ${candidate_type && def?'cbtn-active':''}`}>Hired</Button>
+                    <Button onClick={defaultfunc} variant="contained" className={`cbtn ${def && !candidate_type && !iswithd?'cbtn-active':''}`}>Candidates</Button>
+                    <Button onClick={shortlist} variant="contained"   className={`cbtn ${candidate_type && !def && !iswithd?'cbtn-active':''}`}>Shortlisted</Button>
+                    <Button onClick={reject}  variant="contained"   className={`cbtn ${!candidate_type && !def && !iswithd?'cbtn-active':''}`}>Rejected</Button>
+                    <Button onClick={selectfun}  variant="contained"   className={`cbtn ${candidate_type && def && !iswithd?'cbtn-active':''}`}>Hired</Button>
+                    {/* <Button onClick={selectwith}  variant="contained"   className={`cbtn ${iswithd && !def && !candidate_type?'cbtn-active':''}`}>Withdrawal</Button> */}
                 </div>
                 <div className='mv3'>
                     <p className='ma0 gray mr2 f6-l f7-m f8-mo tr'>{'All Candidates'}({count})</p>

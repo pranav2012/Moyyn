@@ -73,9 +73,8 @@ function App(){
               <JobPostForm backend_url={backend_url} companyid={companyid} postjobinitialvalues={postjobinitialvalues} editjob={false}/>
             </Route>
             <Route exact path='/Candidates'>
-              {loggedin?'':<Redirect to='/'/>} 
               <DashboardHeader logout={setloggedin}/>
-              <Candidates candidates={candidatedata}/>
+              <Candidates candidates={candidatedata} companyid={companyid} backend_url={backend_url}/>
             </Route>
             <Route exact path='/EditJob'>
               {loggedin?'':<Redirect to='/'/>} 

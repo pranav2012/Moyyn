@@ -7,13 +7,19 @@ import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 // import Filter from './Filter';
 import Tweak from '../Momatch-Tweak/Tweak';
+import SearchIcon from '@material-ui/icons/Search';
+import { useMediaQuery } from '@material-ui/core';
 
 function Candidateslist({candidates}) {
     let history = useHistory();
 
+    const screenatsamll = useMediaQuery("(max-width:600px)");
+
+    const [candidatesdata, setcandidatesdata] = useState(candidates);
+
     const [candidate_type,setcandidate_type] = useState(false);
     const [def,setdef] = useState(true);
-
+    
     const [mcandidate_type,setmcandidate_type] = useState(false);
     const [mdef,setmdef] = useState(true);
 
@@ -23,10 +29,10 @@ function Candidateslist({candidates}) {
 
     // candidates = candidates.filter((val)=>filter.map(()=> true));
 
-    let nrml =  candidates.filter((val)=>(val.short === false && val.reject === false && val.select === false)||(val.short === true && val.reject === true && val.select === true));
-    let shortlisted = candidates.filter((val)=>(val.short === true && val.reject === false && val.select === false));
-    let rejected =  candidates.filter((val)=>((val.short === false && val.select === false) && val.reject === true));
-    let selected = candidates.filter((val)=>(val.short === false && val.reject === false && val.select === true));
+    let nrml =  candidatesdata.filter((val)=>(val.short === false && val.reject === false && val.select === false)||(val.short === true && val.reject === true && val.select === true));
+    let shortlisted = candidatesdata.filter((val)=>(val.short === true && val.reject === false && val.select === false));
+    let rejected =  candidatesdata.filter((val)=>((val.short === false && val.select === false) && val.reject === true));
+    let selected = candidatesdata.filter((val)=>(val.short === false && val.reject === false && val.select === true));
 
     useEffect(() => {
         changebtn?
@@ -34,6 +40,13 @@ function Candidateslist({candidates}) {
         :
             candidate_type && def?setcount(selected.length):def?setcount(nrml.length):candidate_type?setcount(shortlisted.length):setcount(rejected.length);
     }, [selected,def,candidate_type,nrml,rejected,shortlisted,changebtn,mdef,mcandidate_type]);
+
+    const searchfilter = (e) =>{
+        setcandidatesdata(candidates.filter((val) => {
+            console.log(val.email.toLowerCase().includes(e.target.value.toLowerCase()))
+         return val.email.toLowerCase().includes(e.target.value.toLowerCase())
+        }));
+    }
 
     const defaultfunc = (val1,val2) =>{
         val2(false);
@@ -95,6 +108,10 @@ function Candidateslist({candidates}) {
                 </div>
                 <div className='mv3'>
                     <p className='ma0 gray mr2 f6-l f7-m f8-mo tr'>{'All Candidates'}({count})</p>
+                </div>
+                <div className="flex items-center relative">
+                    <input onChange={(e)=>searchfilter(e)} type="text" placeholder="Search with Email" className={`${screenatsamll?'h2 w-60 f7':''} c-shadow pa2 pl5 h-30 bn br4 f6`}/>
+                    <div className="gray absolute left-1 flex items-center"><SearchIcon/></div>
                 </div>
                 <div className='w-100 flex center flex-column'>
                     {

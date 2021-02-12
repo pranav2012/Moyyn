@@ -66,7 +66,7 @@ function Filter() {
             <div className={''/*"bg-white br2 c-shadow pa2 mt3"*/}>
                 <div className='w-100 center mt3'><p className='ma0 gray pl2 f5-l f5-m f7'>Filter Candidates</p></div>
                 <div style={{ color: "#265cff" }} className='flex items-center candidate_search h3 c-shadow bg-white w-100-l w-90 mt3 pv2 ph4-l ph3-m ph2 center br2'>
-                    <div className='flex justify-between flex-wrap items-center mr-auto w-60-l w-100-m w-100'>
+                    <div className='flex justify-between flex-wrap items-center mr-auto w-100-l w-100-m w-100'>
                         <div className='ml0-l ml4-m ml4'>
                             <div aria-controls="country" aria-haspopup="true" onClick={(e)=>setcountry(e.currentTarget)} className='pointer dim flex flex-column items-center'>
                                 <PublicOutlinedIcon />
