@@ -34,7 +34,10 @@ export const pageTwoValidation = object().shape({
 		is:(CV)=> !CV || CV.length <=0,
 		then:array().min(1, '*Please pick a file.').required('*Please pick a file.'),
 		otherwise: array()
-	})
+	}),
+	"Desired Position" : array()
+	.min(1, "*Please pick at least one option.")
+	.required("*Required field.")
 },[['CV','CV2']]);
 
 export const pageThreeValidation = object({

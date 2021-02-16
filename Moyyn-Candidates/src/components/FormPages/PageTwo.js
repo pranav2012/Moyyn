@@ -52,7 +52,7 @@ const PageTwo = ({ initialValues, handleFormChange }) => {
 												color='textSecondary'
 												className="f4-l f5-m f6"
 											>
-												Positions applying for (If Any)
+												Positions applying for
 													</Typography>
 
 											<Grid item xs={12} className='lsv'>
